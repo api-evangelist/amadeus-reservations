@@ -1,72 +1,25 @@
-name: Amadeus Reservations API
-description: APIs for managing travel reservations including flights, hotels, and other travel services through the Amadeus platform
-image: https://amadeus.com/images/en/technology/mobile/tablet/seat-map-434x.jpg
-url: https://developers.amadeus.com/self-service/category/trip/api-doc/amadeus-reservations
+aid: amadeus-reservations
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/apis.yml
+name: Amadeus Reservations
 tags:
-- Travel
-- Reservations
-- Booking
-- Flights
-- Hotels
-- Amadeus
-created: '2024'
-modified: '2024'
-specificationVersion: '0.18'
-apis:
-- name: Flight Reservations API
-  description: Manage flight bookings and reservations
-  image: https://amadeus.com/images/flight-booking.jpg
-  humanURL: https://developers.amadeus.com/self-service/category/trip/api-doc/flight-reservations
-  baseURL: https://api.amadeus.com/v1
-  tags:
+  - Travel
+  - Reservations
+  - Booking
   - Flights
-  - Booking
-  - Reservations
-  properties:
-  - type: X-documentation
-    url: https://developers.amadeus.com/self-service/category/trip/api-doc/flight-reservations/api-reference
-  - type: X-openapi
-    url: https://developers.amadeus.com/self-service/category/trip/api-doc/flight-reservations/api-reference
-  - type: X-authentication
-    url: https://developers.amadeus.com/self-service/apis-docs/guides/authorization
-  - type: X-rate-limits
-    url: https://developers.amadeus.com/self-service/apis-docs/guides/rate-limits
-  - type: X-pricing
-    url: https://developers.amadeus.com/pricing
-- name: Hotel Reservations API
-  description: Manage hotel bookings and reservations
-  image: https://amadeus.com/images/hotel-booking.jpg
-  humanURL: https://developers.amadeus.com/self-service/category/trip/api-doc/hotel-reservations
-  baseURL: https://api.amadeus.com/v1
-  tags:
   - Hotels
-  - Booking
-  - Reservations
-  properties:
-  - type: X-documentation
-    url: https://developers.amadeus.com/self-service/category/trip/api-doc/hotel-reservations/api-reference
-  - type: X-openapi
-    url: https://developers.amadeus.com/self-service/category/trip/api-doc/hotel-reservations/api-reference
-  - type: X-authentication
-    url: https://developers.amadeus.com/self-service/apis-docs/guides/authorization
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+description: >-
+  APIs for managing travel reservations including flights, hotels, and other
+  travel services through the Amadeus platform.
+created: '2024-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis: []
 common:
-- type: Portal
-  url: https://developers.amadeus.com/
-- type: Sign-Up
-  url: https://developers.amadeus.com/register
-- type: Authentication
-  url: https://developers.amadeus.com/self-service/apis-docs/guides/authorization
-- type: Terms-of-Service
-  url: https://developers.amadeus.com/legal/terms-of-use
-- type: Privacy-Policy
-  url: https://amadeus.com/en/privacy-policy
-- type: Support
-  url: https://developers.amadeus.com/support
-- type: Blog
-  url: https://developers.amadeus.com/blog
-- type: Status
-  url: https://developers.amadeus.com/status
+  - url: https://developers.amadeus.com/
+    type: Portal
 maintainers:
-- FN: Amadeus for Developers
-  email: developers@amadeus.com
-  url: https://developers.amadeus.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
