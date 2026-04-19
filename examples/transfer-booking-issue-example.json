@@ -1,0 +1,11 @@
+{
+  "status": 67,
+  "code": 89,
+  "title": "sample-value",
+  "detail": "sample-value",
+  "source": {
+    "pointer": "sample-value",
+    "parameter": "sample-value",
+    "example": "sample-value"
+  }
+}

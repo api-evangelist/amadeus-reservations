@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-partner-info-structure.json",
+  "name": "PartnerInfo",
+  "description": "Information about partner/subprovider. Below settings configuration is not applicable for sub-provider. Fields 'code', 'name' and 'logoUrl' are not mandatory for sub-provider.",
+  "type": "object",
+  "properties": {
+    "serviceProvider": {
+      "$ref": "#/definitions/ServiceProvider"
+    }
+  }
+}

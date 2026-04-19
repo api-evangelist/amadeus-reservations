@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-baggage-allowance-schema.json",
+  "title": "BaggageAllowance",
+  "description": "baggageAllowance",
+  "type": "object",
+  "properties": {
+    "quantity": {
+      "type": "integer",
+      "description": "Total number of units",
+      "example": 1
+    },
+    "weight": {
+      "type": "integer",
+      "description": "Weight of the baggage allowance",
+      "example": 20
+    },
+    "weightUnit": {
+      "type": "string",
+      "description": "Code to qualify unit as pounds or kilos",
+      "example": "KG"
+    }
+  }
+}

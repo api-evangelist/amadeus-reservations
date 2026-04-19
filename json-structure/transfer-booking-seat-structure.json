@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-seat-structure.json",
+  "name": "Seat",
+  "description": "Seat schema",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "int32",
+      "description": "seat capacity",
+      "example": 3
+    },
+    "row": {
+      "type": "string",
+      "description": "seat row",
+      "example": "front"
+    },
+    "size": {
+      "type": "string",
+      "description": "seat size",
+      "example": "XL"
+    }
+  }
+}

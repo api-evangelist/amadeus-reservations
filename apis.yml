@@ -11,15 +11,228 @@ tags:
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 description: >-
-  APIs for managing travel reservations including flights, hotels, and other
-  travel services through the Amadeus platform.
+  Amadeus Reservations provides APIs for creating and managing travel
+  bookings including flight orders, hotel reservations, and ground transfer
+  bookings. These APIs power the full reservation lifecycle for online travel
+  agencies, corporate travel platforms, and travel management companies,
+  connecting to Amadeus's global distribution network of airlines, hotels, and
+  transfer operators.
 created: '2024-01-01'
-modified: '2026-03-16'
+modified: '2026-04-19'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: amadeus-reservations:hotel-booking-api
+    name: Hotel Booking API
+    description: >-
+      The Amadeus Hotel Booking API lets you complete hotel reservations at
+      over 150,000 hotels and accommodations worldwide. Create bookings using
+      hotel offer IDs returned by the Hotel Search API, manage guest details,
+      and receive booking confirmations with property reference numbers.
+    humanURL: https://developers.amadeus.com/self-service/category/hotels/api-doc/hotel-booking
+    baseURL: https://test.api.amadeus.com/v2
+    tags:
+      - Booking
+      - Hotels
+      - Reservations
+      - Travel
+    properties:
+      - type: Documentation
+        url: https://developers.amadeus.com/self-service/category/hotels/api-doc/hotel-booking
+      - type: APIReference
+        url: https://developers.amadeus.com/self-service/category/hotels/api-doc/hotel-booking/api-reference
+      - type: OpenAPI
+        url: openapi/amadeus-reservations-hotel-booking-openapi.yaml
+  - aid: amadeus-reservations:flight-create-orders-api
+    name: Flight Create Orders API
+    description: >-
+      The Amadeus Flight Create Orders API enables creation of flight bookings
+      from flight offers returned by the Flight Offers Search API. Create
+      confirmed airline reservations for one or more travelers, receive booking
+      confirmations with PNR codes, and manage the complete flight order
+      lifecycle from creation to ticketing.
+    humanURL: https://developers.amadeus.com/self-service/category/flights/api-doc/flight-create-orders
+    baseURL: https://test.api.amadeus.com/v1
+    tags:
+      - Booking
+      - Flights
+      - Orders
+      - Reservations
+      - Travel
+    properties:
+      - type: Documentation
+        url: https://developers.amadeus.com/self-service/category/flights/api-doc/flight-create-orders
+      - type: APIReference
+        url: https://developers.amadeus.com/self-service/category/flights/api-doc/flight-create-orders/api-reference
+      - type: OpenAPI
+        url: openapi/amadeus-reservations-flight-create-orders-openapi.yaml
+  - aid: amadeus-reservations:flight-order-management-api
+    name: Flight Order Management API
+    description: >-
+      The Amadeus Flight Order Management API allows you to retrieve and
+      cancel existing flight orders. Look up booking details using the order
+      ID, retrieve full itinerary and traveler information, and cancel
+      confirmed reservations subject to airline fare rules.
+    humanURL: https://developers.amadeus.com/self-service/category/flights/api-doc/flight-order-management
+    baseURL: https://test.api.amadeus.com/v1
+    tags:
+      - Flights
+      - Management
+      - Orders
+      - Reservations
+      - Travel
+    properties:
+      - type: Documentation
+        url: https://developers.amadeus.com/self-service/category/flights/api-doc/flight-order-management
+      - type: OpenAPI
+        url: openapi/amadeus-reservations-flight-order-management-openapi.yaml
+  - aid: amadeus-reservations:transfer-booking-api
+    name: Transfer Booking API
+    description: >-
+      The Amadeus Transfer Booking API allows you to book ground transfer
+      services including airport taxis, private cars, and shuttle services.
+      Create transfer reservations from search results returned by the Transfer
+      Search API, providing pickup and drop-off details with traveler
+      information.
+    humanURL: https://developers.amadeus.com/self-service/category/cars-and-transfers/api-doc/transfer-booking
+    baseURL: https://test.api.amadeus.com/v1
+    tags:
+      - Booking
+      - Ground Transport
+      - Reservations
+      - Transfers
+      - Travel
+    properties:
+      - type: Documentation
+        url: https://developers.amadeus.com/self-service/category/cars-and-transfers/api-doc/transfer-booking
+      - type: OpenAPI
+        url: openapi/amadeus-reservations-transfer-booking-openapi.yaml
+  - aid: amadeus-reservations:transfer-management-api
+    name: Transfer Management API
+    description: >-
+      The Amadeus Transfer Management API enables management of confirmed
+      ground transfer bookings. Cancel existing transfer reservations and
+      retrieve booking details using transfer order IDs obtained during the
+      booking process.
+    humanURL: https://developers.amadeus.com/self-service/category/cars-and-transfers/api-doc/transfer-management
+    baseURL: https://test.api.amadeus.com/v1
+    tags:
+      - Ground Transport
+      - Management
+      - Reservations
+      - Transfers
+      - Travel
+    properties:
+      - type: Documentation
+        url: https://developers.amadeus.com/self-service/category/cars-and-transfers/api-doc/transfer-management
+      - type: OpenAPI
+        url: openapi/amadeus-reservations-transfer-management-openapi.yaml
 common:
-  - url: https://developers.amadeus.com/
-    type: Portal
+  - type: Portal
+    url: https://developers.amadeus.com/
+  - type: GettingStarted
+    url: https://developers.amadeus.com/self-service/apis-docs/guides/developer-guides/
+  - type: Authentication
+    url: https://developers.amadeus.com/self-service/apis-docs/guides/authorization-262
+  - type: SignUp
+    url: https://developers.amadeus.com/register
+  - type: Pricing
+    url: https://developers.amadeus.com/pricing
+  - type: Blog
+    url: https://developers.amadeus.com/blog
+  - type: FAQ
+    url: https://developers.amadeus.com/self-service/apis-docs/guides/developer-guides/faq/
+  - type: Support
+    url: https://developers.amadeus.com/support
+  - type: TermsOfService
+    url: https://developers.amadeus.com/legal/terms-and-conditions
+  - type: PrivacyPolicy
+    url: https://developers.amadeus.com/legal/privacy-policy
+  - type: GitHubOrganization
+    url: https://github.com/amadeus4dev
+  - type: SDK
+    url: https://github.com/amadeus4dev/amadeus-python
+    title: Python SDK
+  - type: SDK
+    url: https://github.com/amadeus4dev/amadeus-node
+    title: Node.js SDK
+  - type: SDK
+    url: https://github.com/amadeus4dev/amadeus-java
+    title: Java SDK
+  - type: StatusPage
+    url: https://developers.amadeus.com/status
+  - type: SpectralRules
+    url: rules/amadeus-reservations-spectral-rules.yml
+  - type: NaftikoCapability
+    url: capabilities/travel-booking.yaml
+  - type: Vocabulary
+    url: vocabulary/amadeus-reservations-vocabulary.yaml
+  - type: Features
+    data:
+      - name: Hotel Booking at Scale
+        description: >-
+          Book rooms at over 150,000 hotels worldwide using Amadeus GDS
+          connectivity, with instant confirmation and property reference
+          numbers.
+      - name: Flight Order Creation
+        description: >-
+          Create confirmed airline reservations with full PNR support across
+          hundreds of airlines in the Amadeus inventory.
+      - name: Multi-Traveler Bookings
+        description: >-
+          Create reservations for multiple travelers in a single API call,
+          managing individual passenger details and fare assignments.
+      - name: Ground Transfer Bookings
+        description: >-
+          Book airport taxis, private cars, and shuttle services with real-time
+          availability and instant confirmation.
+      - name: Order Management
+        description: >-
+          Retrieve and cancel existing flight and transfer reservations
+          programmatically with full booking detail access.
+  - type: UseCases
+    data:
+      - name: Online Travel Agency Booking Engine
+        description: >-
+          Power end-to-end booking flows for flights, hotels, and transfers
+          on consumer-facing OTA platforms.
+      - name: Corporate Travel Management
+        description: >-
+          Enable corporate travel managers to book and manage business travel
+          including flights and hotel accommodations with policy compliance.
+      - name: Travel App Integration
+        description: >-
+          Integrate booking capabilities into mobile travel apps providing
+          users with seamless reservation creation from search to confirmation.
+      - name: Itinerary Builder
+        description: >-
+          Build complete multi-modal itineraries combining flight bookings with
+          hotel reservations and ground transfers through unified API access.
+      - name: Travel Chatbot
+        description: >-
+          Enable AI-powered travel assistants to create and manage bookings on
+          behalf of travelers through conversational interfaces.
+  - type: Integrations
+    data:
+      - name: Amadeus Flight Offers Search
+        description: >-
+          Flight Create Orders works with Flight Offers Search to convert
+          priced flight offers into confirmed airline reservations.
+      - name: Amadeus Hotel Search
+        description: >-
+          Hotel Booking completes the hotel shopping flow started by Hotel
+          Search, converting hotel offers into confirmed reservations.
+      - name: Amadeus Transfer Search
+        description: >-
+          Transfer Booking confirms ground transportation offers returned by
+          the Transfer Search API.
+      - name: Amadeus Flight Offers Price
+        description: >-
+          Validate and reprice flight offers before booking to ensure accurate
+          pricing at time of reservation creation.
+      - name: Amadeus Hotel Name Autocomplete
+        description: >-
+          Use Hotel Name Autocomplete to let users search for properties before
+          fetching offers and creating hotel bookings.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-order-management-co2-emission-schema.json",
+  "title": "Co2Emission",
+  "description": "Co2Emission schema",
+  "type": "object",
+  "properties": {
+    "weight": {
+      "description": "Weight of Co2 emitted for the concerned segment",
+      "type": "integer",
+      "example": 90
+    },
+    "weightUnit": {
+      "description": "Code to qualify unit as pounds or kilos",
+      "type": "string",
+      "example": "KG"
+    },
+    "cabin": {
+      "$ref": "#/definitions/TravelClass"
+    }
+  }
+}

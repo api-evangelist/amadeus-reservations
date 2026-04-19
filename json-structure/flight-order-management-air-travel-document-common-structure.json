@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-order-management-air-travel-document-common-structure.json",
+  "name": "AirTravelDocumentCommon",
+  "description": "AirTravelDocumentCommon schema",
+  "type": "object",
+  "properties": {
+    "documentType": {
+      "type": "string",
+      "description": "Type of the travel document",
+      "enum": [
+        "ETICKET",
+        "PTICKET",
+        "EMD",
+        "MCO"
+      ]
+    },
+    "documentNumber": {
+      "type": "string",
+      "description": "Identifier of the travel document prefixed by its owner code [NALC - 3 digits]. Can either be a primary or a conjunctive document number. Necessary for TicketingReference definition."
+    },
+    "documentStatus": {
+      "type": "string",
+      "description": "Status of the travel document contained in the fare element",
+      "enum": [
+        "ISSUED",
+        "REFUNDED",
+        "VOID",
+        "ORIGINAL",
+        "EXCHANGED"
+      ]
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-air-travel-document-schema.json",
+  "title": "AirTravelDocument",
+  "description": "ticket information",
+  "allOf": [
+    {
+      "$ref": "#/definitions/AirTravelDocumentCommon"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "travelerId": {
+          "type": "string",
+          "description": "id of the impacted traveler",
+          "example": "1"
+        },
+        "segmentIds": {
+          "description": "Ids of the impacted segments",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": "1"
+        }
+      }
+    }
+  ]
+}

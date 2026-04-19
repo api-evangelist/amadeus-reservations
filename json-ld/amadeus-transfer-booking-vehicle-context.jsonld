@@ -1,0 +1,33 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Vehicle": "amadeus:Vehicle",
+    "code": {
+      "@id": "amadeus:code",
+      "@type": "xsd:string"
+    },
+    "category": {
+      "@id": "amadeus:category",
+      "@type": "xsd:string"
+    },
+    "description": "schema:description",
+    "seats": {
+      "@id": "amadeus:seats",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "baggages": {
+      "@id": "amadeus:baggages",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "imageURL": {
+      "@id": "amadeus:imageURL",
+      "@type": "xsd:string"
+    }
+  }
+}

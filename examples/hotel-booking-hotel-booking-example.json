@@ -1,0 +1,28 @@
+{
+  "type": "STANDARD",
+  "id": "456123",
+  "bookingStatus": "PENDING",
+  "roomAssociations": [
+    "sample-value"
+  ],
+  "hotelOffer": "sample-value",
+  "hotel": {
+    "hotelId": "ADPAR001",
+    "chainCode": "AD",
+    "name": "Hotel de Paris",
+    "self": "sample-value"
+  },
+  "hotelProviderInformation": [
+    {
+      "hotelProviderCode": "RT",
+      "confirmationNumber": "818319951754",
+      "cancellationNumber": "C818319951754",
+      "onRequestNumber": "818319951754"
+    }
+  ],
+  "payment": "sample-value",
+  "travelAgentId": "500123",
+  "arrivalInformation": {
+    "arrivalFlightDetails": "sample-value"
+  }
+}

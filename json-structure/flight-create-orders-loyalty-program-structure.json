@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-loyalty-program-structure.json",
+  "name": "LoyaltyProgram",
+  "description": "loyalty program information",
+  "type": "object",
+  "properties": {
+    "programOwner": {
+      "type": "string",
+      "description": "loyalty program airline code",
+      "example": "AF"
+    },
+    "id": {
+      "type": "string",
+      "description": "loyalty program number",
+      "example": "12357466574"
+    }
+  }
+}

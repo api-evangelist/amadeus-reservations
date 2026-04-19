@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-name-structure.json",
+  "name": "Name",
+  "description": "name",
+  "allOf": [
+    {
+      "$ref": "#/definitions/BaseName"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "secondLastName": {
+          "description": "second last name",
+          "type": "string"
+        }
+      }
+    }
+  ]
+}

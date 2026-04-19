@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-order-management-original-flight-end-point-schema.json",
+  "title": "OriginalFlightEndPoint",
+  "description": "departure or arrival information",
+  "type": "object",
+  "properties": {
+    "iataCode": {
+      "description": "[IATA airline codes](http://www.iata.org/publications/Pages/code-search.aspx)",
+      "type": "string",
+      "example": "JFK"
+    },
+    "terminal": {
+      "description": "terminal name / number",
+      "type": "string",
+      "example": "T2"
+    }
+  }
+}

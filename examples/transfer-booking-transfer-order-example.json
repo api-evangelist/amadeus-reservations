@@ -1,0 +1,12 @@
+{
+  "type": "STANDARD",
+  "id": "500123",
+  "reference": "sample-value",
+  "transfers": [
+    "sample-value"
+  ],
+  "passengers": [
+    "sample-value"
+  ],
+  "agency": "sample-value"
+}

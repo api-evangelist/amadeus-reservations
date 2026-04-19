@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-credit-card-brand-schema.json",
+  "title": "CreditCardBrand",
+  "description": "credit card brand",
+  "type": "string",
+  "enum": [
+    "VISA",
+    "AMERICAN_EXPRESS",
+    "MASTERCARD",
+    "VISA_ELECTRON",
+    "VISA_DEBIT",
+    "MASTERCARD_DEBIT",
+    "MAESTRO",
+    "DINERS",
+    "EASYPAY"
+  ],
+  "example": "VISA"
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-management-error_401-structure.json",
+  "name": "Error_401",
+  "description": "Error_401 schema",
+  "properties": {
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Issue"
+      }
+    }
+  },
+  "required": [
+    "errors"
+  ],
+  "example": {
+    "errors": [
+      {
+        "status": 401,
+        "code": 20,
+        "title": "RESTRICTED",
+        "detail": "Query unauthorized"
+      }
+    ]
+  },
+  "type": "object"
+}

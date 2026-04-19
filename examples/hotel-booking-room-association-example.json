@@ -1,0 +1,10 @@
+{
+  "guestReferences": [
+    {
+      "guestReference": "sample-value",
+      "hotelLoyaltyId": "3081031320523260"
+    }
+  ],
+  "specialRequest": "TEST I will arrive at midnight",
+  "hotelOfferId": "63A93695B58821ABB0EC2B33FE9FAB24D72BF34B1BD7D707293763D8D9378FC3"
+}

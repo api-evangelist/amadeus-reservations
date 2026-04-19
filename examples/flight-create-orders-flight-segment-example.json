@@ -1,0 +1,12 @@
+{
+  "departure": "sample-value",
+  "arrival": "sample-value",
+  "carrierCode": "DL",
+  "number": "212",
+  "aircraft": "sample-value",
+  "operating": "sample-value",
+  "duration": "PT2H10M",
+  "stops": [
+    "sample-value"
+  ]
+}

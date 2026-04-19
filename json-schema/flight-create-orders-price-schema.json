@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-price-schema.json",
+  "title": "Price",
+  "description": "Price schema",
+  "properties": {
+    "currency": {
+      "type": "string",
+      "example": "USD"
+    },
+    "total": {
+      "description": "Total amount paid by the user",
+      "type": "string",
+      "example": "932.70"
+    },
+    "base": {
+      "description": "Amount without taxes",
+      "type": "string",
+      "example": "632.70"
+    },
+    "fees": {
+      "description": "List of applicable fees",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Fee"
+      }
+    },
+    "taxes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Tax"
+      }
+    },
+    "refundableTaxes": {
+      "description": "The amount of taxes which are refundable",
+      "type": "string",
+      "example": "200.00"
+    }
+  },
+  "type": "object"
+}

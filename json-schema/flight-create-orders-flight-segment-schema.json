@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-flight-segment-schema.json",
+  "title": "FlightSegment",
+  "description": "defining a flight segment; including both operating and marketing details when applicable",
+  "type": "object",
+  "properties": {
+    "departure": {
+      "$ref": "#/definitions/FlightEndPoint"
+    },
+    "arrival": {
+      "$ref": "#/definitions/FlightEndPoint"
+    },
+    "carrierCode": {
+      "type": "string",
+      "description": "providing the airline / carrier code",
+      "minLength": 1,
+      "maxLength": 2,
+      "example": "DL"
+    },
+    "number": {
+      "type": "string",
+      "description": "the flight number as assigned by the carrier",
+      "minLength": 1,
+      "maxLength": 4,
+      "example": "212"
+    },
+    "aircraft": {
+      "$ref": "#/definitions/AircraftEquipment"
+    },
+    "operating": {
+      "$ref": "#/definitions/OperatingFlight"
+    },
+    "duration": {
+      "type": "string",
+      "description": "stop duration in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) PnYnMnDTnHnMnS format, e.g. PT2H10M",
+      "example": "PT2H10M"
+    },
+    "stops": {
+      "type": "array",
+      "description": "information regarding the different stops composing the flight segment. E.g. technical stop, change of gauge...",
+      "items": {
+        "$ref": "#/definitions/FlightStop"
+      }
+    }
+  }
+}

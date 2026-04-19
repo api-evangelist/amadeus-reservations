@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-order-management-general-remark-type-schema.json",
+  "title": "GeneralRemarkType",
+  "description": "general remark type",
+  "type": "string",
+  "enum": [
+    "GENERAL_MISCELLANEOUS",
+    "CONFIDENTIAL",
+    "INVOICE",
+    "QUALITY_CONTROL",
+    "BACKOFFICE",
+    "FULFILLMENT",
+    "ITINERARY",
+    "TICKETING_MISCELLANEOUS",
+    "TOUR_CODE"
+  ],
+  "example": "GENERAL_MISCELLANEOUS"
+}

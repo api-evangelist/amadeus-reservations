@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-order-management-general-remark-structure.json",
+  "name": "GeneralRemark",
+  "description": "GeneralRemark schema",
+  "type": "object",
+  "properties": {
+    "subType": {
+      "$ref": "#/definitions/GeneralRemarkType"
+    },
+    "category": {
+      "description": "remark category",
+      "type": "string",
+      "example": "Z",
+      "pattern": "[A-Z]{1}"
+    },
+    "text": {
+      "description": "remark free text",
+      "type": "string",
+      "example": "PASSENGER NEED ASSISTANCE"
+    },
+    "travelerIds": {
+      "description": "Id of the concerned traveler",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": "1"
+    },
+    "flightOfferIds": {
+      "description": "Id of the concern flightOffers",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {
+        "type": "string"
+      },
+      "example": "1"
+    }
+  },
+  "required": [
+    "subType",
+    "text"
+  ]
+}

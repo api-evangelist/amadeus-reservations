@@ -1,0 +1,301 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/hotel-booking-hotel-product-structure.json",
+  "name": "HotelProduct",
+  "description": "Hotel Offer\n",
+  "type": "object",
+  "properties": {
+    "checkInDate": {
+      "type": "date",
+      "example": "2020-12-30",
+      "description": "check-in date of the stay (hotel local date). Format YYYY-MM-DD\nThe lowest accepted value is today date (no dates in the past).  "
+    },
+    "checkOutDate": {
+      "type": "date",
+      "example": "2020-12-31",
+      "description": "check-out date of the stay (hotel local date). Format YYYY-MM-DD\nThe lowest accepted value is `checkInDate`+1. "
+    },
+    "roomQuantity": {
+      "type": "int32",
+      "minimum": 1,
+      "maximum": 9,
+      "example": 1,
+      "description": "number of rooms (1-9)"
+    },
+    "rateCode": {
+      "type": "string",
+      "description": "Special Rate - Provider Response Code (3 chars)\nExamples\n\n  * RAC - Rack\n\n  * BAR - Best Available Rate\n\n  * PRO - Promotional\n\n  * COR - Corporate\n\n  * GOV - Government (qualified)\n\n  * AAA - AAA (qualified)\n\n  * BNB - Bed and Breakfast\n\n  * PKG - Package\n\n  * TVL - Travel Industry\n\n  * SPC - Special Promo Rate\n\n  * WKD - Weekend\n\n  * CON - Convention\n\n  * SNR - Senior (Europe) (qualified)\n\n  * ARP - AARP - American Association of Retired People (50+) (qualified)\n\n  * SRS - Senior (qualified)\n\n  * ROR - Room Only Rate (no breakfast)\n\n  * FAM - Family\n\n  * DAY - Day rate\n",
+      "pattern": "^[A-Z0-9*]{3}$",
+      "minLength": 3,
+      "maxLength": 3,
+      "example": "RAC"
+    },
+    "category": {
+      "type": "string",
+      "description": "Special Rate Category\nExamples:\n  ASSOCIATION\n  FAMILY_PLAN\n",
+      "example": "FAMILY_PLAN"
+    },
+    "commission": {
+      "name": "HotelProduct_Commission",
+      "type": "object",
+      "properties": {
+        "percentage": {
+          "type": "string",
+          "description": "Percentage of the commission paid to the travel seller. Value is between 0 and 100",
+          "pattern": "^\\\\d+(\\\\.\\\\d+)?$"
+        },
+        "amount": {
+          "type": "string",
+          "description": "Amount of the commission paid to the travel seller. The amount is always linked to the currency code of the offer",
+          "pattern": "^\\\\d+(\\\\.\\\\d+)?$"
+        },
+        "description": {
+          "$ref": "#/definitions/QualifiedFreeText"
+        }
+      }
+    },
+    "room": {
+      "name": "HotelProduct_RoomDetails",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Room type code, 3 character identifier of the room.\nThe first character identifies the room type category. \nThe second numeric character identifies the number of beds. \nThe third character identifies the bed type. \nThere is a special case where ROH is returned, this value stands for Run Of House.",
+          "type": "string",
+          "pattern": "^[A-Z0-9*]{3}$"
+        },
+        "description": {
+          "$ref": "#/definitions/QualifiedFreeText"
+        }
+      }
+    },
+    "guests": {
+      "$ref": "#/definitions/guests"
+    },
+    "price": {
+      "name": "HotelProduct_HotelPrice",
+      "description": "price information",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Price"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "taxes": {
+              "type": "array",
+              "items": {
+                "name": "HotelProduct_HotelTax",
+                "type": "object",
+                "properties": {
+                  "currency": {
+                    "type": "string",
+                    "description": "Currency code of the tax"
+                  },
+                  "amount": {
+                    "type": "string",
+                    "description": "Amount of the tax"
+                  },
+                  "code": {
+                    "description": "The tax code which identifies the tax.\n  Examples:\n  1=BED_TAX\n  2=CITY_TAX",
+                    "type": "string"
+                  },
+                  "percentage": {
+                    "type": "string",
+                    "description": "percentage of the tax. Use together with pricingFrequency and pricingMode"
+                  },
+                  "included": {
+                    "type": "boolean",
+                    "description": "Is the tax included in the base amount"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Textual description of the tax"
+                  },
+                  "pricingFrequency": {
+                    "description": "Specifies if the tax applies per stay or per night\n  - PER_STAY\n  - PER_NIGHT",
+                    "type": "string"
+                  },
+                  "pricingMode": {
+                    "description": "Specifies if the tax applies per occupant or per room\n  - PER_OCCUPANT\n  - PER_PRODUCT",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "variations": {
+              "name": "HotelProduct_PriceVariations",
+              "type": "object",
+              "description": "Daily price variations and the average daily price (when available) is shown here",
+              "properties": {
+                "changes": {
+                  "description": "The collection of price periods.\nEven if the daily price is not changeing during the stay, this section is filled",
+                  "type": "array",
+                  "items": {
+                    "name": "HotelProduct_PriceVariation",
+                    "description": "Some prices may vary during a stay, thus here you can see the daily price per period of the stay",
+                    "allOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "startDate": {
+                            "description": "Begin date of the period\nFormat: YYYY-MM-DD",
+                            "type": "date"
+                          },
+                          "endDate": {
+                            "description": "End date of the period\nFormat: YYYY-MM-DD",
+                            "type": "date"
+                          }
+                        },
+                        "required": [
+                          "startDate",
+                          "endDate"
+                        ]
+                      },
+                      {
+                        "$ref": "#/definitions/Price"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "policies": {
+      "name": "HotelProduct_PolicyDetails",
+      "type": "object",
+      "description": "Booking Rules",
+      "properties": {
+        "paymentType": {
+          "type": "string",
+          "description": "payment type. Guarantee means Pay at Check Out. Check the `methods` in `guarantee` or `deposit` or `prepay`.",
+          "example": "DEPOSIT",
+          "enum": [
+            "GUARANTEE",
+            "DEPOSIT",
+            "PREPAY",
+            "HOLDTIME"
+          ]
+        },
+        "guarantee": {
+          "name": "HotelProduct_GuaranteePolicy",
+          "type": "object",
+          "description": "the guarantee policy information applicable to the offer. It includes accepted payments",
+          "properties": {
+            "description": {
+              "$ref": "#/definitions/QualifiedFreeText"
+            },
+            "acceptedPayments": {
+              "$ref": "#/definitions/HotelProduct_PaymentPolicy"
+            }
+          }
+        },
+        "deposit": {
+          "$ref": "#/definitions/HotelProduct_DepositPolicy"
+        },
+        "prepay": {
+          "$ref": "#/definitions/HotelProduct_DepositPolicy"
+        },
+        "holdTime": {
+          "name": "HotelProduct_HoldPolicy",
+          "type": "object",
+          "description": "the hold policy",
+          "properties": {
+            "deadline": {
+              "type": "datetime",
+              "description": "The date and time of the deadline in ISO 8601[https://www.w3.org/TR/NOTE-datetime]. \n Example: 2010-08-14T13:00:00\n Please note that this value is expressed in the hotels local time zone\n"
+            }
+          },
+          "required": [
+            "deadline"
+          ]
+        },
+        "checkInOut": {
+          "name": "HotelProduct_CheckInOutPolicy",
+          "type": "object",
+          "properties": {
+            "checkIn": {
+              "type": "string",
+              "example": "13:00:00",
+              "description": "Check-in From time limit in ISO-8601 format [http://www.w3.org/TR/xmlschema-2/#time]"
+            },
+            "checkInDescription": {
+              "$ref": "#/definitions/QualifiedFreeText"
+            },
+            "checkOut": {
+              "type": "string",
+              "example": "11:00:00",
+              "description": "Check-out Until time limit in ISO-8601 format [http://www.w3.org/TR/xmlschema-2/#time]"
+            },
+            "checkOutDescription": {
+              "$ref": "#/definitions/QualifiedFreeText"
+            }
+          }
+        },
+        "cancellations": {
+          "type": "array",
+          "items": {
+            "name": "HotelProduct_CancellationPolicy",
+            "type": "object",
+            "description": "Cancellation policies are optional in response (whether they apply or not according to the provider response returned at pricing or sell.   ",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "FULL_STAY"
+                ],
+                "description": "* FULL_STAY: the Penalty amount equals the `total` price."
+              },
+              "amount": {
+                "type": "string",
+                "description": "Amount of the cancellation fee.",
+                "pattern": "^\\\\d+(\\\\.\\\\d+)?$"
+              },
+              "numberOfNights": {
+                "type": "int32",
+                "minimum": 0,
+                "description": "Number of nights due as fee in case of cancellation."
+              },
+              "percentage": {
+                "type": "string",
+                "description": "Percentage of the total stay amount to be paid in case of cancellation. Value is between 0 and 100.",
+                "pattern": "^\\\\d+(\\\\.\\\\d+)?$"
+              },
+              "deadline": {
+                "type": "datetime",
+                "description": "Represents the deadline after which the penalty applies. DateTime is in ISO 8601 [https://www.w3.org/TR/NOTE-datetime].\nExample: 2010-08-14T12:00:00+01:00\nExample: 2010-08-14T12:00:00Z\nExample: 2010-08-14T12:00:00-01:00\nThe value is expressed in the hotel local time zone, with the added time zone difference. So you can compute the deadline in UTC(GMT) if desired."
+              },
+              "description": {
+                "$ref": "#/definitions/QualifiedFreeText"
+              }
+            }
+          }
+        }
+      }
+    },
+    "rateFamilyEstimated": {
+      "name": "HotelProduct_RateFamily",
+      "type": "object",
+      "description": "The estimated rate code family of the offer. Grouping various rate plan codes that belongs to the same family and indicates the type of the rate",
+      "properties": {
+        "code": {
+          "description": "The estimated rate family (PRO,FAM,GOV)",
+          "type": "string",
+          "pattern": "[A-Z0-9]{3}"
+        },
+        "type": {
+          "description": "The type of the rate (public=P, negotiated=N, conditional=C)",
+          "type": "string",
+          "pattern": "[PNC]"
+        }
+      }
+    }
+  },
+  "required": [
+    "rateCode",
+    "room",
+    "price"
+  ]
+}

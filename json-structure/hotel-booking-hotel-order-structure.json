@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/hotel-booking-hotel-order-structure.json",
+  "name": "HotelOrder",
+  "description": "An Hotel Order is one or several hotel bookings done for a set of guest.",
+  "type": "object",
+  "properties": {
+    "hotelBookings": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "description": "Array of hotel-bookings",
+      "items": {
+        "$ref": "#/definitions/HotelBooking"
+      }
+    },
+    "associatedRecords": {
+      "type": "array",
+      "uniqueItems": false,
+      "minItems": 1,
+      "description": "Reference and origin of the hotel order record",
+      "items": {
+        "type": "object",
+        "properties": {
+          "reference": {
+            "type": "string",
+            "description": "Record locator of the PNR in which the hotel order is stored in Amadeus GDS.",
+            "example": "ABCDEF",
+            "minLength": 6,
+            "maxLength": 6,
+            "pattern": "^[A-Z0-9]{6}$"
+          },
+          "originSystemCode": {
+            "type": "string",
+            "minLength": 1,
+            "description": "As the reference is a PNR record locator, the originSystemCode is set to GDS.",
+            "example": "GDS"
+          }
+        },
+        "required": [
+          "reference",
+          "originSystemCode"
+        ]
+      }
+    },
+    "self": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Self URL for retrieving the Hotel Order"
+    },
+    "type": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Resource name - Is set to \"hotel-order\""
+    },
+    "guests": {
+      "$ref": "#/definitions/Guests"
+    },
+    "id": {
+      "type": "string",
+      "description": "Id of the hotelorder. \nIt is a crucial information and must be stored in the client system as it is mandatory to provide it in any further step such as cancel or retrieve.",
+      "minLength": 1,
+      "pattern": "[A-Za-z0-9+/=]",
+      "example": "12312"
+    }
+  },
+  "required": [
+    "hotelBookings",
+    "associatedRecords",
+    "self",
+    "type",
+    "guests",
+    "id"
+  ]
+}

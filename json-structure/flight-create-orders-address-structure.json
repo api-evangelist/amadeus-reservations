@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-address-structure.json",
+  "name": "Address",
+  "description": "address information",
+  "type": "object",
+  "properties": {
+    "lines": {
+      "type": "array",
+      "description": "Line 1 = Street address, Line 2 = Apartment, suite, unit, building, floor, etc \nEach line is limited to 35 characters",
+      "items": {
+        "type": "string"
+      }
+    },
+    "postalCode": {
+      "type": "string",
+      "description": "Example: 74130"
+    },
+    "countryCode": {
+      "type": "string",
+      "description": "country code [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)",
+      "pattern": "[a-zA-Z]{2}"
+    },
+    "cityName": {
+      "type": "string",
+      "description": "Full city name. Example: Dublin",
+      "pattern": "[a-zA-Z -]{1,35}"
+    },
+    "stateName": {
+      "type": "string",
+      "description": "Full state name"
+    },
+    "postalBox": {
+      "type": "string",
+      "description": "E.g. BP 220"
+    }
+  }
+}

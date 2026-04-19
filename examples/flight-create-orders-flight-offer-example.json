@@ -1,0 +1,35 @@
+{
+  "type": "flight-offer",
+  "id": "1",
+  "source": "sample-value",
+  "instantTicketingRequired": false,
+  "disablePricing": false,
+  "nonHomogeneous": false,
+  "oneWay": false,
+  "paymentCardRequired": false,
+  "lastTicketingDate": "2018-06-19",
+  "lastTicketingDateTime": "2018-06-19T15:00:00",
+  "numberOfBookableSeats": 9,
+  "itineraries": [
+    {
+      "duration": "PT2H10M",
+      "segments": [
+        "sample-value"
+      ]
+    }
+  ],
+  "price": "299.99",
+  "pricingOptions": {
+    "fareType": "STANDARD",
+    "includedCheckedBagsOnly": true,
+    "refundableFare": true,
+    "noRestrictionFare": true,
+    "noPenaltyFare": true
+  },
+  "validatingAirlineCodes": [
+    "AF"
+  ],
+  "travelerPricings": [
+    "sample-value"
+  ]
+}

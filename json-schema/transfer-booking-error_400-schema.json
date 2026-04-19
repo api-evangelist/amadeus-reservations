@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/transfer-booking-error_400-schema.json",
+  "title": "Error_400",
+  "description": "Error_400 schema",
+  "properties": {
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Issue"
+      }
+    }
+  },
+  "required": [
+    "errors"
+  ],
+  "example": {
+    "errors": [
+      {
+        "status": 400,
+        "code": 4926,
+        "title": "INVALID DATA RECEIVED",
+        "detail": "Transfer type is not valid",
+        "source": {
+          "parameter": "transferType"
+        }
+      }
+    ]
+  },
+  "type": "object"
+}

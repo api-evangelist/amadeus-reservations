@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-order-management-discount-structure.json",
+  "name": "Discount",
+  "description": "traveler discount",
+  "type": "object",
+  "properties": {
+    "subType": {
+      "$ref": "#/definitions/DiscountType"
+    },
+    "cityName": {
+      "type": "string",
+      "description": "city of residence",
+      "example": "MADRID"
+    },
+    "travelerType": {
+      "$ref": "#/definitions/DiscountTravelerType"
+    },
+    "cardNumber": {
+      "type": "string",
+      "description": "resident card number",
+      "example": "12568215Z",
+      "pattern": "[0-9A-Z][0-9]{0,12}[A-Z]"
+    },
+    "certificateNumber": {
+      "type": "string",
+      "description": "resident certificate number",
+      "example": "12568215Z",
+      "pattern": "[0-9A-Z][0-9]{0,12}[A-Z]"
+    }
+  }
+}

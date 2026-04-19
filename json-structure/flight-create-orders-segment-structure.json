@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-segment-structure.json",
+  "name": "Segment",
+  "description": "Segment schema",
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Id of the segment",
+          "type": "string",
+          "example": 1
+        },
+        "numberOfStops": {
+          "description": "Number of stops",
+          "type": "int32",
+          "example": 0
+        },
+        "blacklistedInEU": {
+          "description": "When the flight has a marketing or/and operating airline that is identified as blacklisted by the European Commission. \n\nTo improve travel safety, the European Commission regularly updates the list of the banned carriers from operating in Europe. It allows any Travel Agency located in the European Union to easily identify and hide any travel recommendation based on some unsafe airlines. \nThe [list of the banned airlines](https://ec.europa.eu/transport/sites/transport/files/air-safety-list_en.pdf) is published in the Official Journal of the European Union, where they are included as annexes A and B to the Commission Regulation. The blacklist of an airline can concern all its flights or some specific aircraft types pertaining to the airline   \n",
+          "type": "boolean",
+          "example": false
+        },
+        "co2Emissions": {
+          "description": "Co2 informations",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "name": "Co2Emission",
+            "$ref": "#/definitions/Co2Emission"
+          }
+        }
+      }
+    },
+    {
+      "$ref": "#/definitions/FlightSegment"
+    }
+  ]
+}

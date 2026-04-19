@@ -1,0 +1,151 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: Amadeus Flight Orders API
+  description: Shared capability for creating and managing flight orders using Amadeus Flight Create Orders and Flight Order Management APIs.
+  tags:
+    - Amadeus
+    - Flights
+    - Booking
+    - Orders
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AMADEUS_API_KEY: AMADEUS_API_KEY
+      AMADEUS_API_SECRET: AMADEUS_API_SECRET
+
+capability:
+  consumes:
+    - type: http
+      namespace: flight-orders
+      baseUri: https://test.api.amadeus.com/v1
+      description: Amadeus Flight Create Orders and Order Management APIs.
+      authentication:
+        type: bearer
+        token: "{{AMADEUS_BEARER_TOKEN}}"
+      resources:
+        - name: flight-orders
+          path: /booking/flight-orders
+          description: Create and manage flight reservations.
+          operations:
+            - name: create-flight-order
+              method: POST
+              description: Create a confirmed flight booking.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  data: "{{tools.orderData}}"
+            - name: get-flight-order
+              method: GET
+              description: Retrieve an existing flight order by ID.
+              inputParameters:
+                - name: orderId
+                  in: query
+                  type: string
+                  required: true
+                  description: Unique flight order identifier.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-flight-order
+              method: DELETE
+              description: Cancel an existing flight order.
+              inputParameters:
+                - name: orderId
+                  in: query
+                  type: string
+                  required: true
+                  description: Unique flight order identifier to cancel.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8104
+      namespace: flight-orders-api
+      resources:
+        - path: /v1/bookings/flights
+          name: flight-bookings
+          description: Flight order management.
+          operations:
+            - method: POST
+              name: create-flight-order
+              description: Create a confirmed flight reservation.
+              call: "flight-orders.create-flight-order"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/bookings/flights/{orderId}
+          name: flight-order
+          description: Individual flight order management.
+          operations:
+            - method: GET
+              name: get-flight-order
+              description: Retrieve a flight order.
+              call: "flight-orders.get-flight-order"
+              with:
+                orderId: "rest.orderId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-flight-order
+              description: Cancel a flight order.
+              call: "flight-orders.delete-flight-order"
+              with:
+                orderId: "rest.orderId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9104
+      namespace: flight-orders-mcp
+      transport: http
+      tools:
+        - name: create-flight-booking
+          description: Create a confirmed airline reservation from a flight offer.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "flight-orders.create-flight-order"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-flight-booking
+          description: Retrieve details of an existing flight order by ID.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "flight-orders.get-flight-order"
+          with:
+            orderId: "tools.orderId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: cancel-flight-booking
+          description: Cancel an existing flight reservation.
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "flight-orders.delete-flight-order"
+          with:
+            orderId: "tools.orderId"
+          outputParameters:
+            - type: object
+              mapping: "$."

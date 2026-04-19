@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-currency-entry-schema.json",
+  "title": "CurrencyEntry",
+  "description": "CurrencyEntry schema",
+  "additionalProperties": {
+    "type": "string",
+    "example": "EUR"
+  }
+}

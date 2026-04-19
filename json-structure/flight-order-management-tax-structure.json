@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-order-management-tax-structure.json",
+  "name": "Tax",
+  "description": "a tax",
+  "type": "object",
+  "properties": {
+    "amount": {
+      "type": "string",
+      "example": "332.70"
+    },
+    "code": {
+      "type": "string",
+      "example": "MX"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-order-management-document-type-schema.json",
+  "title": "DocumentType",
+  "description": "the nature/type of the document",
+  "type": "string",
+  "enum": [
+    "VISA",
+    "PASSPORT",
+    "IDENTITY_CARD",
+    "KNOWN_TRAVELER",
+    "REDRESS"
+  ],
+  "example": "VISA"
+}

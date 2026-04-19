@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-order-management-phone-device-type-structure.json",
+  "name": "PhoneDeviceType",
+  "description": "Type of the device (Landline, Mobile or Fax)",
+  "type": "string",
+  "enum": [
+    "MOBILE",
+    "LANDLINE",
+    "FAX"
+  ]
+}

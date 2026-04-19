@@ -1,0 +1,30 @@
+{
+  "iataTravelAgency": {
+    "iataNumber": "JFK"
+  },
+  "billBack": {
+    "travelAgencyId": "500123",
+    "bookerId": "500123",
+    "paymentInstructions": "sample-value",
+    "billbackProviderDeploymentId": "500123",
+    "billbackProviderCode": "AA",
+    "billbackProviderAccountNumber": "12345",
+    "hotelSupplierInformation": "sample-value"
+  },
+  "method": "CREDIT_CARD",
+  "b2bWallet": {
+    "virtualCreditCardId": "500123",
+    "paymentProvider": "sample-value"
+  },
+  "paymentCard": {
+    "paymentCardInfo": {
+      "vendorCode": "VI",
+      "holderName": "John Smith",
+      "cardNumber": "12345",
+      "expiryDate": "sample-value"
+    },
+    "cardOwnerType": "TravelAgency",
+    "VCC": false,
+    "address": "sample-value"
+  }
+}

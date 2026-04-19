@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-passenger-structure.json",
+  "name": "Passenger",
+  "description": "passenger data",
+  "allOf": [
+    {
+      "$ref": "#/definitions/Name"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "contacts": {
+          "$ref": "#/definitions/Contact"
+        },
+        "billingAddress": {
+          "$ref": "#/definitions/AddressCommon"
+        }
+      }
+    }
+  ]
+}

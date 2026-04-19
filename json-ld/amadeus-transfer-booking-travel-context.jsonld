@@ -1,0 +1,39 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "TravelSegmentLocation": "amadeus:TravelSegmentLocation",
+    "TravelSegment": "amadeus:TravelSegment",
+    "uicCode": {
+      "@id": "amadeus:uicCode",
+      "@type": "xsd:string"
+    },
+    "iataCode": {
+      "@id": "amadeus:iataCode",
+      "@type": "xsd:string"
+    },
+    "localDateTime": {
+      "@id": "amadeus:localDateTime",
+      "@type": "xsd:dateTime"
+    },
+    "transportationType": {
+      "@id": "amadeus:transportationType",
+      "@type": "xsd:string"
+    },
+    "transportationNumber": {
+      "@id": "amadeus:transportationNumber",
+      "@type": "xsd:string"
+    },
+    "departure": {
+      "@id": "amadeus:departure",
+      "@type": "xsd:string"
+    },
+    "arrival": {
+      "@id": "amadeus:arrival",
+      "@type": "xsd:string"
+    }
+  }
+}

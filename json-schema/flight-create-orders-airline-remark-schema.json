@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-airline-remark-schema.json",
+  "title": "AirlineRemark",
+  "description": "AirlineRemark schema",
+  "type": "object",
+  "properties": {
+    "subType": {
+      "$ref": "#/definitions/AirlineRemarkType"
+    },
+    "keyword": {
+      "description": "keyword code - only applicable for subType Keyword",
+      "type": "string",
+      "example": "PARK"
+    },
+    "airlineCode": {
+      "description": "Code of the airline following IATA standard ([IATA table codes](http://www.iata.org/publications/Pages/code-search.aspx))\n\nWhen it apply to any airline, value is YY.\n",
+      "type": "string",
+      "example": "AF"
+    },
+    "text": {
+      "description": "remark free text",
+      "type": "string",
+      "example": "CAR PARK"
+    },
+    "travelerIds": {
+      "description": "Id of the concerned traveler",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": "1"
+    },
+    "flightOfferIds": {
+      "description": "Id of the concern flightOffers",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {
+        "type": "string"
+      },
+      "example": "1"
+    }
+  },
+  "required": [
+    "subType",
+    "airlineCode",
+    "text"
+  ]
+}

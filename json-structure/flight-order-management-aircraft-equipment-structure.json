@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-order-management-aircraft-equipment-structure.json",
+  "name": "AircraftEquipment",
+  "description": "information related to the aircraft",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "IATA aircraft code (http://www.flugzeuginfo.net/table_accodes_iata_en.php)\n",
+      "pattern": "[a-zA-Z0-9]{3}",
+      "example": "318"
+    }
+  },
+  "type": "object"
+}

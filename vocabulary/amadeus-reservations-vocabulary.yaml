@@ -1,0 +1,241 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: Amadeus Reservations
+  description: >-
+    Vocabulary capturing the complete taxonomy of the Amadeus Reservations API
+    surface, covering flight orders, hotel bookings, and ground transfer
+    reservations along with workflow capabilities for travel booking platforms.
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: hotel-booking
+      name: Hotel Booking API
+      version: "2.0.0"
+      baseUrl: https://test.api.amadeus.com/v2
+      status: active
+    - namespace: flight-orders
+      name: Flight Create Orders API
+      version: "1.10.0"
+      baseUrl: https://test.api.amadeus.com/v1
+      status: active
+    - namespace: flight-order-management
+      name: Flight Order Management API
+      version: "1.0.0"
+      baseUrl: https://test.api.amadeus.com/v1
+      status: active
+    - namespace: transfer-booking
+      name: Transfer Booking API
+      version: "1.11.1"
+      baseUrl: https://test.api.amadeus.com/v1
+      status: active
+    - namespace: transfer-management
+      name: Transfer Management API
+      version: "1.0.0"
+      baseUrl: https://test.api.amadeus.com/v1
+      status: active
+
+  resources:
+    - name: hotel-orders
+      description: Hotel reservation records.
+      apis:
+        - hotel-booking
+      actions:
+        - create
+    - name: flight-orders
+      description: Airline reservation records with PNR codes.
+      apis:
+        - flight-orders
+        - flight-order-management
+      actions:
+        - create
+        - get
+        - cancel
+    - name: transfer-orders
+      description: Ground transfer booking records.
+      apis:
+        - transfer-booking
+        - transfer-management
+      actions:
+        - create
+        - cancel
+
+  actions:
+    - name: create
+      description: Create a new reservation.
+      httpMethod: POST
+      pattern: write
+    - name: get
+      description: Retrieve an existing reservation by ID.
+      httpMethod: GET
+      pattern: read
+    - name: cancel
+      description: Cancel an existing reservation.
+      httpMethod: DELETE
+      pattern: destructive
+
+  schemas:
+    core:
+      - name: FlightOrder
+        description: Confirmed flight reservation with PNR and traveler details.
+        keyProperties:
+          - id
+          - type
+          - associatedRecords
+      - name: HotelOrder
+        description: Confirmed hotel reservation with property reference.
+        keyProperties:
+          - id
+          - type
+          - providerConfirmationId
+      - name: TransferOrder
+        description: Confirmed ground transfer booking.
+        keyProperties:
+          - id
+          - type
+          - status
+    travelers:
+      - name: Traveler
+        description: Individual traveler with personal details and documents.
+        keyProperties:
+          - id
+          - name
+          - contact
+      - name: Contact
+        description: Traveler contact information.
+        keyProperties:
+          - emailAddress
+          - phones
+
+  parameters:
+    identifiers:
+      - name: orderId
+        description: Unique identifier for flight or hotel orders.
+      - name: transferOrderId
+        description: Unique identifier for transfer orders.
+      - name: confirmNbr
+        description: Confirmation number for transfer cancellation.
+
+  enums:
+    orderStatus:
+      - PENDING
+      - CONFIRMED
+      - CANCELLED
+      - TICKETED
+    travelerType:
+      - ADULT
+      - CHILD
+      - INFANT
+    transferType:
+      - PRIVATE
+      - SHARED
+      - SHUTTLE
+
+  authentication:
+    schemes:
+      - type: bearer
+        description: OAuth2 Bearer token from Amadeus Authorization API.
+        tokenEndpoint: https://test.api.amadeus.com/v1/security/oauth2/token
+    apis:
+      - hotel-booking
+      - flight-orders
+      - flight-order-management
+      - transfer-booking
+      - transfer-management
+
+capability:
+  workflows:
+    - name: Travel Booking
+      file: capabilities/travel-booking.yaml
+      description: >-
+        End-to-end travel booking combining flights, hotels, and transfers.
+      apisComined:
+        - Hotel Booking API
+        - Flight Create Orders API
+        - Flight Order Management API
+        - Transfer Booking API
+        - Transfer Management API
+      toolCount: 6
+      personas:
+        - Travel Booking Agent
+        - Travel Chatbot Developer
+
+  personas:
+    - id: travel-booking-agent
+      name: Travel Booking Agent
+      description: Human or automated agent creating and managing travel reservations on behalf of travelers.
+      workflows:
+        - Travel Booking
+    - id: travel-chatbot-developer
+      name: Travel Chatbot Developer
+      description: Developer building AI-powered travel assistants that create bookings conversationally.
+      workflows:
+        - Travel Booking
+
+  domains:
+    - name: Flight Booking
+      description: Airline reservation creation and management.
+      resources:
+        - flight-orders
+    - name: Hotel Booking
+      description: Hotel reservation creation.
+      resources:
+        - hotel-orders
+    - name: Ground Transfer
+      description: Ground transportation booking and management.
+      resources:
+        - transfer-orders
+
+  namespaces:
+    consumed:
+      - hotel-booking
+      - flight-orders
+      - flight-order-management
+      - transfer-booking
+      - transfer-management
+    rest:
+      - travel-booking-api (port 8080)
+      - hotel-booking-api (port 8103)
+      - flight-orders-api (port 8104)
+      - transfer-booking-api (port 8105)
+    mcp:
+      - travel-booking-mcp (port 9090)
+      - hotel-booking-mcp (port 9103)
+      - flight-orders-mcp (port 9104)
+      - transfer-booking-mcp (port 9105)
+
+  binds:
+    - AMADEUS_API_KEY
+    - AMADEUS_API_SECRET
+    - AMADEUS_BEARER_TOKEN
+
+crossReference:
+  - resource: flight-orders
+    operations:
+      - create
+      - get
+      - cancel
+    workflows:
+      - Travel Booking
+    personas:
+      - Travel Booking Agent
+      - Travel Chatbot Developer
+  - resource: hotel-orders
+    operations:
+      - create
+    workflows:
+      - Travel Booking
+    personas:
+      - Travel Booking Agent
+      - Travel Chatbot Developer
+  - resource: transfer-orders
+    operations:
+      - create
+      - cancel
+    workflows:
+      - Travel Booking
+    personas:
+      - Travel Booking Agent
+      - Travel Chatbot Developer

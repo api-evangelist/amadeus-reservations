@@ -1,0 +1,16 @@
+{
+  "iataTravelAgency": {
+    "iataNumber": "JFK"
+  },
+  "method": "CREDIT_CARD",
+  "paymentCard": {
+    "paymentCardInfo": {
+      "vendorCode": "VI",
+      "holderName": "John Smith",
+      "cardNumber": "12345",
+      "securityCode": "193",
+      "expiryDate": "sample-value"
+    },
+    "address": "sample-value"
+  }
+}

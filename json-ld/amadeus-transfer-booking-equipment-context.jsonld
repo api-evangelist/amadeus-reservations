@@ -1,0 +1,39 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Equipment": "amadeus:Equipment",
+    "code": {
+      "@id": "amadeus:code",
+      "@type": "xsd:string"
+    },
+    "itemId": {
+      "@id": "amadeus:itemId",
+      "@type": "xsd:string"
+    },
+    "description": "schema:description",
+    "quotation": {
+      "@id": "amadeus:quotation",
+      "@type": "xsd:string"
+    },
+    "converted": {
+      "@id": "amadeus:converted",
+      "@type": "xsd:string"
+    },
+    "isBookable": {
+      "@id": "amadeus:isBookable",
+      "@type": "xsd:boolean"
+    },
+    "taxIncluded": {
+      "@id": "amadeus:taxIncluded",
+      "@type": "xsd:boolean"
+    },
+    "includedInTotal": {
+      "@id": "amadeus:includedInTotal",
+      "@type": "xsd:boolean"
+    }
+  }
+}

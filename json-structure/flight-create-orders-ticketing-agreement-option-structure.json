@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-ticketing-agreement-option-structure.json",
+  "name": "TicketingAgreementOption",
+  "description": "Ticketing agreement option\n* **CONFIRM**, when the payment is done\n* **DELAY_TO_QUEUE**, queue the reservation at a wished date if the payment is not done\n* **DELAY_TO_CANCEL**, cancel the reservation at a wished date if the payment is not done\n\nQueueing and cancellation occurs at local date and time. When no time is specified, reservation is queued or cancelled at 00:00.\n",
+  "type": "string",
+  "enum": [
+    "CONFIRM",
+    "DELAY_TO_QUEUE",
+    "DELAY_TO_CANCEL"
+  ],
+  "example": "DELAY_TO_QUEUE"
+}

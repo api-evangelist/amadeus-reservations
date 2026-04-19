@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-flight-offer-source-structure.json",
+  "name": "FlightOfferSource",
+  "description": "source of the flight offer",
+  "type": "string",
+  "enum": [
+    "GDS"
+  ],
+  "example": "GDS"
+}

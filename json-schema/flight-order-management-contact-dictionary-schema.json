@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-order-management-contact-dictionary-schema.json",
+  "title": "ContactDictionary",
+  "description": "represents a contact",
+  "type": "object",
+  "properties": {
+    "addresseeName": {
+      "description": "the name of the person addressed by these contact details",
+      "$ref": "#/definitions/Name"
+    },
+    "address": {
+      "$ref": "#/definitions/Address"
+    },
+    "language": {
+      "description": "the preferred language of communication with this Contact",
+      "type": "string"
+    },
+    "purpose": {
+      "$ref": "#/definitions/ContactPurpose"
+    }
+  }
+}

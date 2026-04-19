@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-loyalty-number-structure.json",
+  "name": "LoyaltyNumber",
+  "description": "LoyaltyNumber schema",
+  "type": "object",
+  "properties": {
+    "program": {
+      "type": "string",
+      "description": "loyalty program name"
+    },
+    "value": {
+      "type": "string",
+      "description": "loyalty number value"
+    }
+  }
+}

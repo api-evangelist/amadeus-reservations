@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/hotel-booking-price-schema.json",
+  "title": "Price",
+  "description": "Price valuation information",
+  "type": "object",
+  "properties": {
+    "currency": {
+      "type": "string",
+      "description": "currency Code apply to all elements of the price"
+    },
+    "sellingTotal": {
+      "type": "string",
+      "description": "sellingTotal = Total + margins + markup + totalFees - discounts"
+    },
+    "total": {
+      "type": "string",
+      "description": "total = base + totalTaxes"
+    },
+    "base": {
+      "type": "string"
+    },
+    "markups": {
+      "type": "array",
+      "items": {
+        "title": "Markup",
+        "type": "object",
+        "description": "Markup applied to provide a service or a product to the client. Typical use case is to convey markup information set by the travel agent.",
+        "properties": {
+          "amount": {
+            "type": "string",
+            "description": "Defines the monetary value with decimal position as a String.",
+            "example": "10"
+          }
+        }
+      }
+    }
+  }
+}

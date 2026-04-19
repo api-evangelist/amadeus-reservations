@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/hotel-booking-qualified-free-text-schema.json",
+  "title": "QualifiedFreeText",
+  "description": "Specific type to convey a list of string for specific information type ( via qualifier) in specific character set, or language",
+  "type": "object",
+  "properties": {
+    "text": {
+      "type": "string",
+      "description": "Free Text",
+      "example": "Do you need and example ?"
+    },
+    "lang": {
+      "type": "string",
+      "description": "see RFC 5646",
+      "example": "fr-FR"
+    }
+  }
+}

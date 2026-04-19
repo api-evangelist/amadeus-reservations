@@ -1,0 +1,15 @@
+{
+  "hotelBookings": [
+    "sample-value"
+  ],
+  "associatedRecords": [
+    {
+      "reference": "ABCDEF",
+      "originSystemCode": "GDS"
+    }
+  ],
+  "self": "sample-value",
+  "type": "STANDARD",
+  "guests": "sample-value",
+  "id": "12312"
+}

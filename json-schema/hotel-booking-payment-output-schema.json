@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/hotel-booking-payment-output-schema.json",
+  "title": "PaymentOutput",
+  "description": "Model with the hotel payment information",
+  "type": "object",
+  "properties": {
+    "iataTravelAgency": {
+      "type": "object",
+      "description": "Agency IATA/ARC Number used to Guarantee the booking",
+      "properties": {
+        "iataNumber": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "iataNumber"
+      ]
+    },
+    "billBack": {
+      "type": "object",
+      "description": "To be used when the booking is paid with to a virtual credit card generated through an external provider like Conferma.\n\nThe Billback account number is mandatory.\nThe rest of the information is not mandatory. CAI (Travel Agwency ID) and CBI (Booker ID) can either be provided in input or can be taken from the Amadeus Office Profile.\n\nOffline activation of Hotel Billback: As soon as Conferma creates the client account and provides Amadeus with specific credentials (CAI/CBI) to identify the agency, Amadeus is able to activate Billback by updating those CAI/CBI credentials into the agency profile (PVA field).",
+      "properties": {
+        "travelAgencyId": {
+          "type": "string",
+          "description": "Travel Agency Conferma account (CAI)"
+        },
+        "bookerId": {
+          "type": "string",
+          "description": "Travel Agent conferma ID (CBI)"
+        },
+        "paymentInstructions": {
+          "type": "string",
+          "description": "optional free text.\nIt gives the user the ability to specify the payment instructions to be sent to the hotelier"
+        },
+        "billbackProviderDeploymentId": {
+          "type": "string",
+          "description": "The Deployment Id is returned by Amadeus Payment server and is used as the payment reference."
+        },
+        "billbackProviderCode": {
+          "type": "string",
+          "description": "For conferma provider, it will be CN."
+        },
+        "billbackProviderAccountNumber": {
+          "type": "string",
+          "description": "Billback Provider account number (Conferma account number)"
+        },
+        "hotelSupplierInformation": {
+          "$ref": "#/definitions/Hotel_Contact"
+        }
+      },
+      "required": [
+        "billbackProviderDeploymentId",
+        "billbackProviderCode",
+        "billbackProviderAccountNumber"
+      ]
+    },
+    "method": {
+      "type": "string",
+      "description": "Indicates the method of payment. \n- CREDIT_CARD : It allows payment through a credit card. It is expected to provide the credit card information in the creditCard section.\n- AGENCY_ACCOUNT (CREDIT LINE) : It allows payment through the credit line of the agency. Nothing more is expected\n- VCC_BILLBACK : It allows direct payment between the hotel and a corporation or travel agency, via the billback provider.\nIt is expected to provide the billback information in the billback section.\nTo benefit from the solution, a contract has to be signed with the travel agency and\nAmadeus or Conferma. A contract with a banking partner is also required to open a bank account and issue the Virtual Credit Card.\n- VCC_B2B_WALLET : This payment method is only available for Amadeus Value Hotels where it allows payment between travel agency and Amadeus Merchant using a virtual credit card.\nTo avail this functionality a Travel Agent has to sign a contract with Amadeus PaymentPlatform, which helps to generate a virtual credit card on behalf of the travel agent.\n- TRAVEL_AGENT_ID (IATA BS) : It allows payment to the provider with to the IATA booking source. Either this information is passed in the TravelAgentId section, either it is taken from the Amadeus Office Profile.\n- CREDIT_CARD_AGENCY : This form of payment is exclusively used for Amadeus Value Hotel when the booking is paid with the Travel Agency credit card.\nIt is also possible in this case to use the method CREDIT_CARD but it is then mandatory to specify that the cardOwnerType is TravelAgency\n- CREDIT_CARD_TRAVELLER : This form of payment is exclusively used for Amadeus Value Hotel when the booking is paid with the guest credit card.\nIt is also possible in this case to use the method CREDIT_CARD but it is then mandatory to specify that the cardOwnerType is Guest\n",
+      "enum": [
+        "CREDIT_CARD",
+        "CREDIT_CARD_AGENCY",
+        "CREDIT_CARD_TRAVELER",
+        "AGENCY_ACCOUNT",
+        "VCC_BILLBACK",
+        "VCC_B2B_WALLET",
+        "TRAVEL_AGENT_ID"
+      ]
+    },
+    "b2bWallet": {
+      "type": "object",
+      "description": "To perform a booking with B2B wallet, no extra information is needed in input. \nInformation on the virtal credit card generated, is provided in this section in reply.",
+      "properties": {
+        "virtualCreditCardId": {
+          "type": "string",
+          "description": "Amadeus Payment Reference for the generated VCC."
+        },
+        "paymentProvider": {
+          "type": "string",
+          "description": "Payment provider, for example IXARIS."
+        }
+      },
+      "required": [
+        "virtualCreditCardId",
+        "paymentProvider"
+      ]
+    },
+    "paymentCard": {
+      "type": "object",
+      "description": "Credit card information.",
+      "properties": {
+        "paymentCardInfo": {
+          "type": "object",
+          "description": "Credit or Debits cards.",
+          "title": "PaymentCard",
+          "properties": {
+            "vendorCode": {
+              "type": "string",
+              "example": "VI",
+              "description": "Two-letter code card type or vendor code. E.g. VI for VISA, MA for MasterCard.",
+              "maxLength": 30,
+              "minLength": 0
+            },
+            "holderName": {
+              "type": "string",
+              "description": "Name of credit card holder.",
+              "maxLength": 99,
+              "minLength": 1
+            },
+            "cardNumber": {
+              "type": "string",
+              "description": "Card number"
+            },
+            "expiryDate": {
+              "type": "string",
+              "description": "Date of the expiration of the card in the format MMYY"
+            }
+          },
+          "required": [
+            "vendorCode",
+            "holderName",
+            "cardNumber",
+            "expiryDate"
+          ]
+        },
+        "cardOwnerType": {
+          "type": "string",
+          "description": "Indicates who is the owner of the credit card, it can be either the travel agency \"TravelAgency\", the corporation \"Corporation\" or the traveller \"Guest\".\nThis field is mamdatory for Amadeus Value Hotel when the method of payment is CREDIT_CARD.\nThis field is optional in informational in all other cases.",
+          "enum": [
+            "TravelAgency",
+            "Guest",
+            "Corporation"
+          ],
+          "example": "TravelAgency"
+        },
+        "VCC": {
+          "type": "boolean",
+          "description": "If the provided card is a virtual credit card generated by an external provider, this boolean should be true.\n(It is different from  Billback and B2B wallet VCC. These ones are generated during Amadeus booking process and have a dedicated payment section.)"
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        }
+      },
+      "required": [
+        "paymentCardInfo"
+      ]
+    }
+  },
+  "required": [
+    "method"
+  ]
+}

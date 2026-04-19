@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-order-management-fee-type-schema.json",
+  "title": "FeeType",
+  "description": "type of fee",
+  "type": "string",
+  "enum": [
+    "TICKETING",
+    "FORM_OF_PAYMENT",
+    "SUPPLIER"
+  ],
+  "example": "TICKETING"
+}

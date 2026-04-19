@@ -1,0 +1,10 @@
+{
+  "code": "WHC",
+  "itemId": "500123",
+  "description": "sample-value",
+  "quotation": "sample-value",
+  "converted": "sample-value",
+  "isBookable": true,
+  "taxIncluded": false,
+  "includedInTotal": false
+}

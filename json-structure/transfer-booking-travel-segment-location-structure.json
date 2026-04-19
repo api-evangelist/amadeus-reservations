@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-travel-segment-location-structure.json",
+  "name": "TravelSegmentLocation",
+  "description": "The flight or train departure/arrival date&time, location information",
+  "type": "object",
+  "properties": {
+    "uicCode": {
+      "type": "string",
+      "description": "The railway UIC code defined by the worldwide railway organization, e.g. 7400001",
+      "example": 7400001
+    },
+    "iataCode": {
+      "type": "string",
+      "description": "The airport code from IATA table codes, e.g. CDG",
+      "example": "CDG"
+    },
+    "localDateTime": {
+      "type": "datetime",
+      "description": "The date and time inspired from ISO 8601 (YYYY-MM-DDTHH:MM:SS) format",
+      "example": "2021-03-27T20:03:00"
+    }
+  }
+}

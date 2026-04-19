@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Address": "amadeus:Address",
+    "lines": {
+      "@id": "amadeus:lines",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "postalCode": {
+      "@id": "amadeus:postalCode",
+      "@type": "xsd:string"
+    },
+    "countryCode": {
+      "@id": "amadeus:countryCode",
+      "@type": "xsd:string"
+    },
+    "cityName": {
+      "@id": "amadeus:cityName",
+      "@type": "xsd:string"
+    },
+    "stateCode": {
+      "@id": "amadeus:stateCode",
+      "@type": "xsd:string"
+    }
+  }
+}

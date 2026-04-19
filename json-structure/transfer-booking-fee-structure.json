@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-fee-structure.json",
+  "name": "Fee",
+  "description": "single fee information",
+  "allOf": [
+    {
+      "$ref": "#/definitions/PointsAndCash"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "currencyCode": {
+          "type": "string",
+          "example": "USD"
+        },
+        "indicator": {
+          "type": "string",
+          "description": "fee category e.g. \"AIRPORT\", \"CREDITCARD\" ,\"CANCELLATION\""
+        }
+      }
+    }
+  ]
+}

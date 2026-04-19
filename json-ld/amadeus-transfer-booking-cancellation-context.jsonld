@@ -1,0 +1,38 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "CancellationRule": "amadeus:CancellationRule",
+    "ruleDescription": {
+      "@id": "amadeus:ruleDescription",
+      "@type": "xsd:string"
+    },
+    "feeType": {
+      "@id": "amadeus:feeType",
+      "@type": "xsd:string"
+    },
+    "feeValue": {
+      "@id": "amadeus:feeValue",
+      "@type": "xsd:string"
+    },
+    "currencyCode": {
+      "@id": "amadeus:currencyCode",
+      "@type": "xsd:string"
+    },
+    "metricType": {
+      "@id": "amadeus:metricType",
+      "@type": "xsd:string"
+    },
+    "metricMin": {
+      "@id": "amadeus:metricMin",
+      "@type": "xsd:string"
+    },
+    "metricMax": {
+      "@id": "amadeus:metricMax",
+      "@type": "xsd:string"
+    }
+  }
+}

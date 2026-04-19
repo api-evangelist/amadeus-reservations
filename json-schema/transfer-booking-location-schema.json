@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/transfer-booking-location-schema.json",
+  "title": "Location",
+  "description": "location information",
+  "type": "object",
+  "properties": {
+    "dateTime": {
+      "description": "date and time specified in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) YYYY-MM-DDThh:mm:ss format e.g. 2017-11-10T10:00:00\nnot supported for stopOvers object\n",
+      "type": "string",
+      "example": "2019-11-10T10:30:00"
+    },
+    "locationCode": {
+      "type": "string",
+      "description": "airport code from [IATA table codes](http://www.iata.org/publications/Pages/code-search.aspx), e.g. CDG.",
+      "pattern": "[A-Za-z]{3}",
+      "example": "CDG"
+    },
+    "address": {
+      "$ref": "#/definitions/Address"
+    },
+    "name": {
+      "type": "string",
+      "description": "Place name e.g. Airport Name, Hotel Name etc."
+    },
+    "googlePlaceId": {
+      "description": "Google place id only for google address e.g. ChIJL-DOWeBv5kcRfTbh97PimNc.",
+      "type": "string",
+      "example": "ChIJrTLr-GyuEmsRBfy61i59si0"
+    },
+    "uicCode": {
+      "type": "string",
+      "description": "UIC code defined by the worldwide railway organization e.g. 8600626"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "transferType": "TAXI",
+  "start": "sample-value",
+  "end": "sample-value",
+  "stopOvers": [
+    "sample-value"
+  ],
+  "passenegerCharacteristics": [
+    "sample-value"
+  ],
+  "duration": "PT2H30M",
+  "vehicle": "sample-value",
+  "serviceProvider": "sample-value",
+  "partnerInfo": "sample-value",
+  "quotation": "sample-value",
+  "converted": "sample-value",
+  "extraServices": [
+    "sample-value"
+  ],
+  "equipment": [
+    "sample-value"
+  ],
+  "cancellationRules": [
+    "sample-value"
+  ],
+  "methodsOfPaymentAccepted": [
+    "PAYMENT_SERVICE_PROVIDER"
+  ],
+  "discountCodes": [
+    "AA"
+  ],
+  "distance": "sample-value"
+}

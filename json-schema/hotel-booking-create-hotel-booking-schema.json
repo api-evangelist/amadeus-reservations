@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/hotel-booking-create-hotel-booking-schema.json",
+  "title": "CreateHotelBooking",
+  "description": "This model allows the creation of an hotel order.",
+  "type": "object",
+  "properties": {
+    "arrivalInformation": {
+      "type": "object",
+      "description": "Optional information on the way the guest is arriving to the hotel. Today the application only supports Flight details.",
+      "properties": {
+        "arrivalFlightDetails": {
+          "$ref": "#/definitions/ArrivalFlightDetails"
+        }
+      }
+    },
+    "payment": {
+      "$ref": "#/definitions/PaymentInput"
+    },
+    "roomAssociations": {
+      "type": "array",
+      "description": "Is to correlate a room to a guest and an offer.",
+      "maxItems": 9,
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/roomAssociation"
+      }
+    },
+    "travelAgent": {
+      "type": "object",
+      "description": "Travel Agent details",
+      "required": [
+        "contact"
+      ],
+      "properties": {
+        "contact": {
+          "type": "object",
+          "required": [
+            "email"
+          ],
+          "properties": {
+            "email": {
+              "type": "string",
+              "example": "travelAgent@agency.com",
+              "minLength": 3,
+              "maxLength": 90,
+              "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
+              "description": "travel agency email"
+            },
+            "fax": {
+              "type": "string",
+              "example": "+33985632145",
+              "minLength": 2,
+              "maxLength": 90,
+              "pattern": "^[+][1-9][0-9]{4,18}$",
+              "description": "Even if this field is not mandatory it is recommended to fill it. This information is passed to the hotel provider. (When it is not provided in input, it is taken from the Office Profile of the Travel Agency)."
+            },
+            "phone": {
+              "type": "string",
+              "example": "+33679278416",
+              "minLength": 2,
+              "maxLength": 199,
+              "description": "Even if this field is not mandatory it is recommended to fill it. This information is always passed to the hotel provider. (When it is not provided in input, it is taken from the Office Profile of the Travel Agency)."
+            }
+          }
+        },
+        "travelAgentId": {
+          "type": "string",
+          "description": "Travel Agent ID also called Booking source or IATA number.\nWhen received in request, it indicates that the travel agent wants to override the booking source receiving the commission.\nIf not provided, it is by default set to the IATA Number of the office profile the agent is connected to and who makes the booking. (the commission is given to that office) "
+        }
+      }
+    }
+  },
+  "required": [
+    "travelAgent"
+  ]
+}

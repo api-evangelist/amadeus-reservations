@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-loyalty-program-schema.json",
+  "title": "LoyaltyProgram",
+  "description": "loyalty program information",
+  "type": "object",
+  "properties": {
+    "programOwner": {
+      "type": "string",
+      "description": "loyalty program airline code",
+      "example": "AF"
+    },
+    "id": {
+      "type": "string",
+      "description": "loyalty program number",
+      "example": "12357466574"
+    }
+  }
+}

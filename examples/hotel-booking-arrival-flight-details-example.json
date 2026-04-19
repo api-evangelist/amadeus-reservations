@@ -1,0 +1,12 @@
+{
+  "carrierCode": "LH",
+  "number": "1050",
+  "departure": {
+    "iataCode": "JFK"
+  },
+  "arrival": {
+    "iataCode": "JFK",
+    "terminal": "T2",
+    "at": "2017-10-23T20:00:00+02:00"
+  }
+}

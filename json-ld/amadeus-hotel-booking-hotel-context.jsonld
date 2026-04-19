@@ -1,0 +1,135 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "HotelProduct": "amadeus:HotelProduct",
+    "HotelProduct_PaymentPolicy": "amadeus:HotelProduct_PaymentPolicy",
+    "HotelBooking": "amadeus:HotelBooking",
+    "HotelOrder": "amadeus:HotelOrder",
+    "HotelProduct_DepositPolicy": "amadeus:HotelProduct_DepositPolicy",
+    "checkInDate": {
+      "@id": "amadeus:checkInDate",
+      "@type": "xsd:date"
+    },
+    "checkOutDate": {
+      "@id": "amadeus:checkOutDate",
+      "@type": "xsd:date"
+    },
+    "roomQuantity": {
+      "@id": "amadeus:roomQuantity",
+      "@type": "xsd:integer"
+    },
+    "rateCode": {
+      "@id": "amadeus:rateCode",
+      "@type": "xsd:string"
+    },
+    "category": {
+      "@id": "amadeus:category",
+      "@type": "xsd:string"
+    },
+    "commission": {
+      "@id": "amadeus:commission",
+      "@type": "@id"
+    },
+    "room": {
+      "@id": "amadeus:room",
+      "@type": "@id"
+    },
+    "guests": {
+      "@id": "amadeus:guests",
+      "@type": "xsd:string"
+    },
+    "price": {
+      "@id": "amadeus:price",
+      "@type": "xsd:string"
+    },
+    "policies": {
+      "@id": "amadeus:policies",
+      "@type": "@id"
+    },
+    "rateFamilyEstimated": {
+      "@id": "amadeus:rateFamilyEstimated",
+      "@type": "@id"
+    },
+    "creditCards": {
+      "@id": "amadeus:creditCards",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "methods": {
+      "@id": "amadeus:methods",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "amadeus:type",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "amadeus:id",
+      "@type": "xsd:string"
+    },
+    "bookingStatus": {
+      "@id": "amadeus:bookingStatus",
+      "@type": "xsd:string"
+    },
+    "roomAssociations": {
+      "@id": "amadeus:roomAssociations",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "hotelOffer": {
+      "@id": "amadeus:hotelOffer",
+      "@type": "xsd:string"
+    },
+    "hotel": {
+      "@id": "amadeus:hotel",
+      "@type": "@id"
+    },
+    "hotelProviderInformation": {
+      "@id": "amadeus:hotelProviderInformation",
+      "@container": "@set"
+    },
+    "payment": {
+      "@id": "amadeus:payment",
+      "@type": "xsd:string"
+    },
+    "travelAgentId": {
+      "@id": "amadeus:travelAgentId",
+      "@type": "xsd:string"
+    },
+    "arrivalInformation": {
+      "@id": "amadeus:arrivalInformation",
+      "@type": "@id"
+    },
+    "hotelBookings": {
+      "@id": "amadeus:hotelBookings",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "associatedRecords": {
+      "@id": "amadeus:associatedRecords",
+      "@container": "@set"
+    },
+    "self": {
+      "@id": "amadeus:self",
+      "@type": "xsd:string"
+    },
+    "amount": {
+      "@id": "amadeus:amount",
+      "@type": "xsd:string"
+    },
+    "deadline": {
+      "@id": "amadeus:deadline",
+      "@type": "xsd:dateTime"
+    },
+    "description": "schema:description",
+    "acceptedPayments": {
+      "@id": "amadeus:acceptedPayments",
+      "@type": "xsd:string"
+    }
+  }
+}

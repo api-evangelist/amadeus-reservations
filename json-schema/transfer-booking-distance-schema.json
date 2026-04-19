@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/transfer-booking-distance-schema.json",
+  "title": "Distance",
+  "description": "Distance schema",
+  "properties": {
+    "value": {
+      "description": "great-circle distance between two locations. This distance thus do not take into account traffic conditions; international boundaries; mountains; water; or other elements that might make the a nearby location hard to reach.",
+      "type": "integer",
+      "example": 152
+    },
+    "unit": {
+      "description": "unit of the distance",
+      "type": "string",
+      "example": "KM",
+      "enum": [
+        "KM",
+        "MI"
+      ]
+    }
+  },
+  "type": "object"
+}

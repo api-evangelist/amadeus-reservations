@@ -1,0 +1,112 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Transfer": "amadeus:Transfer",
+    "TransferOrder": "amadeus:TransferOrder",
+    "transferType": {
+      "@id": "amadeus:transferType",
+      "@type": "xsd:string"
+    },
+    "start": {
+      "@id": "amadeus:start",
+      "@type": "xsd:string"
+    },
+    "end": {
+      "@id": "amadeus:end",
+      "@type": "xsd:string"
+    },
+    "stopOvers": {
+      "@id": "amadeus:stopOvers",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "passenegerCharacteristics": {
+      "@id": "amadeus:passenegerCharacteristics",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "duration": {
+      "@id": "amadeus:duration",
+      "@type": "xsd:string"
+    },
+    "vehicle": {
+      "@id": "amadeus:vehicle",
+      "@type": "xsd:string"
+    },
+    "serviceProvider": {
+      "@id": "amadeus:serviceProvider",
+      "@type": "xsd:string"
+    },
+    "partnerInfo": {
+      "@id": "amadeus:partnerInfo",
+      "@type": "xsd:string"
+    },
+    "quotation": {
+      "@id": "amadeus:quotation",
+      "@type": "xsd:string"
+    },
+    "converted": {
+      "@id": "amadeus:converted",
+      "@type": "xsd:string"
+    },
+    "extraServices": {
+      "@id": "amadeus:extraServices",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "equipment": {
+      "@id": "amadeus:equipment",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "cancellationRules": {
+      "@id": "amadeus:cancellationRules",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "methodsOfPaymentAccepted": {
+      "@id": "amadeus:methodsOfPaymentAccepted",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "discountCodes": {
+      "@id": "amadeus:discountCodes",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "distance": {
+      "@id": "amadeus:distance",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "amadeus:type",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "amadeus:id",
+      "@type": "xsd:string"
+    },
+    "reference": {
+      "@id": "amadeus:reference",
+      "@type": "xsd:string"
+    },
+    "transfers": {
+      "@id": "amadeus:transfers",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "passengers": {
+      "@id": "amadeus:passengers",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "agency": {
+      "@id": "amadeus:agency",
+      "@type": "xsd:string"
+    }
+  }
+}

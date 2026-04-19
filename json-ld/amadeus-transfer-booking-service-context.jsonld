@@ -1,0 +1,40 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ServiceProvider": "amadeus:ServiceProvider",
+    "code": {
+      "@id": "amadeus:code",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "logoUrl": {
+      "@id": "amadeus:logoUrl",
+      "@type": "xsd:string"
+    },
+    "termsUrl": {
+      "@id": "amadeus:termsUrl",
+      "@type": "xsd:string"
+    },
+    "isPreferred": {
+      "@id": "amadeus:isPreferred",
+      "@type": "xsd:boolean"
+    },
+    "contacts": {
+      "@id": "amadeus:contacts",
+      "@type": "xsd:string"
+    },
+    "settings": {
+      "@id": "amadeus:settings",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "businessIdentification": {
+      "@id": "amadeus:businessIdentification",
+      "@type": "xsd:string"
+    }
+  }
+}

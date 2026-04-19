@@ -1,0 +1,9 @@
+{
+  "number": "12345",
+  "issuanceDate": "2025-03-15",
+  "expiryDate": "2025-03-15",
+  "issuanceCountry": "sample-value",
+  "issuanceLocation": "sample-value",
+  "nationality": "sample-value",
+  "birthPlace": "sample-value"
+}

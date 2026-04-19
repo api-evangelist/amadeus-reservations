@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-payment-structure.json",
+  "name": "Payment",
+  "description": "defines the payment in transfer reservation. For \"CREDIT_CARD\" - creditCard is mandatory, for \"TRAVEL_ACCOUNT\" - paymentReference is optional, for \"PAYMENT_SERVICE_PROVIDER\" - paymentServiceProvider and paymentReference are mandatory.\n",
+  "type": "object",
+  "properties": {
+    "methodOfPayment": {
+      "type": "string",
+      "description": "Method of payment required when PaymentType equal BT (applicable only for reservation action).",
+      "enum": [
+        "CREDIT_CARD",
+        "TRAVEL_ACCOUNT",
+        "PAYMENT_SERVICE_PROVIDER"
+      ]
+    },
+    "paymentReference": {
+      "type": "string",
+      "description": "payment refence that will be passed to provider in case \"TRAVEL_ACCOUNT\" method of payment"
+    },
+    "paymentServiceProvider": {
+      "type": "string",
+      "description": "payment service provider details will be passed to provider in case \"PAYMENT_SERVICE_PROVIDER\" method of payment.",
+      "enum": [
+        "STRIPE_CONNECT"
+      ]
+    },
+    "creditCard": {
+      "$ref": "#/definitions/CreditCard"
+    }
+  }
+}

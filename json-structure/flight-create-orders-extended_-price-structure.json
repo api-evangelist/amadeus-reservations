@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-extended_-price-structure.json",
+  "name": "Extended_Price",
+  "description": "price information",
+  "type": "object",
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "margin": {
+          "description": "BOOK step ONLY - The price margin percentage (plus or minus) that the booking can tolerate. When set to 0, then no price magin is tolerated.",
+          "type": "string",
+          "example": "1.00"
+        },
+        "grandTotal": {
+          "description": "Total amount paid by the user (including fees and selected additional services).",
+          "type": "string",
+          "example": "987.00"
+        },
+        "billingCurrency": {
+          "description": "Currency of the payment. It may be different than the requested currency",
+          "type": "string",
+          "example": "EUR"
+        },
+        "additionalServices": {
+          "type": "array",
+          "name": "AdditionalServices",
+          "items": {
+            "name": "AdditionalService",
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "string",
+                "example": "332.70"
+              },
+              "type": {
+                "$ref": "#/definitions/AdditionalServiceType"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "$ref": "#/definitions/Price"
+    }
+  ]
+}

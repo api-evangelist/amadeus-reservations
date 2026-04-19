@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-location-value-structure.json",
+  "name": "LocationValue",
+  "description": "LocationValue schema",
+  "properties": {
+    "cityCode": {
+      "type": "string",
+      "description": "City code associated to the airport",
+      "example": "PAR"
+    },
+    "countryCode": {
+      "type": "string",
+      "description": "Country code of the airport",
+      "example": "FR"
+    }
+  },
+  "type": "object"
+}

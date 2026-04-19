@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-location-entry-schema.json",
+  "title": "LocationEntry",
+  "description": "LocationEntry schema",
+  "additionalProperties": {
+    "$ref": "#/definitions/LocationValue"
+  }
+}

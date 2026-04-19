@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-identity-document-schema.json",
+  "title": "IdentityDocument",
+  "description": "documents of the traveler",
+  "allOf": [
+    {
+      "$ref": "#/definitions/Document"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "documentType": {
+          "$ref": "#/definitions/DocumentType"
+        },
+        "validityCountry": {
+          "type": "string",
+          "description": "[ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country where the document is valid",
+          "example": "IN",
+          "pattern": "[a-zA-Z]{2}"
+        },
+        "birthCountry": {
+          "type": "string",
+          "description": "[ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country of birth",
+          "example": "FR",
+          "pattern": "[a-zA-Z]{2}"
+        },
+        "holder": {
+          "type": "boolean",
+          "description": "boolean to specify if the traveler is the holder of the document",
+          "example": true
+        }
+      }
+    }
+  ]
+}

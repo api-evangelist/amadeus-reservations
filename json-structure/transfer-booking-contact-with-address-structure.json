@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-contact-with-address-structure.json",
+  "name": "ContactWithAddress",
+  "description": "Contact and Adress details",
+  "allOf": [
+    {
+      "$ref": "#/definitions/Contact"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "address": {
+          "$ref": "#/definitions/AddressCommon"
+        }
+      }
+    }
+  ]
+}

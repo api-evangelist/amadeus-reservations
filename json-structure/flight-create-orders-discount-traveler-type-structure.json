@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-discount-traveler-type-structure.json",
+  "name": "DiscountTravelerType",
+  "description": "type of discount applied",
+  "type": "string",
+  "enum": [
+    "SPANISH_CITIZEN",
+    "EUROPEAN_CITIZEN",
+    "GOVERNMENT_WORKER",
+    "MILITARY",
+    "MINOR_WITHOUT_ID"
+  ],
+  "example": "SPANISH_CITIZEN"
+}

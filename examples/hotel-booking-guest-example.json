@@ -1,0 +1,14 @@
+{
+  "frequentTraveler": [
+    {
+      "airlineCode": "AF",
+      "frequentTravelerId": "32546971326"
+    }
+  ],
+  "phone": "+33679278416",
+  "email": "test.test@test.com",
+  "title": "MR",
+  "firstName": "TEST",
+  "lastName": "TEST",
+  "childAge": 91
+}

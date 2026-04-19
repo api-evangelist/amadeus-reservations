@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/hotel-booking-arrival-flight-details-schema.json",
+  "title": "ArrivalFlightDetails",
+  "description": "ArrivalFlightDetails schema",
+  "type": "object",
+  "properties": {
+    "carrierCode": {
+      "type": "string",
+      "description": "Carrier code",
+      "example": "LH"
+    },
+    "number": {
+      "type": "string",
+      "description": "Flight segment number",
+      "example": "1050"
+    },
+    "departure": {
+      "type": "object",
+      "description": "Departure or arrival information",
+      "title": "FlightSegment_Departure",
+      "required": [
+        "iataCode"
+      ],
+      "properties": {
+        "iataCode": {
+          "description": "IATA Airport code",
+          "type": "string",
+          "example": "JFK"
+        }
+      }
+    },
+    "arrival": {
+      "type": "object",
+      "description": "Departure or arrival information",
+      "title": "FlightSegment_Arrival",
+      "properties": {
+        "iataCode": {
+          "description": "IATA Airport code",
+          "type": "string",
+          "example": "JFK"
+        },
+        "terminal": {
+          "description": "Terminal name / number",
+          "type": "string",
+          "example": "T2"
+        },
+        "at": {
+          "description": "Local date and time at the arrival of the flight with the following format \"YYYY-MM-DD'T'HH:mm:ss\" (for example 2017-02-10T20:40:00 if the flight arrive 20h40 local time)",
+          "type": "string",
+          "format": "date-time",
+          "example": "2017-10-23T20:00:00+02:00"
+        }
+      },
+      "required": [
+        "iataCode",
+        "terminal",
+        "at"
+      ]
+    }
+  },
+  "required": [
+    "carrierCode",
+    "number",
+    "departure"
+  ]
+}

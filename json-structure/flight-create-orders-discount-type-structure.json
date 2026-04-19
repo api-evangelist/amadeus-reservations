@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-discount-type-structure.json",
+  "name": "DiscountType",
+  "description": "type of discount applied",
+  "type": "string",
+  "enum": [
+    "SPANISH_RESIDENT",
+    "AIR_FRANCE_DOMESTIC",
+    "AIR_FRANCE_COMBINED",
+    "AIR_FRANCE_METROPOLITAN"
+  ],
+  "example": "SPANISH_RESIDENT"
+}

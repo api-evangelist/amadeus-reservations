@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-order-management-additional-service-type-structure.json",
+  "name": "AdditionalServiceType",
+  "description": "additional service type",
+  "type": "string",
+  "enum": [
+    "CHECKED_BAGS",
+    "MEALS",
+    "SEATS",
+    "OTHER_SERVICES"
+  ],
+  "example": "CHECKED_BAGS"
+}

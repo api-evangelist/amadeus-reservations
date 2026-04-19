@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-operating-flight-structure.json",
+  "name": "OperatingFlight",
+  "description": "information about the operating flight",
+  "type": "object",
+  "properties": {
+    "carrierCode": {
+      "type": "string",
+      "description": "providing the airline / carrier code",
+      "minLength": 1,
+      "maxLength": 2,
+      "example": "DL"
+    }
+  }
+}

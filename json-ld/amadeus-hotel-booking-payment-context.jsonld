@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "PaymentInput": "amadeus:PaymentInput",
+    "PaymentOutput": "amadeus:PaymentOutput",
+    "iataTravelAgency": {
+      "@id": "amadeus:iataTravelAgency",
+      "@type": "@id"
+    },
+    "method": {
+      "@id": "amadeus:method",
+      "@type": "xsd:string"
+    },
+    "paymentCard": {
+      "@id": "amadeus:paymentCard",
+      "@type": "@id"
+    },
+    "billBack": {
+      "@id": "amadeus:billBack",
+      "@type": "@id"
+    },
+    "b2bWallet": {
+      "@id": "amadeus:b2bWallet",
+      "@type": "@id"
+    }
+  }
+}

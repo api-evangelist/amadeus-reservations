@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/transfer-booking-agency-schema.json",
+  "title": "Agency",
+  "description": "Agency email information.",
+  "type": "object",
+  "properties": {
+    "contacts": {
+      "type": "array",
+      "description": "List of contact information",
+      "items": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "object",
+            "description": "Email information.",
+            "title": "Email",
+            "properties": {
+              "address": {
+                "type": "string",
+                "format": "email",
+                "description": "Email address (e.g. john@smith.com)"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

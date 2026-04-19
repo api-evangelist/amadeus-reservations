@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/hotel-booking-guest-structure.json",
+  "name": "Guest",
+  "description": "This modele represent a guest, his name, his loyalty programs, his age when it is a child...",
+  "type": "object",
+  "properties": {
+    "frequentTraveler": {
+      "type": "array",
+      "description": "Airline frequent flyer of the guest \n/!\\ In case of creation of a new hotel booking, only the first element of the array will be transmitted to the hotel provier. Please only provider one.\nIn case of retrieve of an hotel order, when a guest is having several frequent flyer numbers used in different hotel bookings, they will all be listed here.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "airlineCode": {
+            "type": "string",
+            "description": "Code of the Airline",
+            "example": "AF",
+            "minLength": 2,
+            "maxLength": 3
+          },
+          "frequentTravelerId": {
+            "type": "string",
+            "example": "32546971326"
+          }
+        },
+        "required": [
+          "airlineCode",
+          "frequentTravelerId"
+        ]
+      }
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number of the guest\n\nIt is recommanded to use the standard E.123 (https://en.wikipedia.org/wiki/E.123)",
+      "maxLength": 199,
+      "minLength": 2,
+      "example": "+33679278416"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email Adress of the guest",
+      "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+      "example": "test.test@test.com",
+      "maxLength": 90,
+      "minLength": 3,
+      "format": "email"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title/gender of the guest",
+      "example": "MR",
+      "minLength": 1,
+      "maxLength": 54,
+      "pattern": "^[A-Za-z -]*$"
+    },
+    "firstName": {
+      "type": "string",
+      "description": "First Name (and middle name) of the guest. It is mandatory at create order but not mandatory at booking creation.\n- Complex pattern '^[A-Za-z \\p{Han}\\p{Katakana}\\p{Hiragana}\\p{Hangul}-]*$' \n",
+      "example": "TEST",
+      "maxLength": 56,
+      "minLength": 1
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Last name of the guest - \nIt is mandatory at create order but not mandatory at booking creation.\nComplex pattern: '^[A-Za-z \\p{Han}\\p{Katakana}\\p{Hiragana}\\p{Hangul}-]*$' ",
+      "example": "TEST",
+      "maxLength": 57,
+      "minLength": 1
+    },
+    "childAge": {
+      "type": "int32",
+      "description": "if the guest is a child, it is mandatory to provide a child age. Else the system will consider him as an adult"
+    }
+  }
+}

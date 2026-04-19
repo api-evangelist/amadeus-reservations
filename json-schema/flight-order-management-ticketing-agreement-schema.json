@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-order-management-ticketing-agreement-schema.json",
+  "title": "TicketingAgreement",
+  "description": "ticketing agreement",
+  "type": "object",
+  "properties": {
+    "option": {
+      "$ref": "#/definitions/TicketingAgreementOption"
+    },
+    "delay": {
+      "description": "Delay before applying automatic process if no issuance in days",
+      "type": "string"
+    },
+    "dateTime": {
+      "description": "Exact date to apply automatic process if no issuance. YYYY-MM-DD format, e.g. 2019-06-07",
+      "type": "string",
+      "readOnly": true,
+      "example": "2017-10-23"
+    },
+    "segmentIds": {
+      "description": "Ids of the impacted segments",
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "type": "string"
+      },
+      "example": "1"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Error_400": "amadeus:Error_400",
+    "errors": {
+      "@id": "amadeus:errors",
+      "@container": "@set",
+      "@type": "xsd:string"
+    }
+  }
+}

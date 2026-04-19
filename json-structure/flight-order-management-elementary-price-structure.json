@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-order-management-elementary-price-structure.json",
+  "name": "ElementaryPrice",
+  "description": "elementaryPrice",
+  "type": "object",
+  "properties": {
+    "amount": {
+      "type": "string",
+      "description": "Amount of the fare. could be alpha numeric. Ex- 500.20 or 514.13A, 'A'signifies additional collection."
+    },
+    "currencyCode": {
+      "type": "string",
+      "description": "Currency type of the fare."
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-stop-over-structure.json",
+  "name": "StopOver",
+  "description": "Location of the stop over or the several stop over points. It can be defined either using IATA code or Address (address line, zip, country, city, state, latitude, longitude). Vehicle change via stop overs is not supported.",
+  "properties": {
+    "duration": {
+      "description": "transfer stop duration in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) PnYnMnDTnHnMnS format, e.g. PT2H10M.",
+      "type": "string",
+      "example": "PT2H30M"
+    },
+    "sequenceNumber": {
+      "description": "sequence number of the stop e.g. 3",
+      "type": "double",
+      "example": 1
+    },
+    "location": {
+      "$ref": "#/definitions/Location"
+    }
+  },
+  "type": "object"
+}

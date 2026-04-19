@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/hotel-booking-hotel-offer-structure.json",
+  "name": "HotelOffer",
+  "description": "Hotel Offer",
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "data type set to hotel-offer",
+          "type": "string",
+          "example": "hotel-offer",
+          "default": "hotel-offer",
+          "enum": [
+            "hotel-offer"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Z0-9]*$",
+          "minLength": 2,
+          "maxLength": 100,
+          "example": "63A93695B58821ABB0EC2B33FE9FAB24D72BF34B1BD7D707293763D8D9378FC3",
+          "description": "Unique identifier of this offer. Might be valid for a temporary period only."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    {
+      "$ref": "#/definitions/HotelProduct"
+    }
+  ]
+}

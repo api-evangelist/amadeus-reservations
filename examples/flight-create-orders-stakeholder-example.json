@@ -1,0 +1,9 @@
+{
+  "id": "500123",
+  "dateOfBirth": "2025-03-15",
+  "gender": "sample-value",
+  "name": "John Smith",
+  "documents": [
+    "sample-value"
+  ]
+}

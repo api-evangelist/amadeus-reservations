@@ -1,0 +1,12 @@
+{
+  "code": "CAR",
+  "category": "ST",
+  "description": "sample-value",
+  "seats": [
+    "sample-value"
+  ],
+  "baggages": [
+    "sample-value"
+  ],
+  "imageURL": "sample-value"
+}

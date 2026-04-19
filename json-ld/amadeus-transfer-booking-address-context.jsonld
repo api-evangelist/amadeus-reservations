@@ -1,0 +1,39 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "AddressCommon": "amadeus:AddressCommon",
+    "Address": "amadeus:Address",
+    "line": {
+      "@id": "amadeus:line",
+      "@type": "xsd:string"
+    },
+    "zip": {
+      "@id": "amadeus:zip",
+      "@type": "xsd:string"
+    },
+    "countryCode": {
+      "@id": "amadeus:countryCode",
+      "@type": "xsd:string"
+    },
+    "cityName": {
+      "@id": "amadeus:cityName",
+      "@type": "xsd:string"
+    },
+    "stateCode": {
+      "@id": "amadeus:stateCode",
+      "@type": "xsd:string"
+    },
+    "latitude": {
+      "@id": "amadeus:latitude",
+      "@type": "xsd:decimal"
+    },
+    "longitude": {
+      "@id": "amadeus:longitude",
+      "@type": "xsd:decimal"
+    }
+  }
+}

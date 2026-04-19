@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-automated-process-structure.json",
+  "name": "AutomatedProcess",
+  "description": "automatic process applied to the Order",
+  "allOf": [
+    {
+      "$ref": "#/definitions/AutomatedProcessCommon"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "delay": {
+          "description": "Delay before applying process in days",
+          "type": "string"
+        },
+        "officeId": {
+          "description": "Office into which the process must be triggered.",
+          "type": "string",
+          "example": "NCE1A0955"
+        },
+        "dateTime": {
+          "type": "datetime",
+          "description": "Datetime limit at which the process takes action in case issuance is not done."
+        }
+      }
+    }
+  ]
+}

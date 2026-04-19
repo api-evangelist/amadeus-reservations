@@ -1,0 +1,50 @@
+{
+  "checkInDate": "2020-12-30",
+  "checkOutDate": "2020-12-31",
+  "roomQuantity": 1,
+  "rateCode": "RAC",
+  "category": "FAMILY_PLAN",
+  "commission": {
+    "percentage": "sample-value",
+    "amount": "299.99",
+    "description": "sample-value"
+  },
+  "room": {
+    "type": "STANDARD",
+    "description": "sample-value"
+  },
+  "guests": "sample-value",
+  "price": "299.99",
+  "policies": {
+    "paymentType": "DEPOSIT",
+    "guarantee": {
+      "description": "sample-value",
+      "acceptedPayments": "sample-value"
+    },
+    "deposit": "sample-value",
+    "prepay": "sample-value",
+    "holdTime": {
+      "deadline": "2025-03-15T14:30:00Z"
+    },
+    "checkInOut": {
+      "checkIn": "13:00:00",
+      "checkInDescription": "sample-value",
+      "checkOut": "11:00:00",
+      "checkOutDescription": "sample-value"
+    },
+    "cancellations": [
+      {
+        "type": "FULL_STAY",
+        "amount": "299.99",
+        "numberOfNights": 25,
+        "percentage": "sample-value",
+        "deadline": "2025-03-15T14:30:00Z",
+        "description": "sample-value"
+      }
+    ]
+  },
+  "rateFamilyEstimated": {
+    "code": "AA",
+    "type": "STANDARD"
+  }
+}

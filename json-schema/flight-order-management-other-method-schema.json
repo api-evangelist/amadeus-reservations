@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-order-management-other-method-schema.json",
+  "title": "OtherMethod",
+  "description": "other payment method",
+  "type": "object",
+  "properties": {
+    "method": {
+      "$ref": "#/definitions/OtherPaymentMethod"
+    },
+    "flightOfferIds": {
+      "description": "Id of the concern flightOffers",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {
+        "type": "string"
+      },
+      "example": "1"
+    }
+  }
+}

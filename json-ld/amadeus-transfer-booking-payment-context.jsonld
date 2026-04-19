@@ -1,0 +1,26 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Payment": "amadeus:Payment",
+    "methodOfPayment": {
+      "@id": "amadeus:methodOfPayment",
+      "@type": "xsd:string"
+    },
+    "paymentReference": {
+      "@id": "amadeus:paymentReference",
+      "@type": "xsd:string"
+    },
+    "paymentServiceProvider": {
+      "@id": "amadeus:paymentServiceProvider",
+      "@type": "xsd:string"
+    },
+    "creditCard": {
+      "@id": "amadeus:creditCard",
+      "@type": "xsd:string"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/transfer-booking-points-and-cash-schema.json",
+  "title": "PointsAndCash",
+  "description": "PointsAndCash schema",
+  "type": "object",
+  "properties": {
+    "monetaryAmount": {
+      "type": "string",
+      "example": "10.5"
+    }
+  }
+}

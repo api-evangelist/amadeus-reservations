@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-corporation-structure.json",
+  "name": "Corporation",
+  "description": "information about corporation",
+  "type": "object",
+  "properties": {
+    "address": {
+      "$ref": "#/definitions/AddressCommon"
+    },
+    "info": {
+      "type": "object",
+      "description": "corporate information map. Possible keys\n\nkey    | name\n------ | ----------------------------\nAU\t   | Accounting Unit\nON\t   | Order Number\nDC\t   | Department Code\nCC\t   | Company Code\nCN\t   | Company Name\nIA\t   | Internal Account\nCE\t   | Cost Centre\nEN\t   | Employee Number\nPN\t   | Project Number\n",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {
+        "AU": "Accounting Unit",
+        "ON": "Order Number",
+        "DC": "Department Code",
+        "CC": "Company Code",
+        "CN": "Company Name",
+        "IA": "Internal Account",
+        "CE": "Cost Centre",
+        "EN": "Employee Number",
+        "PN": "Project Number"
+      }
+    }
+  }
+}

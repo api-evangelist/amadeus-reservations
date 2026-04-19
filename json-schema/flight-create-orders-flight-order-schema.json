@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-flight-order-schema.json",
+  "title": "FlightOrder",
+  "description": "input parameter to create a flight order",
+  "type": "object",
+  "properties": {
+    "type": {
+      "description": "the resource name",
+      "type": "string",
+      "example": "flight-order"
+    },
+    "id": {
+      "description": "unique identifier of the flight order",
+      "type": "string",
+      "example": "MlpZVkFMfFdBVFNPTnwyMDE1LTExLTAy",
+      "readOnly": true
+    },
+    "queuingOfficeId": {
+      "description": "office Id where to queue the order",
+      "type": "string",
+      "example": "NCE1A0955"
+    },
+    "ownerOfficeId": {
+      "description": "office Id where will be transfered the ownership of the order",
+      "type": "string",
+      "example": "NCE1A0955"
+    },
+    "associatedRecords": {
+      "description": "list of associated record",
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/definitions/AssociatedRecord"
+      }
+    },
+    "flightOffers": {
+      "description": "list of flight offer",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {
+        "$ref": "#/definitions/FlightOffer"
+      }
+    },
+    "travelers": {
+      "description": "list of travelers",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 18,
+      "items": {
+        "$ref": "#/definitions/Traveler"
+      }
+    },
+    "remarks": {
+      "description": "list of global remarks",
+      "$ref": "#/definitions/Remarks"
+    },
+    "formOfPayments": {
+      "description": "list of form of payments",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "readOnly": true,
+      "items": {
+        "$ref": "#/definitions/FormOfPayment"
+      }
+    },
+    "ticketingAgreement": {
+      "$ref": "#/definitions/TicketingAgreement"
+    },
+    "automatedProcess": {
+      "description": "list of automatic queuing",
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 31,
+      "items": {
+        "$ref": "#/definitions/AutomatedProcess"
+      }
+    },
+    "contacts": {
+      "description": "list of general contact information",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Contact"
+      }
+    },
+    "tickets": {
+      "description": "list of tickets",
+      "readOnly": true,
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AirTravelDocument"
+      }
+    },
+    "formOfIdentifications": {
+      "description": "list of forms of identifications applicable to travelers by airline",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/FormOfIdentification"
+      }
+    }
+  },
+  "required": [
+    "type",
+    "flightOffers"
+  ]
+}

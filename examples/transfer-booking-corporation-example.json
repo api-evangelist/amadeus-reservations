@@ -1,0 +1,14 @@
+{
+  "address": "sample-value",
+  "info": {
+    "AU": "Accounting Unit",
+    "ON": "Order Number",
+    "DC": "Department Code",
+    "CC": "Company Code",
+    "CN": "Company Name",
+    "IA": "Internal Account",
+    "CE": "Cost Centre",
+    "EN": "Employee Number",
+    "PN": "Project Number"
+  }
+}

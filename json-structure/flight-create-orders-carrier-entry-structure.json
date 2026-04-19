@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-carrier-entry-structure.json",
+  "name": "CarrierEntry",
+  "description": "CarrierEntry schema",
+  "additionalProperties": {
+    "description": "the carrier name",
+    "type": "string"
+  }
+}

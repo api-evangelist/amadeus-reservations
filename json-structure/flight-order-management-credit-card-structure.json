@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-order-management-credit-card-structure.json",
+  "name": "CreditCard",
+  "description": "credit card",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/definitions/CreditCardCommon"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "securityCode": {
+          "description": "card security code",
+          "type": "string",
+          "example": "123"
+        },
+        "flightOfferIds": {
+          "description": "Id of the concern flightOffers",
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": {
+            "type": "string"
+          },
+          "example": "1"
+        }
+      }
+    }
+  ]
+}

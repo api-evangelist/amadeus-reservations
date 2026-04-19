@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-travel-class-structure.json",
+  "name": "TravelClass",
+  "description": "quality of service offered in the cabin where the seat is located in this flight. Economy, premium economy, business or first class",
+  "type": "string",
+  "enum": [
+    "ECONOMY",
+    "PREMIUM_ECONOMY",
+    "BUSINESS",
+    "FIRST"
+  ],
+  "example": "PREMIUM_ECONOMY"
+}

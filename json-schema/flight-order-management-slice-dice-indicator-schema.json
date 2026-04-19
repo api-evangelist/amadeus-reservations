@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-order-management-slice-dice-indicator-schema.json",
+  "title": "SliceDiceIndicator",
+  "description": "slice and Dice indicator, such as Local Availability, Sub OnD(Origin and Destination) 1 Availability and Sub OnD 2 Availability",
+  "type": "string",
+  "enum": [
+    "LOCAL_AVAILABILITY",
+    "SUB_OD_AVAILABILITY_1",
+    "SUB_OD_AVAILABILITY_2"
+  ]
+}

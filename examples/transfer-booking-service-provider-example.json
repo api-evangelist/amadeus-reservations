@@ -1,0 +1,12 @@
+{
+  "code": "AA",
+  "name": "John Smith",
+  "logoUrl": "sample-value",
+  "termsUrl": "sample-value",
+  "isPreferred": true,
+  "contacts": "sample-value",
+  "settings": [
+    "CVV_NUMBER_REQUIRED"
+  ],
+  "businessIdentification": "sample-value"
+}

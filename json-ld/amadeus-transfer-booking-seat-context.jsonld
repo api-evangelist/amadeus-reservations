@@ -1,0 +1,22 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Seat": "amadeus:Seat",
+    "count": {
+      "@id": "amadeus:count",
+      "@type": "xsd:integer"
+    },
+    "row": {
+      "@id": "amadeus:row",
+      "@type": "xsd:string"
+    },
+    "size": {
+      "@id": "amadeus:size",
+      "@type": "xsd:string"
+    }
+  }
+}

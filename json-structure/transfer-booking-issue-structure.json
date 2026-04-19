@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-issue-structure.json",
+  "name": "Issue",
+  "description": "Issue schema",
+  "properties": {
+    "status": {
+      "description": "the HTTP status code applicable to this error",
+      "type": "int32"
+    },
+    "code": {
+      "description": "an application-specific error code",
+      "type": "int64"
+    },
+    "title": {
+      "description": "a short summary of the error",
+      "type": "string"
+    },
+    "detail": {
+      "description": "explanation of the error",
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "name": "Issue_Source",
+      "description": "an object containing references to the source of the error",
+      "maxProperties": 1,
+      "properties": {
+        "pointer": {
+          "description": "a JSON Pointer [RFC6901] to the associated entity in the request document",
+          "type": "string"
+        },
+        "parameter": {
+          "description": "a string indicating which URI query parameter caused the issue",
+          "type": "string"
+        },
+        "example": {
+          "description": "a string indicating an example of the right value",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "type": "object"
+}

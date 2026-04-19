@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/transfer-booking-credit-card-schema.json",
+  "title": "CreditCard",
+  "description": "information about payment card",
+  "type": "object",
+  "properties": {
+    "number": {
+      "type": "string",
+      "pattern": "[0-9]{16}",
+      "description": "card number"
+    },
+    "holderName": {
+      "type": "string",
+      "description": "card holder name"
+    },
+    "vendorCode": {
+      "type": "string",
+      "pattern": "[a-zA-Z]{2}",
+      "description": "card vendor code, e.g VI \u2013 VISA, CA \u2013 MasterCard, AX \u2013 American Express etc"
+    },
+    "expiryDate": {
+      "type": "string",
+      "pattern": "^(0[1-9]|1[0-2])[0-9]{2}$",
+      "description": "card expiry date in format MMYY, e.g. 0237 for February 2037"
+    },
+    "cvv": {
+      "type": "string",
+      "pattern": "[a-zA-Z0-9]{3,4}",
+      "description": "cerification calue number, as indicated on the credit card. Only for query"
+    }
+  },
+  "required": [
+    "number",
+    "holderName",
+    "vendorCode",
+    "expiryDate"
+  ]
+}

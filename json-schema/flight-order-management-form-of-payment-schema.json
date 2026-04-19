@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-order-management-form-of-payment-schema.json",
+  "title": "FormOfPayment",
+  "description": "form of payment used",
+  "type": "object",
+  "properties": {
+    "b2bWallet": {
+      "description": "payment with the solution B2B Wallet",
+      "$ref": "#/definitions/B2bWallet"
+    },
+    "creditCard": {
+      "description": "payment with a credit card",
+      "$ref": "#/definitions/CreditCard"
+    },
+    "other": {
+      "description": "payment with an other method",
+      "$ref": "#/definitions/OtherMethod"
+    }
+  }
+}

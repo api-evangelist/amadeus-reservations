@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/hotel-booking-address-structure.json",
+  "name": "Address",
+  "description": "Address information",
+  "type": "object",
+  "properties": {
+    "lines": {
+      "type": "array",
+      "description": "Line 1 = Street address, Line 2 = Apartment, suite, unit, building, floor, etc",
+      "items": {
+        "type": "string"
+      }
+    },
+    "postalCode": {
+      "type": "string",
+      "description": "Example: 74130"
+    },
+    "countryCode": {
+      "type": "string",
+      "description": "ISO 3166-1 country code",
+      "pattern": "[a-zA-Z]{2}"
+    },
+    "cityName": {
+      "type": "string",
+      "description": "Full city name. Example: Dublin",
+      "pattern": "[a-zA-Z -]{1,35}"
+    },
+    "stateCode": {
+      "type": "string",
+      "description": "State code (two character standard IATA state code)",
+      "pattern": "[a-zA-Z0-9]{1,2}"
+    }
+  },
+  "required": [
+    "postalCode",
+    "countryCode",
+    "cityName"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-phone-structure.json",
+  "name": "Phone",
+  "description": "phone information",
+  "type": "object",
+  "properties": {
+    "deviceType": {
+      "$ref": "#/definitions/PhoneDeviceType"
+    },
+    "countryCallingCode": {
+      "type": "string",
+      "description": "Country calling code of the phone number, as defined by the International Communication Union. Examples - \"1\" for US, \"371\" for Latvia.",
+      "pattern": "[0-9+]{2,5}"
+    },
+    "number": {
+      "type": "string",
+      "description": "Phone number. Composed of digits only. The number of digits depends on the country.",
+      "pattern": "[0-9]{1,15}"
+    }
+  }
+}

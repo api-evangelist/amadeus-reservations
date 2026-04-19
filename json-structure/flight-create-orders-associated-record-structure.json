@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-associated-record-structure.json",
+  "name": "AssociatedRecord",
+  "description": "record associated to the order",
+  "allOf": [
+    {
+      "$ref": "#/definitions/AssociatedRecordCommon"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "flightOfferId": {
+          "type": "string",
+          "description": "id of the impacted flight offer",
+          "example": "1"
+        }
+      }
+    }
+  ]
+}

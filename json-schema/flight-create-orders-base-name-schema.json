@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-base-name-schema.json",
+  "title": "BaseName",
+  "description": "description of the name of a physical person",
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "description": "First name.",
+      "type": "string"
+    },
+    "lastName": {
+      "description": "Last name.",
+      "type": "string"
+    },
+    "middleName": {
+      "description": "Middle name(s), for example \"Lee\" in \"John Lee Smith\".",
+      "type": "string"
+    }
+  }
+}

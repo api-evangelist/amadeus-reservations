@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-remarks-schema.json",
+  "title": "Remarks",
+  "description": "remarks",
+  "type": "object",
+  "properties": {
+    "general": {
+      "description": "list of general remarks",
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 200,
+      "items": {
+        "$ref": "#/definitions/GeneralRemark"
+      }
+    },
+    "airline": {
+      "description": "list of airline remarks",
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 200,
+      "items": {
+        "$ref": "#/definitions/AirlineRemark"
+      }
+    }
+  }
+}

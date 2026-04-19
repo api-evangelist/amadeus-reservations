@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-order-management-error_400-schema.json",
+  "title": "Error_400",
+  "description": "Error_400 schema",
+  "type": "object",
+  "properties": {
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Issue"
+      }
+    }
+  },
+  "required": [
+    "errors"
+  ],
+  "example": {
+    "errors": [
+      {
+        "status": 400,
+        "code": 477,
+        "title": "INVALID FORMAT",
+        "detail": "invalid query parameter format",
+        "source": {
+          "parameter": "airport",
+          "example": "CDG"
+        }
+      }
+    ]
+  }
+}

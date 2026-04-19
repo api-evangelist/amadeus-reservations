@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-order-management-credit-card-common-structure.json",
+  "name": "CreditCardCommon",
+  "description": "credit card common attribute",
+  "type": "object",
+  "properties": {
+    "brand": {
+      "$ref": "#/definitions/CreditCardBrand"
+    },
+    "holder": {
+      "description": "card holder as on the card",
+      "type": "string",
+      "example": "MR DUPON DAMIEN"
+    },
+    "number": {
+      "description": "card number",
+      "type": "string",
+      "example": "4012999999999999",
+      "pattern": "[a-zA-Z0-9]{1,35}"
+    },
+    "expiryDate": {
+      "description": "credit card expiration date following [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) (YYYY-MM format, e.g. 2012-08)",
+      "type": "string",
+      "example": "2021-08"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-service-name-structure.json",
+  "name": "ServiceName",
+  "description": "type of service",
+  "type": "string",
+  "enum": [
+    "PRIORITY_BOARDING",
+    "AIRPORT_CHECKIN"
+  ],
+  "example": "PRIORITY_BOARDING"
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-aircraft-entry-structure.json",
+  "name": "AircraftEntry",
+  "description": "AircraftEntry schema",
+  "additionalProperties": {
+    "description": "the manufacturer/model of aircraft",
+    "type": "string"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "arrivalInformation": {
+    "arrivalFlightDetails": "sample-value"
+  },
+  "payment": "sample-value",
+  "roomAssociations": [
+    "sample-value"
+  ],
+  "travelAgent": {
+    "contact": {
+      "email": "travelAgent@agency.com",
+      "fax": "+33985632145",
+      "phone": "+33679278416"
+    },
+    "travelAgentId": "500123"
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-transfer-structure.json",
+  "name": "Transfer",
+  "description": "Transfer schema",
+  "type": "object",
+  "properties": {
+    "transferType": {
+      "type": "string",
+      "enum": [
+        "PRIVATE",
+        "SHARED",
+        "TAXI",
+        "HOURLY",
+        "AIRPORT_EXPRESS",
+        "AIRPORT_BUS"
+      ],
+      "description": "amadeus transfer service type\n\nvalue           | description                                 \n--------------  | ------------------------\nPRIVATE         | Private transfer from point to point\nSHARED          | Shared transfer from point to point\nTAXI            | Taxi reservation from point to point, price is estimated\nHOURLY          | Chauffeured driven transfer per hour\nAIRPORT_EXPRESS | Express Train from/to Airport\nAIRPORT_BUS     | Express Bus from/to Airport\n"
+    },
+    "start": {
+      "$ref": "#/definitions/Location"
+    },
+    "end": {
+      "$ref": "#/definitions/Location"
+    },
+    "stopOvers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/StopOver"
+      }
+    },
+    "passenegerCharacteristics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PassengerCharacteristics"
+      }
+    },
+    "duration": {
+      "description": "transfer duration in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) PnYnMnDTnHnMnS format, e.g. PT2H10M",
+      "type": "string",
+      "example": "PT2H30M"
+    },
+    "vehicle": {
+      "$ref": "#/definitions/Vehicle"
+    },
+    "serviceProvider": {
+      "$ref": "#/definitions/ServiceProvider"
+    },
+    "partnerInfo": {
+      "$ref": "#/definitions/PartnerInfo"
+    },
+    "quotation": {
+      "$ref": "#/definitions/Quotation"
+    },
+    "converted": {
+      "$ref": "#/definitions/Quotation"
+    },
+    "extraServices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ExtraService"
+      }
+    },
+    "equipment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Equipment"
+      }
+    },
+    "cancellationRules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CancellationRule"
+      }
+    },
+    "methodsOfPaymentAccepted": {
+      "type": "array",
+      "description": "list of payment methods, allowed by provider",
+      "items": {
+        "type": "string",
+        "description": "Method of payment required when PaymentType equal BT (applicable only for reservation action).",
+        "enum": [
+          "CREDIT_CARD",
+          "INVOICE",
+          "TRAVEL_ACCOUNT",
+          "PAYMENT_SERVICE_PROVIDER"
+        ]
+      }
+    },
+    "discountCodes": {
+      "type": "array",
+      "description": "list of discount codes",
+      "items": {
+        "$ref": "#/definitions/DiscountCode"
+      }
+    },
+    "distance": {
+      "$ref": "#/definitions/Distance"
+    }
+  },
+  "required": [
+    "transferType",
+    "start",
+    "serviceProvider",
+    "vehicle",
+    "quotation",
+    "methodsOfPaymentAccepted"
+  ]
+}

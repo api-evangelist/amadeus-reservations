@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-document-structure.json",
+  "name": "Document",
+  "description": "the information that are found on an ID document",
+  "type": "object",
+  "properties": {
+    "number": {
+      "type": "string",
+      "description": "The document number (shown on the document) . E.g. QFU514563221J"
+    },
+    "issuanceDate": {
+      "type": "date",
+      "description": "Date at which the document has been issued."
+    },
+    "expiryDate": {
+      "type": "date",
+      "description": "Date after which the document is not valid anymore."
+    },
+    "issuanceCountry": {
+      "type": "string",
+      "description": "[ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country that issued the document",
+      "pattern": "[a-zA-Z]{2}"
+    },
+    "issuanceLocation": {
+      "type": "string",
+      "description": "A more precise information concerning the place where the document has been issued, when available. It may be a country, a state, a city or any other type of location. e.g. New-York"
+    },
+    "nationality": {
+      "type": "string",
+      "description": "[ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the nationality appearing on the document",
+      "pattern": "[a-zA-Z]{2}"
+    },
+    "birthPlace": {
+      "type": "string",
+      "description": "Birth place as indicated on the document"
+    }
+  }
+}

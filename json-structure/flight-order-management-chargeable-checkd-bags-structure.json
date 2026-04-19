@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-order-management-chargeable-checkd-bags-structure.json",
+  "name": "ChargeableCheckdBags",
+  "description": "Details of chargeable checked bags",
+  "allOf": [
+    {
+      "$ref": "#/definitions/BaggageAllowance"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Id of the chargeable bag",
+          "type": "string",
+          "example": "1"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "type": "flight-order",
+  "id": "MlpZVkFMfFdBVFNPTnwyMDE1LTExLTAy",
+  "queuingOfficeId": "NCE1A0955",
+  "ownerOfficeId": "NCE1A0955",
+  "associatedRecords": [
+    "ABC123"
+  ],
+  "flightOffers": [
+    "sample-value"
+  ],
+  "travelers": [
+    "sample-value"
+  ],
+  "remarks": "sample-value",
+  "formOfPayments": [
+    "sample-value"
+  ],
+  "ticketingAgreement": "sample-value",
+  "automatedProcess": [
+    "sample-value"
+  ],
+  "contacts": [
+    "sample-value"
+  ],
+  "tickets": [
+    "sample-value"
+  ],
+  "formOfIdentifications": [
+    "sample-value"
+  ]
+}

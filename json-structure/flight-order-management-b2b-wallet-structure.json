@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-order-management-b2b-wallet-structure.json",
+  "name": "B2bWallet",
+  "description": "b2b wallet",
+  "type": "object",
+  "properties": {
+    "cardId": {
+      "readOnly": true,
+      "description": "card identifier",
+      "type": "string",
+      "example": "1245365895336"
+    },
+    "cardUsageName": {
+      "description": "card usage name",
+      "type": "string"
+    },
+    "cardFriendlyName": {
+      "description": "card name",
+      "type": "string",
+      "example": "CB1",
+      "pattern": "[a-zA-Z0-9]{1,35}"
+    },
+    "reportingData": {
+      "type": "array",
+      "name": "reportingData",
+      "items": {
+        "name": "reportingData",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "reconcil1"
+          },
+          "value": {
+            "type": "string",
+            "example": "data1"
+          }
+        }
+      }
+    },
+    "virtualCreditCardDetails": {
+      "readOnly": true,
+      "$ref": "#/definitions/VirtualCreditCardDetails"
+    },
+    "flightOfferIds": {
+      "description": "Id of the concern flightOffers",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {
+        "type": "string"
+      },
+      "example": "1"
+    }
+  }
+}

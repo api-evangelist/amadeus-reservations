@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-stakeholder-structure.json",
+  "name": "Stakeholder",
+  "description": "stakeholder definition",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "item identifier",
+      "type": "string"
+    },
+    "dateOfBirth": {
+      "type": "date",
+      "description": "The date of birth in ISO 8601 format (yyyy-mm-dd)"
+    },
+    "gender": {
+      "$ref": "#/definitions/StakeholderGender"
+    },
+    "name": {
+      "$ref": "#/definitions/Name"
+    },
+    "documents": {
+      "type": "array",
+      "description": "Advanced Passenger Information - regulatory identity documents - SSR DOCS & DOCO elements",
+      "items": {
+        "$ref": "#/definitions/IdentityDocument"
+      }
+    }
+  }
+}

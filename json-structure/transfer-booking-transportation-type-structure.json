@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-transportation-type-structure.json",
+  "name": "TransportationType",
+  "description": "The type of connection \"FLIGHT\" or \"TRAIN\"",
+  "type": "string",
+  "enum": [
+    "FLIGHT",
+    "TRAIN"
+  ]
+}

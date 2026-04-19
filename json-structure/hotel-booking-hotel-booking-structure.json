@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/hotel-booking-hotel-booking-structure.json",
+  "name": "HotelBooking",
+  "description": "An hotel booking represent one or several rooms booked in the same physical hotel.\nThere is always a reference to this booking, provided by the hotel provider, stored in associated records section.",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Type of data - set to \"hotel-booking\"."
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique ID of the hotel booking ID.\nIt is computed by Amadeus System based on technical data.",
+      "minLength": 1,
+      "pattern": "[A-Za-z0-9+/=]",
+      "example": "456123"
+    },
+    "bookingStatus": {
+      "type": "string",
+      "description": "Status of the booking - Possible values \n- \"CONFIRMED\"\n- \"PENDING\" for on-request \n- \"CANCELLED\" (It will be returned only in the retrieve byHistory as it repreents a DELETED resource.)\n- \"On HOLD\" for deferred payment (HO)\n- \"UNCONFIRMED\" (UC) when confirmation finaly refused by Hotel Provider\n- \"DENIED\" (NO) when an on-request booking is denied by the hotelier\n- \"GHOST\" (GK) for ghost booking\n- \"PAST\" for a confirmed booking with the check-out date in the past\n",
+      "enum": [
+        "CONFIRMED",
+        "PENDING",
+        "CANCELLED",
+        "ON_HOLD",
+        "PAST",
+        "UNCONFIRMED",
+        "DENIED",
+        "GHOST",
+        "DELETED"
+      ]
+    },
+    "roomAssociations": {
+      "type": "array",
+      "description": "Array of room associations. Each room association correlates one single room to guest(s), a payment and an hotel offer.\n\nIf multiple identical rooms are requested, one roomAssociation is created per hotelBooking (one hotelBooking is created per room).",
+      "items": {
+        "$ref": "#/definitions/roomAssociation"
+      }
+    },
+    "hotelOffer": {
+      "$ref": "#/definitions/HotelOffer"
+    },
+    "hotel": {
+      "type": "object",
+      "description": "Hotel Content",
+      "name": "Hotel",
+      "properties": {
+        "hotelId": {
+          "type": "string",
+          "pattern": "^[A-Z0-9]{8}$",
+          "example": "ADPAR001",
+          "description": "Amadeus Property Code (8 chars)\n"
+        },
+        "chainCode": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$",
+          "example": "AD",
+          "description": "Brand (RT...) or Merchant (AD...) (Amadeus 2 chars Code)\n"
+        },
+        "name": {
+          "type": "string",
+          "example": "Hotel de Paris",
+          "description": "Hotel Name"
+        },
+        "self": {
+          "type": "string",
+          "description": "link to retrieve the hotel details"
+        }
+      },
+      "required": [
+        "hotelId",
+        "chainCode",
+        "name"
+      ]
+    },
+    "hotelProviderInformation": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "description": "References and origin of the hotel bookings records",
+      "items": {
+        "type": "object",
+        "properties": {
+          "hotelProviderCode": {
+            "type": "string",
+            "description": "2 letters - Hotel provider code  e.g.RT  (for Accor)",
+            "example": "RT",
+            "minLength": 2,
+            "maxLength": 2
+          },
+          "confirmationNumber": {
+            "type": "string",
+            "description": "Provider confirmation number. \nNever empty, in case of on-request it can be .......\nIf you call the Provider, this Reference may be asked",
+            "example": "818319951754",
+            "minLength": 2,
+            "maxLength": 16,
+            "pattern": "^[A-Z0-9]*$"
+          },
+          "cancellationNumber": {
+            "type": "string",
+            "description": "Provider cancellation number\nFor cancelled booking it will ablways be filled.\nIf it was not returned by the hotel provider, it will be filled with \"NONE\".",
+            "example": "C818319951754",
+            "minLength": 2,
+            "maxLength": 16,
+            "pattern": "^[A-Z0-9]*$"
+          },
+          "onRequestNumber": {
+            "type": "string",
+            "description": "Used to describe the on-request identifier",
+            "example": "818319951754",
+            "minLength": 2,
+            "maxLength": 16,
+            "pattern": "^[A-Z0-9]*$"
+          }
+        },
+        "required": [
+          "hotelProviderCode",
+          "confirmationNumber"
+        ]
+      }
+    },
+    "payment": {
+      "$ref": "#/definitions/PaymentOutput"
+    },
+    "travelAgentId": {
+      "type": "string",
+      "description": "Travel Agent ID also called Booking source or IATA number.\n- When received in booking request, it indicates that the travel agent wants to override the booking source receiving the commission. \n- If not provided in booking request, it is set to the IATA Number of the office profile of the agent making the booking. (the commission is given to that office) "
+    },
+    "arrivalInformation": {
+      "type": "object",
+      "description": "Optional information on the way the guest is arriving to the hotel. Today the application only supports Flight details.\nIf this information is provided at booking creation time, it is displayed in the response and in the retrieve.",
+      "properties": {
+        "arrivalFlightDetails": {
+          "$ref": "#/definitions/ArrivalFlightDetails"
+        }
+      }
+    }
+  },
+  "required": [
+    "type",
+    "id",
+    "roomAssociations",
+    "hotelOffer",
+    "hotel",
+    "hotelProviderInformation",
+    "travelAgentId"
+  ]
+}

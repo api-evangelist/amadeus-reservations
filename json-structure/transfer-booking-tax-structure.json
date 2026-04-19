@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-tax-structure.json",
+  "name": "Tax",
+  "description": "single tax information",
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "monetaryAmount": {
+          "type": "string",
+          "example": "10.5"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "indicator": {
+          "type": "string",
+          "description": "Tax category"
+        },
+        "natureCode": {
+          "type": "string",
+          "description": "Tax code"
+        },
+        "countryCode": {
+          "type": "string",
+          "description": "Tax iso country code"
+        },
+        "rate": {
+          "type": "string",
+          "description": "Tax rate"
+        }
+      }
+    }
+  ]
+}

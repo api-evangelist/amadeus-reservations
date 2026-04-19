@@ -1,0 +1,22 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "roomAssociation": "amadeus:roomAssociation",
+    "guestReferences": {
+      "@id": "amadeus:guestReferences",
+      "@container": "@set"
+    },
+    "specialRequest": {
+      "@id": "amadeus:specialRequest",
+      "@type": "xsd:string"
+    },
+    "hotelOfferId": {
+      "@id": "amadeus:hotelOfferId",
+      "@type": "xsd:string"
+    }
+  }
+}

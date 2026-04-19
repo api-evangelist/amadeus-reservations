@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/transfer-booking-transfer-reservation-schema.json",
+  "title": "TransferReservation",
+  "description": "transfer reservation",
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "confirmNbr": {
+          "type": "string",
+          "description": "transfer identifier - confirmation number, received from transfer supplier"
+        },
+        "status": {
+          "type": "string",
+          "description": "status of transfer reservation",
+          "enum": [
+            "CONFIRMED",
+            "CANCELLED"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "description": "Note to transfer provider"
+        },
+        "methodOfPayment": {
+          "type": "string",
+          "description": "Method of payment required when PaymentType equal BT (applicable only for reservation action).",
+          "enum": [
+            "CREDIT_CARD",
+            "INVOICE",
+            "TRAVEL_ACCOUNT",
+            "PAYMENT_SERVICE_PROVIDER"
+          ]
+        },
+        "paymentServiceProvider": {
+          "type": "string",
+          "description": "payment service provider details will be passed to provider in case \"PAYMENT_SERVICE_PROVIDER\" method of payment.",
+          "enum": [
+            "STRIPE_CONNECT"
+          ]
+        },
+        "offerId": {
+          "type": "string",
+          "description": "offer identifier"
+        }
+      }
+    },
+    {
+      "$ref": "#/definitions/Transfer"
+    }
+  ]
+}

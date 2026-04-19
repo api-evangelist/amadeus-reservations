@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/transfer-booking-passenger-schema.json",
+  "title": "Passenger",
+  "description": "passenger data",
+  "allOf": [
+    {
+      "$ref": "#/definitions/Name"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "contacts": {
+          "$ref": "#/definitions/Contact"
+        },
+        "billingAddress": {
+          "$ref": "#/definitions/AddressCommon"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-order-management-stakeholder-gender-structure.json",
+  "name": "StakeholderGender",
+  "description": "Gender for individual",
+  "type": "string",
+  "enum": [
+    "MALE",
+    "FEMALE",
+    "UNSPECIFIED",
+    "UNDISCLOSED"
+  ],
+  "example": "FEMALE"
+}

@@ -1,0 +1,35 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Guest": "amadeus:Guest",
+    "frequentTraveler": {
+      "@id": "amadeus:frequentTraveler",
+      "@container": "@set"
+    },
+    "phone": {
+      "@id": "amadeus:phone",
+      "@type": "xsd:string"
+    },
+    "email": "schema:email",
+    "title": {
+      "@id": "amadeus:title",
+      "@type": "xsd:string"
+    },
+    "firstName": {
+      "@id": "amadeus:firstName",
+      "@type": "xsd:string"
+    },
+    "lastName": {
+      "@id": "amadeus:lastName",
+      "@type": "xsd:string"
+    },
+    "childAge": {
+      "@id": "amadeus:childAge",
+      "@type": "xsd:integer"
+    }
+  }
+}

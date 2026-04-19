@@ -1,0 +1,13 @@
+{
+  "cardId": "1245365895336",
+  "cardUsageName": "John Smith",
+  "cardFriendlyName": "CB1",
+  "reportingData": [
+    {
+      "name": "reconcil1",
+      "value": "data1"
+    }
+  ],
+  "virtualCreditCardDetails": "sample-value",
+  "flightOfferIds": "1"
+}

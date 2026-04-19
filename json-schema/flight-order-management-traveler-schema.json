@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-order-management-traveler-schema.json",
+  "title": "Traveler",
+  "description": "the traveler of the trip",
+  "allOf": [
+    {
+      "$ref": "#/definitions/Stakeholder"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "emergencyContact": {
+          "description": "emergency contact",
+          "$ref": "#/definitions/EmergencyContact"
+        },
+        "loyaltyPrograms": {
+          "description": "list of loyalty program followed by the traveler",
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 10,
+          "items": {
+            "$ref": "#/definitions/LoyaltyProgram"
+          }
+        },
+        "discountEligibility": {
+          "description": "list of element that allow a discount.",
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 10,
+          "items": {
+            "$ref": "#/definitions/Discount"
+          }
+        },
+        "contact": {
+          "$ref": "#/definitions/Contact"
+        }
+      }
+    }
+  ]
+}

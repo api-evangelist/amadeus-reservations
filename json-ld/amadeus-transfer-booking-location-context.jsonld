@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Location": "amadeus:Location",
+    "dateTime": {
+      "@id": "amadeus:dateTime",
+      "@type": "xsd:string"
+    },
+    "locationCode": {
+      "@id": "amadeus:locationCode",
+      "@type": "xsd:string"
+    },
+    "address": {
+      "@id": "amadeus:address",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "googlePlaceId": {
+      "@id": "amadeus:googlePlaceId",
+      "@type": "xsd:string"
+    },
+    "uicCode": {
+      "@id": "amadeus:uicCode",
+      "@type": "xsd:string"
+    }
+  }
+}

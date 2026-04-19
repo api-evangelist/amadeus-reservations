@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-order-management-airline-remark-type-schema.json",
+  "title": "AirlineRemarkType",
+  "description": "airline remark type",
+  "type": "string",
+  "enum": [
+    "OTHER_SERVICE_INFORMATION",
+    "KEYWORD",
+    "OTHER_SERVICE",
+    "CLIENT_ID",
+    "ADVANCED_TICKET_TIME_LIMIT"
+  ],
+  "example": "KEYWORD"
+}

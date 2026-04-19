@@ -1,0 +1,31 @@
+{
+  "code": 50,
+  "title": "sample-value",
+  "detail": "sample-value",
+  "source": {
+    "parameter": "sample-value",
+    "pointer": "sample-value",
+    "example": "sample-value"
+  },
+  "documentation": "sample-value",
+  "sources": [
+    "sample-value"
+  ],
+  "relationships": {
+    "collection": [
+      {
+        "id": "500123",
+        "type": "processed-dcs-passenger",
+        "ref": "https://example.com/path/abc123",
+        "targetSchema": "sample-value",
+        "targetMediaType": "STANDARD",
+        "hrefSchema": "sample-value",
+        "href": "sample-value",
+        "methods": [
+          {}
+        ],
+        "rel": "sample-value"
+      }
+    ]
+  }
+}

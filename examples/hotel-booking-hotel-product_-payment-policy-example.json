@@ -1,0 +1,10 @@
+{
+  "creditCards": [
+    "CA",
+    "VI",
+    "AX"
+  ],
+  "methods": [
+    "CREDIT_CARD"
+  ]
+}

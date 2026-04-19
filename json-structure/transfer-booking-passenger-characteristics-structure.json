@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-passenger-characteristics-structure.json",
+  "name": "PassengerCharacteristics",
+  "description": "PassengerCharacteristics schema",
+  "properties": {
+    "passengerTypeCode": {
+      "description": "Passenger type codes e.g. CHD , ADT. CHD is for child and ADT for Adult.",
+      "type": "string",
+      "example": "child"
+    },
+    "age": {
+      "type": "int32",
+      "description": "Age of the Passenger (Mandatory if typeCode= \u201cCHD\u201d)",
+      "example": 12
+    }
+  },
+  "type": "object"
+}

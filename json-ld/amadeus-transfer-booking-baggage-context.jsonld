@@ -1,0 +1,18 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Baggage": "amadeus:Baggage",
+    "count": {
+      "@id": "amadeus:count",
+      "@type": "xsd:integer"
+    },
+    "size": {
+      "@id": "amadeus:size",
+      "@type": "xsd:string"
+    }
+  }
+}

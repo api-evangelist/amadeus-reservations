@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-address-structure.json",
+  "name": "Address",
+  "description": "address information",
+  "type": "object",
+  "properties": {
+    "line": {
+      "description": "Address line with street, number, bulding, etc...",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 70
+    },
+    "zip": {
+      "description": "Post office code number",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "countryCode": {
+      "description": "Country code (two character standard IATA country code)",
+      "type": "string",
+      "pattern": "[a-zA-Z]{2}"
+    },
+    "cityName": {
+      "description": "City, town or postal station",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 35
+    },
+    "stateCode": {
+      "description": "State code (two character standard IATA state code)",
+      "type": "string",
+      "pattern": "[a-zA-Z0-9]{1-2}"
+    },
+    "latitude": {
+      "description": "latitude of the location",
+      "type": "double",
+      "example": 43.580418
+    },
+    "longitude": {
+      "description": "longitude of the location",
+      "type": "double",
+      "example": 7.125102
+    }
+  }
+}

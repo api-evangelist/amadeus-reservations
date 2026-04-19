@@ -1,0 +1,12 @@
+{
+  "code": "EWT",
+  "itemId": "500123",
+  "description": "sample-value",
+  "metricType": "MINUTES",
+  "metricValue": "sample-value",
+  "quotation": "sample-value",
+  "converted": "sample-value",
+  "isBookable": true,
+  "taxIncluded": false,
+  "includedInTotal": true
+}

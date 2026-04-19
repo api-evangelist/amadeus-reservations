@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-order-management-other-payment-method-structure.json",
+  "name": "OtherPaymentMethod",
+  "description": "other payment method",
+  "type": "string",
+  "enum": [
+    "ACCOUNT",
+    "CHECK",
+    "CASH",
+    "NONREFUNDABLE"
+  ],
+  "example": "CASH"
+}

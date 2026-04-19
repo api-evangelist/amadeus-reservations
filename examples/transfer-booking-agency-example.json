@@ -1,0 +1,9 @@
+{
+  "contacts": [
+    {
+      "email": {
+        "address": "traveler@example.com"
+      }
+    }
+  ]
+}

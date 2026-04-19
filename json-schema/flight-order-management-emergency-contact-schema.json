@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-order-management-emergency-contact-schema.json",
+  "title": "EmergencyContact",
+  "description": "emergency contact number",
+  "type": "object",
+  "properties": {
+    "addresseeName": {
+      "type": "string",
+      "description": "Adressee name (e.g. in case of emergency purpose it corresponds to name of the person to be contacted).",
+      "pattern": "[a-zA-Z -]"
+    },
+    "countryCode": {
+      "type": "string",
+      "description": "Country code of the country (ISO3166-1). E.g. \"US\" for the United States",
+      "pattern": "[A-Z]{2}"
+    },
+    "number": {
+      "type": "string",
+      "description": "Phone number. Composed of digits only. The number of digits depends on the country.",
+      "pattern": "[0-9]{1,15}"
+    },
+    "text": {
+      "type": "string",
+      "description": "additional details"
+    }
+  }
+}

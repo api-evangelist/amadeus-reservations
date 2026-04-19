@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-create-orders-original-flight-stop-structure.json",
+  "name": "OriginalFlightStop",
+  "description": "details of stops for direct or change of gauge flights",
+  "type": "object",
+  "properties": {
+    "iataCode": {
+      "description": "[IATA airline codes](http://www.iata.org/publications/Pages/code-search.aspx)",
+      "type": "string",
+      "example": "JFK"
+    },
+    "duration": {
+      "type": "string",
+      "description": "stop duration in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) PnYnMnDTnHnMnS format, e.g. PT2H10M",
+      "example": "PT2H10M"
+    }
+  }
+}

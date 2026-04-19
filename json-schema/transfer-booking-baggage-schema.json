@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/transfer-booking-baggage-schema.json",
+  "title": "Baggage",
+  "description": "Baggage schema",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "integer",
+      "description": "baggage capacity",
+      "example": 3
+    },
+    "size": {
+      "type": "string",
+      "description": "baggage size\n\ncode   | name                                 \n------ | ---------------------------- \nS \t   | Small\nM \t   | Medium\nL \t   | Large\n",
+      "enum": [
+        "S",
+        "M",
+        "L"
+      ]
+    }
+  }
+}

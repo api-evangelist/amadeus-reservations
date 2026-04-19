@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-automated-process-code-schema.json",
+  "title": "AutomatedProcessCode",
+  "description": "queuing action to be taken",
+  "type": "string",
+  "enum": [
+    "IMMEDIATE",
+    "DELAYED",
+    "ERROR"
+  ],
+  "example": "IMMEDIATE"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-form-of-identification-schema.json",
+  "title": "FormOfIdentification",
+  "description": "alternative means of identifying stakeholders for eTicket.",
+  "type": "object",
+  "properties": {
+    "identificationType": {
+      "type": "string",
+      "description": "Type of identification",
+      "enum": [
+        "DRIVERS_LICENSE",
+        "PASSPORT",
+        "NATIONAL_IDENTITY_CARD",
+        "BOOKING_CONFIRMATION",
+        "TICKET",
+        "OTHER_ID"
+      ],
+      "example": "PASSPORT"
+    },
+    "carrierCode": {
+      "type": "string",
+      "description": "providing the airline / carrier code",
+      "minLength": 1,
+      "maxLength": 2,
+      "example": "DL"
+    },
+    "number": {
+      "type": "string",
+      "description": "identification number relative to the type of identification either ticket number, booking number, passport number, identity card number, drivers licence number, other ID",
+      "example": "XN0019390"
+    },
+    "travelerIds": {
+      "description": "Ids of the concerned travelers",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": "1"
+    },
+    "flightOfferIds": {
+      "description": "Id of the concerned flightOffers",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {
+        "type": "string"
+      },
+      "example": "1"
+    }
+  }
+}

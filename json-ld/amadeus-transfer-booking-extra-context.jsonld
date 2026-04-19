@@ -1,0 +1,47 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amadeus": "https://amadeus.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ExtraService": "amadeus:ExtraService",
+    "code": {
+      "@id": "amadeus:code",
+      "@type": "xsd:string"
+    },
+    "itemId": {
+      "@id": "amadeus:itemId",
+      "@type": "xsd:string"
+    },
+    "description": "schema:description",
+    "metricType": {
+      "@id": "amadeus:metricType",
+      "@type": "xsd:string"
+    },
+    "metricValue": {
+      "@id": "amadeus:metricValue",
+      "@type": "xsd:string"
+    },
+    "quotation": {
+      "@id": "amadeus:quotation",
+      "@type": "xsd:string"
+    },
+    "converted": {
+      "@id": "amadeus:converted",
+      "@type": "xsd:string"
+    },
+    "isBookable": {
+      "@id": "amadeus:isBookable",
+      "@type": "xsd:boolean"
+    },
+    "taxIncluded": {
+      "@id": "amadeus:taxIncluded",
+      "@type": "xsd:boolean"
+    },
+    "includedInTotal": {
+      "@id": "amadeus:includedInTotal",
+      "@type": "xsd:boolean"
+    }
+  }
+}

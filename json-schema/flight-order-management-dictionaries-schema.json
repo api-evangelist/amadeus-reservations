@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-order-management-dictionaries-schema.json",
+  "title": "Dictionaries",
+  "description": "Dictionaries schema",
+  "type": "object",
+  "properties": {
+    "locations": {
+      "$ref": "#/definitions/LocationEntry"
+    },
+    "aircraft": {
+      "$ref": "#/definitions/AircraftEntry"
+    },
+    "currencies": {
+      "$ref": "#/definitions/CurrencyEntry"
+    },
+    "carriers": {
+      "$ref": "#/definitions/CarrierEntry"
+    }
+  }
+}

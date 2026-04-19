@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-booking-cancellation-rule-structure.json",
+  "name": "CancellationRule",
+  "description": "cancellation rule information",
+  "type": "object",
+  "properties": {
+    "ruleDescription": {
+      "type": "string",
+      "description": "description of cancellation rule"
+    },
+    "feeType": {
+      "type": "string",
+      "enum": [
+        "PERCENTAGE",
+        "VALUE"
+      ],
+      "description": "type of fee - percentage of total amount (PERCENTAGE) or fixed amount (VALUE)\n"
+    },
+    "feeValue": {
+      "type": "string",
+      "description": "value of the fee, e.g. \"100\" or \"12.50\""
+    },
+    "currencyCode": {
+      "type": "string",
+      "pattern": "[A-Z]{3}",
+      "description": "currency code of the fee in [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format, e.g. USD, EUR"
+    },
+    "metricType": {
+      "type": "string",
+      "description": "type of metric",
+      "enum": [
+        "MINUTES",
+        "HOURS",
+        "DAYS",
+        "YEARS"
+      ]
+    },
+    "metricMin": {
+      "type": "string",
+      "description": "metric min value"
+    },
+    "metricMax": {
+      "type": "string",
+      "description": "metric max value"
+    }
+  }
+}

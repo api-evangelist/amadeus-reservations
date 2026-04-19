@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/transfer-booking-vehicle-schema.json",
+  "title": "Vehicle",
+  "description": "Vehicle schema",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "enum": [
+        "CAR",
+        "SED",
+        "WGN",
+        "ELC",
+        "VAN",
+        "SUV",
+        "LMS",
+        "MBR",
+        "TRN",
+        "BUS"
+      ],
+      "description": "vehicle type, which can take following values\n\nvalue           | description\n--------------  | ------------------------\nCAR             | Car\nSED             | Sedan\nWGN             | Wagon\nELC             | Electric car\nVAN             | Van or minivan\nSUV             | Sport utility vehicle\nLMS             | Limousine\nMBR             | Motorbike\nTRN             | Train\nBUS             | Bus\n"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "ST",
+        "BU",
+        "FC"
+      ],
+      "description": "category of the vehicle, which can take following values\n\nvalue           | description\n--------------  | ------------------------\nST              | Standard\nBU              | Business\nFC              | First class\n"
+    },
+    "description": {
+      "type": "string",
+      "description": "description of the vehicle. Can describe a list of potential vehicles, e.g. VW Polo or similar"
+    },
+    "seats": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Seat"
+      }
+    },
+    "baggages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Baggage"
+      }
+    },
+    "imageURL": {
+      "type": "string",
+      "description": "URL to vehicle image"
+    }
+  },
+  "required": [
+    "code",
+    "category",
+    "description",
+    "seats"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/flight-order-management-collection_-meta_-link-structure.json",
+  "name": "Collection_Meta_Link",
+  "description": "Collection_Meta_Link schema",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "int32",
+      "example": 1
+    },
+    "links": {
+      "type": "object",
+      "name": "CollectionLinks",
+      "properties": {
+        "self": {
+          "type": "uri",
+          "example": "https://test.api.amadeus.com/v1/area/resources?..."
+        },
+        "next": {
+          "type": "uri",
+          "example": "https://test.api.amadeus.com/v1/area/resources?..."
+        },
+        "previous": {
+          "type": "uri",
+          "example": "https://test.api.amadeus.com/v1/area/resources?..."
+        },
+        "last": {
+          "type": "uri",
+          "example": "https://test.api.amadeus.com/v1/area/resources?..."
+        },
+        "first": {
+          "type": "uri",
+          "example": "https://test.api.amadeus.com/v1/area/resources?..."
+        },
+        "up": {
+          "type": "uri",
+          "example": "https://test.api.amadeus.com/v1/area/resources?..."
+        }
+      },
+      "example": {
+        "self": "https://test.api.amadeus.com/v1/area/resources?param=value"
+      }
+    }
+  }
+}

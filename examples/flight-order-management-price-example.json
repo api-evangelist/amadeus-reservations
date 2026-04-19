@@ -1,0 +1,12 @@
+{
+  "currency": "USD",
+  "total": "932.70",
+  "base": "632.70",
+  "fees": [
+    "sample-value"
+  ],
+  "taxes": [
+    "sample-value"
+  ],
+  "refundableTaxes": "200.00"
+}

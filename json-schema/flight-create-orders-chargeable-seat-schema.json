@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-schema/flight-create-orders-chargeable-seat-schema.json",
+  "title": "ChargeableSeat",
+  "description": "Details of chargeable seat",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Id of the chargeable seat",
+      "type": "string",
+      "example": "1"
+    },
+    "number": {
+      "type": "string",
+      "description": "seat number",
+      "example": "33D",
+      "pattern": "[1-9][0-9]{0,2}[A-Z]?"
+    }
+  }
+}

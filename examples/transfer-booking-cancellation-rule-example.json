@@ -1,0 +1,9 @@
+{
+  "ruleDescription": "sample-value",
+  "feeType": "VALUE",
+  "feeValue": "sample-value",
+  "currencyCode": "AA",
+  "metricType": "DAYS",
+  "metricMin": "sample-value",
+  "metricMax": "sample-value"
+}

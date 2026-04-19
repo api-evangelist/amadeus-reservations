@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amadeus-reservations/refs/heads/main/json-structure/transfer-management-error_404-structure.json",
+  "name": "Error_404",
+  "description": "Error_404 schema",
+  "properties": {
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Issue"
+      }
+    }
+  },
+  "required": [
+    "errors"
+  ],
+  "example": {
+    "errors": [
+      {
+        "status": 404,
+        "code": 1797,
+        "title": "NOT FOUND",
+        "detail": "no response found for this query parameter",
+        "source": {
+          "parameter": "orderId"
+        }
+      }
+    ]
+  },
+  "type": "object"
+}
