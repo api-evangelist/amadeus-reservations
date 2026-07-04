@@ -1,0 +1,57 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  npm registry.npmjs.org, PyPI, RubyGems, Packagist, Maven Central; github.com/amadeus4dev
+description: >-
+  Official Amadeus for Developers Self-Service SDKs (amadeus4dev org). One
+  client library per language wraps token management and all Self-Service
+  endpoints, including the reservation APIs (flight create orders, flight order
+  management, hotel booking, transfer booking/management).
+packages:
+  - language: javascript
+    registry: npm
+    name: amadeus
+    version: 11.0.0
+    url: https://www.npmjs.com/package/amadeus
+    repository: https://github.com/amadeus4dev/amadeus-node
+    install: npm install amadeus
+    official: true
+  - language: python
+    registry: pypi
+    name: amadeus
+    version: 12.0.0
+    url: https://pypi.org/project/amadeus/
+    repository: https://github.com/amadeus4dev/amadeus-python
+    install: pip install amadeus
+    official: true
+  - language: ruby
+    registry: rubygems
+    name: amadeus
+    version: 5.2.1
+    url: https://rubygems.org/gems/amadeus
+    repository: https://github.com/amadeus4dev/amadeus-ruby
+    install: gem install amadeus
+    official: true
+  - language: php
+    registry: packagist
+    name: amadeus4dev/amadeus-php
+    version: 0.3.0
+    url: https://packagist.org/packages/amadeus4dev/amadeus-php
+    repository: https://github.com/amadeus4dev/amadeus-php
+    install: composer require amadeus4dev/amadeus-php
+    official: true
+  - language: java
+    registry: maven
+    name: com.amadeus:amadeus-java
+    version: 10.0.0
+    url: https://central.sonatype.com/artifact/com.amadeus/amadeus-java
+    repository: https://github.com/amadeus4dev/amadeus-java
+    install: "implementation 'com.amadeus:amadeus-java:10.0.0'"
+    official: true
+  - language: kotlin
+    registry: maven
+    name: com.amadeus:amadeus-android
+    version: 1.3.1
+    url: https://central.sonatype.com/artifact/com.amadeus/amadeus-android
+    install: "implementation 'com.amadeus:amadeus-android:1.3.1'"
+    official: true

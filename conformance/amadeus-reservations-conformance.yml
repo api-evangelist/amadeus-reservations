@@ -1,0 +1,54 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  openapi/ (Swagger 2.0 host/consumes/produces/error schemas) and
+  developers.amadeus.com authorization guide
+description: >-
+  Cross-cutting standards conformance for the Amadeus reservation APIs, derived
+  from the harvested OpenAPI definitions and Amadeus authorization documentation.
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      All Self-Service APIs require an OAuth2 client-credentials bearer token
+      per the Amadeus Authorization Guide
+      (developers.amadeus.com/self-service/apis-docs/guides/authorization-262).
+  - id: oidc
+    conforms: false
+    evidence: No OpenID Connect discovery document; client-credentials only, no ID tokens.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors use the Amadeus vendor error format (errors[] array with
+      status/code/title/detail/source) served as application/vnd.amadeus+json,
+      not application/problem+json.
+  - id: json-api
+    conforms: false
+    evidence: >-
+      Responses wrap payloads in a top-level data object and use a vendor media
+      type, resembling but not conforming to the JSON:API specification.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset/Deprecation header support documented for these APIs.
+  - id: idempotency-keys
+    conforms: false
+    evidence: No Idempotency-Key header documented for booking creation operations.
+  - id: pagination
+    conforms: false
+    evidence: >-
+      Reservation operations act on single orders; no collection pagination
+      parameters present in the OpenAPI definitions.
+  - id: fhir-r4
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: odata
+    conforms: false
+  - id: psd2
+    conforms: partial
+    evidence: >-
+      Hotel Booking 500 responses reference PSD2 3-D Secure authentication
+      (code 42150 "PSD2 AUTHENTICATION CANNOT BE PERFORMED"), indicating PSD2
+      SCA handling on card payments but no PSD2 API conformance claim.

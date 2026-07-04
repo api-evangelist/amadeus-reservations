@@ -1,0 +1,40 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  developers.amadeus.com (portal, status page, API versions) and openapi/
+  info.version / x-release-note blocks
+description: >-
+  Versioning, deprecation, and status posture for the Amadeus reservation APIs.
+  Versioning is carried in the URI path (v1/v2). Amadeus maintains per-API
+  semantic versions in the OpenAPI info.version with x-release-note change logs.
+  No RFC 8594 Sunset/Deprecation header support is documented.
+versioning:
+  scheme: uri-path
+  current:
+    hotel-booking: v2
+    flight-create-orders: v1
+    flight-order-management: v1
+    transfer-booking: v1
+    transfer-management: v1
+  spec_versions:
+    hotel-booking: 2.0.1
+    flight-create-orders: 1.10.0
+    flight-order-management: 1.10.0
+    transfer-booking: 1.11.1
+    transfer-management: 1.11.0
+  docs: https://developers.amadeus.com/self-service/apis-docs
+  notes: >-
+    Per-API release notes are published in the OpenAPI x-release-note extension
+    (e.g. Flight Create Orders 1.10.0 adds chargeableSeat and lastTicketingDateTime).
+deprecation:
+  policy_url: https://developers.amadeus.com/support
+  sunset_header: false
+  deprecation_header: false
+sla:
+  url: https://developers.amadeus.com/pricing
+  uptime_target: null
+  notes: >-
+    Test environment is a dynamic subset of production and may change without
+    notice; no published uptime SLA for the Self-Service tier.
+status_page: https://developers.amadeus.com/status
+deprecated_operations: []

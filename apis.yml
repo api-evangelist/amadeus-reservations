@@ -18,7 +18,7 @@ description: >-
   connecting to Amadeus's global distribution network of airlines, hotels, and
   transfer operators.
 created: '2024-01-01'
-modified: '2026-04-19'
+modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
   - aid: amadeus-reservations:hotel-booking-api
@@ -42,6 +42,8 @@ apis:
         url: https://developers.amadeus.com/self-service/category/hotels/api-doc/hotel-booking/api-reference
       - type: OpenAPI
         url: openapi/amadeus-reservations-hotel-booking-openapi.yaml
+      - type: Overlay
+        url: overlays/amadeus-reservations-hotel-booking-overlay.yaml
   - aid: amadeus-reservations:flight-create-orders-api
     name: Flight Create Orders API
     description: >-
@@ -65,6 +67,8 @@ apis:
         url: https://developers.amadeus.com/self-service/category/flights/api-doc/flight-create-orders/api-reference
       - type: OpenAPI
         url: openapi/amadeus-reservations-flight-create-orders-openapi.yaml
+      - type: Overlay
+        url: overlays/amadeus-reservations-flight-create-orders-overlay.yaml
   - aid: amadeus-reservations:flight-order-management-api
     name: Flight Order Management API
     description: >-
@@ -85,6 +89,8 @@ apis:
         url: https://developers.amadeus.com/self-service/category/flights/api-doc/flight-order-management
       - type: OpenAPI
         url: openapi/amadeus-reservations-flight-order-management-openapi.yaml
+      - type: Overlay
+        url: overlays/amadeus-reservations-flight-order-management-overlay.yaml
   - aid: amadeus-reservations:transfer-booking-api
     name: Transfer Booking API
     description: >-
@@ -106,6 +112,8 @@ apis:
         url: https://developers.amadeus.com/self-service/category/cars-and-transfers/api-doc/transfer-booking
       - type: OpenAPI
         url: openapi/amadeus-reservations-transfer-booking-openapi.yaml
+      - type: Overlay
+        url: overlays/amadeus-reservations-transfer-booking-overlay.yaml
   - aid: amadeus-reservations:transfer-management-api
     name: Transfer Management API
     description: >-
@@ -126,6 +134,8 @@ apis:
         url: https://developers.amadeus.com/self-service/category/cars-and-transfers/api-doc/transfer-management
       - type: OpenAPI
         url: openapi/amadeus-reservations-transfer-management-openapi.yaml
+      - type: Overlay
+        url: overlays/amadeus-reservations-transfer-management-overlay.yaml
 common:
   - type: Portal
     url: https://developers.amadeus.com/
@@ -166,6 +176,20 @@ common:
     url: capabilities/travel-booking.yaml
   - type: Vocabulary
     url: vocabulary/amadeus-reservations-vocabulary.yaml
+  - type: Packages
+    url: packages/amadeus-reservations-packages.yml
+  - type: WellKnown
+    url: well-known/amadeus-reservations-well-known.yml
+  - type: MCPServer
+    url: mcp/amadeus-reservations-mcp.yml
+  - type: LLMsTxt
+    url: llms/amadeus-reservations-llms.txt
+  - type: Conformance
+    url: conformance/amadeus-reservations-conformance.yml
+  - type: ErrorCatalog
+    url: errors/amadeus-reservations-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/amadeus-reservations-lifecycle.yml
   - type: Features
     data:
       - name: Hotel Booking at Scale

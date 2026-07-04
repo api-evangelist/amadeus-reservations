@@ -1,0 +1,13 @@
+{
+  "repo": "amadeus-reservations",
+  "feeds": [
+    {
+      "source": "https://developers.amadeus.com/blog",
+      "feed_url": "https://developers.amadeus.com/blog",
+      "title": "Amadeus for Developers Blog",
+      "saved": 0
+    }
+  ],
+  "fetched": "2026-07-04T13:38:06Z",
+  "post_count": 0
+}

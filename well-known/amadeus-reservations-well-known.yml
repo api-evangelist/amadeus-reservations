@@ -1,0 +1,47 @@
+generated: '2026-06-20'
+method: searched
+source: probed /.well-known/ on API base host and production host
+description: >-
+  Well-known discovery probe for the Amadeus reservation APIs. The API base
+  host (test.api.amadeus.com) and production host (api.amadeus.com) return 404
+  for all probed well-known documents. The developer portal
+  (developers.amadeus.com) is a single-page app that returns its HTML shell
+  (HTTP 200) for every path, including /.well-known/security.txt and
+  /.well-known/ai-plugin.json, so those are SPA fallbacks, not real documents.
+  No genuine well-known artifacts were found.
+hosts:
+  - host: https://test.api.amadeus.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://api.amadeus.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://developers.amadeus.com
+    note: >-
+      SPA returns index.html (HTTP 200) for any path; not a real well-known
+      document.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        real: false
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        real: false

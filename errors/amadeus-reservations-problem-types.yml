@@ -1,0 +1,58 @@
+generated: '2026-06-20'
+method: derived
+format: amadeus-errors
+source: >-
+  Derived from openapi/ 4xx/5xx responses. Amadeus returns a vendor error
+  envelope (application/vnd.amadeus+json) with an errors[] array of Issue
+  objects { status, code, title, detail, source }; it is NOT RFC 9457
+  application/problem+json.
+description: >-
+  HTTP error responses across the Amadeus reservation APIs, derived from the
+  status codes declared in the OpenAPI definitions and the inline error code
+  tables in the Hotel Booking and Transfer specs.
+envelope_schema:
+  media_type: application/vnd.amadeus+json
+  shape: '{ errors: [ { status, code, title, detail, source: { pointer, parameter, example } } ] }'
+problems:
+  - status: 400
+    title: Bad Request / Invalid data
+    detail: Mandatory data missing, invalid format, invalid offer ID, or payment/guest validation failure.
+    source_operations:
+      - openapi/amadeus-reservations-flight-create-orders-openapi.yaml#createFligtOrders
+      - openapi/amadeus-reservations-flight-order-management-openapi.yaml#getFlightOrder
+      - openapi/amadeus-reservations-flight-order-management-openapi.yaml#cancelFlightOrder
+      - openapi/amadeus-reservations-hotel-booking-openapi.yaml#createHotelOrder
+      - openapi/amadeus-reservations-transfer-booking-openapi.yaml#createTransferOrder
+      - openapi/amadeus-reservations-transfer-management-openapi.yaml#cancelTransfer
+    example_codes:
+      - code: 477
+        title: INVALID FORMAT
+      - code: 38420
+        title: OFFER NOT FOUND
+      - code: 32171
+        title: MANDATORY DATA MISSING
+  - status: 401
+    title: Unauthorized
+    detail: Missing, expired, or restricted OAuth2 bearer token (e.g. code 20 RESTRICTED).
+    source_operations:
+      - openapi/amadeus-reservations-transfer-booking-openapi.yaml#createTransferOrder
+      - openapi/amadeus-reservations-transfer-management-openapi.yaml#cancelTransfer
+  - status: 404
+    title: Not Found
+    detail: No order or transfer found for the supplied identifier (e.g. code 1797 NOT FOUND).
+    source_operations:
+      - openapi/amadeus-reservations-flight-order-management-openapi.yaml#getFlightOrder
+      - openapi/amadeus-reservations-flight-order-management-openapi.yaml#cancelFlightOrder
+      - openapi/amadeus-reservations-transfer-management-openapi.yaml#cancelTransfer
+  - status: 500
+    title: Internal Server Error / Unable to process
+    detail: >-
+      Provider-side failure, timeout, or booking failure (e.g. hotel codes
+      00011 UNABLE TO PROCESS, 38660 UNABLE TO CREATE THE ORDER - FAILED ON
+      PROVIDER SIDE, 42150 PSD2 AUTHENTICATION CANNOT BE PERFORMED).
+    source_operations:
+      - openapi/amadeus-reservations-flight-create-orders-openapi.yaml#createFligtOrders
+      - openapi/amadeus-reservations-flight-order-management-openapi.yaml#getFlightOrder
+      - openapi/amadeus-reservations-hotel-booking-openapi.yaml#createHotelOrder
+      - openapi/amadeus-reservations-transfer-booking-openapi.yaml#createTransferOrder
+      - openapi/amadeus-reservations-transfer-management-openapi.yaml#cancelTransfer

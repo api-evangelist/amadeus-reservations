@@ -1,0 +1,35 @@
+# Amadeus Reservations
+
+> Amadeus Reservations provides APIs for creating and managing travel bookings including flight orders, hotel reservations, and ground transfer bookings. These APIs power the full reservation lifecycle for online travel agencies, corporate travel platforms, and travel management companies, connecting to Amadeus's global distribution network of airlines, hotels, and transfer operators. All APIs use OAuth2 client-credentials bearer tokens and the test base host test.api.amadeus.com.
+
+## APIs
+
+- [Hotel Booking API](https://developers.amadeus.com/self-service/category/hotels/api-doc/hotel-booking): Complete hotel reservations at 150,000+ properties using hotel offer IDs (base test.api.amadeus.com/v2).
+- [Flight Create Orders API](https://developers.amadeus.com/self-service/category/flights/api-doc/flight-create-orders): Create confirmed airline reservations with PNR from flight offers (base test.api.amadeus.com/v1).
+- [Flight Order Management API](https://developers.amadeus.com/self-service/category/flights/api-doc/flight-order-management): Retrieve and cancel existing flight orders (base test.api.amadeus.com/v1).
+- [Transfer Booking API](https://developers.amadeus.com/self-service/category/cars-and-transfers/api-doc/transfer-booking): Book ground transfers (taxis, private cars, shuttles) from transfer offers (base test.api.amadeus.com/v1).
+- [Transfer Management API](https://developers.amadeus.com/self-service/category/cars-and-transfers/api-doc/transfer-management): Cancel and manage confirmed transfer bookings (base test.api.amadeus.com/v1).
+
+## Specs
+
+- [Flight Create Orders OpenAPI](openapi/amadeus-reservations-flight-create-orders-openapi.yaml)
+- [Flight Order Management OpenAPI](openapi/amadeus-reservations-flight-order-management-openapi.yaml)
+- [Hotel Booking OpenAPI](openapi/amadeus-reservations-hotel-booking-openapi.yaml)
+- [Transfer Booking OpenAPI](openapi/amadeus-reservations-transfer-booking-openapi.yaml)
+- [Transfer Management OpenAPI](openapi/amadeus-reservations-transfer-management-openapi.yaml)
+
+## SDKs
+
+- [Node.js SDK (npm amadeus)](https://github.com/amadeus4dev/amadeus-node)
+- [Python SDK (pypi amadeus)](https://github.com/amadeus4dev/amadeus-python)
+- [Java SDK (com.amadeus:amadeus-java)](https://github.com/amadeus4dev/amadeus-java)
+- [Ruby SDK (gem amadeus)](https://github.com/amadeus4dev/amadeus-ruby)
+- [PHP SDK (amadeus4dev/amadeus-php)](https://github.com/amadeus4dev/amadeus-php)
+
+## Docs
+
+- [Developer Portal](https://developers.amadeus.com/)
+- [Getting Started](https://developers.amadeus.com/self-service/apis-docs/guides/developer-guides/)
+- [Authorization Guide](https://developers.amadeus.com/self-service/apis-docs/guides/authorization-262)
+- [Sign Up](https://developers.amadeus.com/register)
+- [Pricing](https://developers.amadeus.com/pricing)
