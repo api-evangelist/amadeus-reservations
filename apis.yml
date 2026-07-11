@@ -137,6 +137,10 @@ apis:
       - type: Overlay
         url: overlays/amadeus-reservations-transfer-management-overlay.yaml
 common:
+  - type: VulnerabilityDisclosure
+    url: security/amadeus-reservations-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amadeus-reservations-domain-security.yml
   - type: Portal
     url: https://developers.amadeus.com/
   - type: GettingStarted
