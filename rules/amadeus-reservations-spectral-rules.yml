@@ -1,5 +1,16 @@
+# amadeus-reservations — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - operationid-casing: camel @ 100% (n=6)
+#   - operation-documents-400: 100% adherence
+#   - merge: kept 20 existing, added 3 measured, upgraded 0
+#   - added: operationid-casing, operation-documents-400, no-empty-descriptions
+extends:
+  - spectral:oas
 rules:
-  # INFO / METADATA
   info-title-required:
     description: API title must be present.
     severity: error
@@ -7,7 +18,6 @@ rules:
     then:
       field: title
       function: truthy
-
   info-title-amadeus-prefix:
     description: API title must reference Amadeus.
     severity: warn
@@ -15,8 +25,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "Amadeus|amadeus"
-
+        match: Amadeus|amadeus
   info-description-required:
     description: API must have a description.
     severity: error
@@ -24,7 +33,6 @@ rules:
     then:
       field: description
       function: truthy
-
   info-version-required:
     description: API version must be present.
     severity: error
@@ -32,8 +40,6 @@ rules:
     then:
       field: version
       function: truthy
-
-  # SERVERS
   servers-required:
     description: At least one server must be defined.
     severity: error
@@ -41,7 +47,6 @@ rules:
     then:
       field: servers
       function: truthy
-
   servers-https:
     description: Server URLs must use HTTPS.
     severity: error
@@ -49,9 +54,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^https://"
-
-  # OPERATIONS
+        match: ^https://
   operation-summary-required:
     description: Every operation must have a summary.
     severity: error
@@ -59,7 +62,6 @@ rules:
     then:
       field: summary
       function: truthy
-
   operation-summary-amadeus-prefix:
     description: Operation summaries must start with "Amadeus".
     severity: warn
@@ -67,8 +69,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^Amadeus "
-
+        match: '^Amadeus '
   operation-description-required:
     description: Every operation must have a description.
     severity: warn
@@ -76,7 +77,6 @@ rules:
     then:
       field: description
       function: truthy
-
   operation-id-required:
     description: Every operation must have an operationId.
     severity: error
@@ -84,7 +84,6 @@ rules:
     then:
       field: operationId
       function: truthy
-
   operation-tags-required:
     description: Every operation must have at least one tag.
     severity: error
@@ -92,8 +91,6 @@ rules:
     then:
       field: tags
       function: truthy
-
-  # PARAMETERS
   parameter-description-required:
     description: Every parameter must have a description.
     severity: warn
@@ -101,8 +98,6 @@ rules:
     then:
       field: description
       function: truthy
-
-  # RESPONSES
   response-success-required:
     description: Every operation must define at least one 2xx response.
     severity: error
@@ -113,7 +108,6 @@ rules:
         schema:
           type: object
           minProperties: 1
-
   response-401-booking:
     description: Booking operations should define a 401 response.
     severity: warn
@@ -121,7 +115,6 @@ rules:
     then:
       field: '401'
       function: truthy
-
   response-description-required:
     description: Every response must have a description.
     severity: error
@@ -129,8 +122,6 @@ rules:
     then:
       field: description
       function: truthy
-
-  # SCHEMAS
   schema-description-recommended:
     description: Top-level schemas should have descriptions.
     severity: info
@@ -138,8 +129,6 @@ rules:
     then:
       field: description
       function: truthy
-
-  # SECURITY
   security-schemes-recommended:
     description: Security schemes should be defined in components.
     severity: warn
@@ -147,8 +136,6 @@ rules:
     then:
       field: securitySchemes
       function: truthy
-
-  # HTTP METHOD CONVENTIONS
   get-no-request-body:
     description: GET operations must not have a request body.
     severity: error
@@ -156,7 +143,6 @@ rules:
     then:
       field: requestBody
       function: falsy
-
   delete-returns-204:
     description: DELETE operations should return 204 No Content.
     severity: info
@@ -164,11 +150,31 @@ rules:
     then:
       field: '204'
       function: truthy
-
   post-has-request-body:
     description: POST operations for booking creation should have a request body.
     severity: warn
     given: $.paths[*].post
     then:
       field: requestBody
+      function: truthy
+  operationid-casing:
+    description: Operation IDs should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+  operation-documents-400:
+    description: Operations should document a 400 response (documented on 100% of this API's operations).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      field: '400'
+      function: truthy
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
+    then:
       function: truthy

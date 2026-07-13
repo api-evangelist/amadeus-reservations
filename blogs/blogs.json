@@ -4,10 +4,18 @@
     {
       "source": "https://developers.amadeus.com/blog",
       "feed_url": "https://developers.amadeus.com/blog",
-      "title": "Amadeus for Developers Blog",
-      "saved": 0
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://developers.amadeus.com/pricing",
+      "feed_url": "https://developers.amadeus.com/pricing",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-07-04T13:38:06Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 0
 }
