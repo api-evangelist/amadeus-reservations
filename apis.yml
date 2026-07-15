@@ -137,6 +137,8 @@ apis:
       - type: Overlay
         url: overlays/amadeus-reservations-transfer-management-overlay.yaml
 common:
+  - type: AgenticAccess
+    url: agentic-access/amadeus-reservations-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/amadeus-reservations-vulnerability-disclosure.yml
   - type: DomainSecurity
