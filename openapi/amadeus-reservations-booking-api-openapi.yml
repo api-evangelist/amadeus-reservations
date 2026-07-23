@@ -1,0 +1,5200 @@
+swagger: '2.0'
+info:
+  version: 1.10.0
+  title: Flight Create Orders Booking API
+  x-tags:
+  - '#travel-booking'
+  - '#quick-connect'
+  - '#mobile-services'
+  - '#ama-for-dev'
+  x-status: validated
+  x-release-note:
+    1.10.0:
+    - Add chargeableSeat element
+    - Add lastTicketingDateTime
+    1.9.0:
+    - Add FormIdentification into the flight-order
+    1.8.0:
+    - Add new source "NDC" - **only available in Enterprise**
+    1.7.0:
+    - Add new PaymentBrand enum "PYTON" - **only available in Enterprise**
+    - Add new OtherPaymentMethod enum "PYTON" - **only available in Enterprise**
+    - Add FM Commission - **only available in Enterprise**
+    1.6.0:
+    - Add Margins and Discounts content from Margin Manager product - **only available in Enterprise**
+    1.5.0:
+    - Add new General Remark enum "TOUR_CODE"
+    1.4.0:
+    - Add new Gender enum "UNSPECIFIED" and "UNDISCLOSED"
+    - Add EasyPay credit card brand - **only available in Enterprise**
+    1.3.0:
+    - Add new airlineRemark subtype "ADVANCED_TICKET_TIME_LIMIT"
+    1.2.0:
+    - Add new sources "LTC" and "EAC" - **only available in Enterprise**
+    1.1.0:
+    - Add Co2Emissions information into Create flight-order reply
+    - Add language in Contact for the APN feature
+    1.0.0:
+    - Initial version
+  description: "Before using this API, we recommend you read our **[Authorization Guide](https://developers.amadeus.com/self-service/apis-docs/guides/authorization-262)** for more information on how to generate an access token. \n\nPlease also be aware that our test environment is based on a subset of the production, if you are not returning any results try with big cities/airports like LON (London) or NYC (New-York)."
+host: test.api.amadeus.com
+basePath: /v1
+schemes:
+- https
+consumes:
+- application/vnd.amadeus+json
+produces:
+- application/vnd.amadeus+json
+tags:
+- name: Booking
+paths:
+  /booking/flight-orders:
+    post:
+      tags:
+      - Booking
+      operationId: createFligtOrders
+      summary: Amadeus Create Order Associated to the Flight Offers.
+      parameters:
+      - name: body
+        description: list of element needed to book a flight Order
+        in: body
+        required: true
+        schema:
+          title: FlightOrderQuery
+          properties:
+            data:
+              $ref: '#/definitions/FlightOrder'
+          example:
+            data:
+              type: flight-order
+              flightOffers:
+              - type: flight-offer
+                id: '1'
+                source: GDS
+                instantTicketingRequired: false
+                nonHomogeneous: false
+                paymentCardRequired: false
+                lastTicketingDate: '2020-03-01'
+                itineraries:
+                - segments:
+                  - departure:
+                      iataCode: GIG
+                      terminal: '2'
+                      at: '2020-03-01T21:05:00'
+                    arrival:
+                      iataCode: CDG
+                      terminal: 2E
+                      at: '2020-03-02T12:20:00'
+                    carrierCode: KL
+                    number: '2410'
+                    aircraft:
+                      code: '772'
+                    operating:
+                      carrierCode: AF
+                    duration: PT11H15M
+                    id: '40'
+                    numberOfStops: 0
+                  - departure:
+                      iataCode: CDG
+                      terminal: 2F
+                      at: '2020-03-02T14:30:00'
+                    arrival:
+                      iataCode: AMS
+                      at: '2020-03-02T15:45:00'
+                    carrierCode: KL
+                    number: '1234'
+                    aircraft:
+                      code: 73H
+                    operating:
+                      carrierCode: KL
+                    duration: PT1H15M
+                    id: '41'
+                    numberOfStops: 0
+                  - departure:
+                      iataCode: AMS
+                      at: '2020-03-02T17:05:00'
+                    arrival:
+                      iataCode: MAD
+                      terminal: '2'
+                      at: '2020-03-02T19:35:00'
+                    carrierCode: KL
+                    number: '1705'
+                    aircraft:
+                      code: 73J
+                    operating:
+                      carrierCode: KL
+                    duration: PT2H30M
+                    id: '42'
+                    numberOfStops: 0
+                - segments:
+                  - departure:
+                      iataCode: MAD
+                      terminal: '2'
+                      at: '2020-03-05T20:25:00'
+                    arrival:
+                      iataCode: AMS
+                      at: '2020-03-05T23:00:00'
+                    carrierCode: KL
+                    number: '1706'
+                    aircraft:
+                      code: 73J
+                    operating:
+                      carrierCode: KL
+                    duration: PT2H35M
+                    id: '81'
+                    numberOfStops: 0
+                  - departure:
+                      iataCode: AMS
+                      at: '2020-03-06T10:40:00'
+                    arrival:
+                      iataCode: GIG
+                      terminal: '2'
+                      at: '2020-03-06T18:35:00'
+                    carrierCode: KL
+                    number: '705'
+                    aircraft:
+                      code: '772'
+                    operating:
+                      carrierCode: KL
+                    duration: PT11H55M
+                    id: '82'
+                    numberOfStops: 0
+                price:
+                  currency: USD
+                  total: '8514.96'
+                  base: '8314.00'
+                  fees:
+                  - amount: '0.00'
+                    type: SUPPLIER
+                  - amount: '0.00'
+                    type: TICKETING
+                  - amount: '0.00'
+                    type: FORM_OF_PAYMENT
+                  grandTotal: '8514.96'
+                  billingCurrency: USD
+                pricingOptions:
+                  fareType:
+                  - PUBLISHED
+                  includedCheckedBagsOnly: true
+                validatingAirlineCodes:
+                - AF
+                travelerPricings:
+                - travelerId: '1'
+                  fareOption: STANDARD
+                  travelerType: ADULT
+                  price:
+                    currency: USD
+                    total: '4849.48'
+                    base: '4749.00'
+                    taxes:
+                    - amount: '31.94'
+                      code: BR
+                    - amount: '14.68'
+                      code: CJ
+                    - amount: '5.28'
+                      code: FR
+                    - amount: '17.38'
+                      code: JD
+                    - amount: '0.69'
+                      code: OG
+                    - amount: '3.95'
+                      code: QV
+                    - amount: '12.12'
+                      code: QX
+                    - amount: '14.44'
+                      code: RN
+                  fareDetailsBySegment:
+                  - segmentId: '40'
+                    cabin: BUSINESS
+                    fareBasis: CFFBR
+                    brandedFare: BUSINESS
+                    class: C
+                    includedCheckedBags:
+                      quantity: 2
+                  - segmentId: '41'
+                    cabin: BUSINESS
+                    fareBasis: CFFBR
+                    brandedFare: BUSINESS
+                    class: J
+                    includedCheckedBags:
+                      quantity: 2
+                  - segmentId: '42'
+                    cabin: BUSINESS
+                    fareBasis: CFFBR
+                    brandedFare: BUSINESS
+                    class: J
+                    includedCheckedBags:
+                      quantity: 2
+                  - segmentId: '81'
+                    cabin: ECONOMY
+                    fareBasis: YFFBR
+                    brandedFare: FULLFLEX
+                    class: Y
+                    includedCheckedBags:
+                      quantity: 1
+                  - segmentId: '82'
+                    cabin: ECONOMY
+                    fareBasis: YFFBR
+                    brandedFare: FULLFLEX
+                    class: Y
+                    includedCheckedBags:
+                      quantity: 1
+                - travelerId: '2'
+                  fareOption: STANDARD
+                  travelerType: CHILD
+                  price:
+                    currency: USD
+                    total: '3665.48'
+                    base: '3565.00'
+                    taxes:
+                    - amount: '31.94'
+                      code: BR
+                    - amount: '14.68'
+                      code: CJ
+                    - amount: '5.28'
+                      code: FR
+                    - amount: '17.38'
+                      code: JD
+                    - amount: '0.69'
+                      code: OG
+                    - amount: '3.95'
+                      code: QV
+                    - amount: '12.12'
+                      code: QX
+                    - amount: '14.44'
+                      code: RN
+                  fareDetailsBySegment:
+                  - segmentId: '40'
+                    cabin: BUSINESS
+                    fareBasis: CFFBR
+                    brandedFare: BUSINESS
+                    class: C
+                    includedCheckedBags:
+                      quantity: 2
+                  - segmentId: '41'
+                    cabin: BUSINESS
+                    fareBasis: CFFBR
+                    brandedFare: BUSINESS
+                    class: J
+                    includedCheckedBags:
+                      quantity: 2
+                  - segmentId: '42'
+                    cabin: BUSINESS
+                    fareBasis: CFFBR
+                    brandedFare: BUSINESS
+                    class: J
+                    includedCheckedBags:
+                      quantity: 2
+                  - segmentId: '81'
+                    cabin: ECONOMY
+                    fareBasis: YFFBR
+                    brandedFare: FULLFLEX
+                    class: Y
+                    includedCheckedBags:
+                      quantity: 1
+                  - segmentId: '82'
+                    cabin: ECONOMY
+                    fareBasis: YFFBR
+                    brandedFare: FULLFLEX
+                    class: Y
+                    includedCheckedBags:
+                      quantity: 1
+              travelers:
+              - id: '1'
+                dateOfBirth: '1982-01-16'
+                name:
+                  firstName: JORGE
+                  lastName: GONZALES
+                gender: MALE
+                contact:
+                  emailAddress: jorge.gonzales833@telefonica.es
+                  phones:
+                  - deviceType: MOBILE
+                    countryCallingCode: '34'
+                    number: '480080076'
+                documents:
+                - documentType: PASSPORT
+                  birthPlace: Madrid
+                  issuanceLocation: Madrid
+                  issuanceDate: '2015-04-14'
+                  number: '00000000'
+                  expiryDate: '2025-04-14'
+                  issuanceCountry: ES
+                  validityCountry: ES
+                  nationality: ES
+                  holder: true
+              - id: '2'
+                dateOfBirth: '2012-10-11'
+                gender: FEMALE
+                contact:
+                  emailAddress: jorge.gonzales833@telefonica.es
+                  phones:
+                  - deviceType: MOBILE
+                    countryCallingCode: '34'
+                    number: '480080076'
+                name:
+                  firstName: ADRIANA
+                  lastName: GONZALES
+              remarks:
+                general:
+                - subType: GENERAL_MISCELLANEOUS
+                  text: ONLINE BOOKING FROM INCREIBLE VIAJES
+              ticketingAgreement:
+                option: DELAY_TO_CANCEL
+                delay: 6D
+              contacts:
+              - addresseeName:
+                  firstName: PABLO
+                  lastName: RODRIGUEZ
+                companyName: INCREIBLE VIAJES
+                purpose: STANDARD
+                phones:
+                - deviceType: LANDLINE
+                  countryCallingCode: '34'
+                  number: '480080071'
+                - deviceType: MOBILE
+                  countryCallingCode: '33'
+                  number: '480080072'
+                emailAddress: support@increibleviajes.es
+                address:
+                  lines:
+                  - Calle Prado, 16
+                  postalCode: '28014'
+                  cityName: Madrid
+                  countryCode: ES
+      responses:
+        '201':
+          $ref: '#/responses/returnFlightOrders'
+        '400':
+          $ref: '#/responses/400_Book'
+        default:
+          $ref: '#/responses/500'
+      description: ''
+  /booking/flight-orders/{flight-orderId}:
+    parameters:
+    - $ref: '#/parameters/flight-orderId'
+    get:
+      tags:
+      - Booking
+      operationId: getFlightOrder
+      summary: Amadeus Retrieve a Given Flight Order
+      responses:
+        '200':
+          $ref: '#/responses/returnFlightOrders'
+        '400':
+          $ref: '#/responses/400_GET_Order'
+        '404':
+          $ref: '#/responses/404'
+        default:
+          $ref: '#/responses/500'
+      description: ''
+    delete:
+      tags:
+      - Booking
+      operationId: cancelFlightOrder
+      summary: Amadeus Cancel a Given Flight Order
+      responses:
+        '204':
+          $ref: '#/responses/204'
+        '400':
+          $ref: '#/responses/400_DELETE_Order'
+        '404':
+          $ref: '#/responses/404'
+        default:
+          $ref: '#/responses/500'
+      description: ''
+  /booking/hotel-orders:
+    post:
+      summary: Amadeus Create Hotel Order
+      tags:
+      - Booking
+      description: ''
+      operationId: createHotelOrder
+      responses:
+        '201':
+          description: Created
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/HotelOrder'
+              warnings:
+                type: array
+                items:
+                  $ref: '#/definitions/Warning'
+            example:
+              data:
+                type: hotel-order
+                id: V0g2VFJaLzIwMjQtMDYtMDc=
+                hotelBookings:
+                - type: hotel-booking
+                  id: MS84OTkyMjcxMC85MDIyNDU0OQ==
+                  bookingStatus: CONFIRMED
+                  hotelProviderInformation:
+                  - hotelProviderCode: AR
+                    confirmationNumber: '89922710'
+                  roomAssociations:
+                  - hotelOfferId: '******'
+                    guestReferences:
+                    - guestReference: '1'
+                  hotelOffer:
+                    id: '******'
+                    type: hotel-offer
+                    category: TYPE_CONDITIONAL
+                    checkInDate: '2024-06-07'
+                    checkOutDate: '2024-06-08'
+                    guests:
+                      adults: 1
+                    policies:
+                      cancellations:
+                      - amount: '215.05'
+                        deadline: '2024-06-06T23:59:00+02:00'
+                      paymentType: GUARANTEE
+                    price:
+                      base: '195.50'
+                      currency: EUR
+                      sellingTotal: '215.05'
+                      taxes:
+                      - amount: '19.55'
+                        code: VALUE_ADDED_TAX
+                        currency: EUR
+                        included: false
+                        pricingFrequency: PER_STAY
+                        pricingMode: PER_PRODUCT
+                      total: '215.05'
+                      variations:
+                        changes:
+                        - endDate: '2024-06-08'
+                          startDate: '2024-06-07'
+                          base: '195.50'
+                          currency: EUR
+                    rateCode: S9R
+                    room:
+                      description:
+                        lang: EN
+                        text: Marriott Senior Discount, includes
+                      type: XMI
+                    roomQuantity: 1
+                  hotel:
+                    hotelId: ARMADAIT
+                    chainCode: AR
+                    name: AC BY MARRIOTT HOTEL AITANA
+                    self: https://test.travel.api.amadeus.com/v1/reference-data/locations/by-hotel/ARMADAIT
+                  payment:
+                    method: CREDIT_CARD
+                    paymentCard:
+                      paymentCardInfo:
+                        vendorCode: VI
+                        cardNumber: 415128XXXXXX1370
+                        expiryDate: 0826
+                        holderName: BOB SMITH
+                  travelAgentId: '00000000'
+                guests:
+                - tid: 1
+                  id: 1
+                  title: MR
+                  firstName: BOB
+                  lastName: SMITH
+                  phone: '+33679278416'
+                  email: bob.smith@email.com
+                associatedRecords:
+                - reference: WH6TRZ
+                  originSystemCode: GDS
+                self: http://test.api.amadeus.com/v2/booking/hotel-orders/V0g2VFJaLzIwMjQtMDYtMDc=
+        '400':
+          description: "Bad Request\n\ncode    | title                               | owner       | pointer               | description\n--------|-----------------------------------  |-----------  |------------------     |------------------------------------------\n477   |  INVALID FORMAT                                                |  Amadeus   | data        | If present, detail field gives more information about the parameter missing or invalid. Please correct the parameter in the request.\n8612   |  INVALID TYPE                                                  |Amadeus     |data/type     |  The type inside the data element is incorrect. Please correct the request.\n38420   |  OFFER NOT FOUND                                                |Amadeus      | data/roomAssociations/hotelOfferId  | The Offer ID put in request does not exist or has expired. Please use a valid Offer ID or get a new Offer ID.\n36801   |  INVALID OFFER ID                                              |   Amadeus   |  data/roomAssociations/hotelOfferId  | Check all the references of offer ID in the request.\n4725    |  INVALID PASSENGER ASSOCIATION                                 |  Amadeus    | data/roomAssociations  | Incoherence between the guests defined and the guests in room association. Please check number of guests and guest IDs.\n33555   |  NUMBER OF ROOMS MISMATCH BETWEEN SHOPPING AND BOOKING          |Amadeus       | data/roomAssociations |  Different number of rooms requested between Shopping and Booking\n3843    |  NUMBER IN PARTY EXCEEDS ROOM OCCUPANCY LIMIT                  |Amadeus      | data/guests or data/roomAssociations  |Too many guests in the room.\n27530   |  AT LEAST ONE ADULT IS REQUIRED                                |  Amadeus     |data/guests or data/roomAssociations     |  No adult was put as a guest\n1503    |  INVALID NUMBER OF GUESTS                    |Amadeus                    |data/guests or data/roomAssociations                    |Different number of guests requested between Shopping and Booking\n1295    |  /ID- NOT RECOGNISED                    |Hotel provider                    |data/roomAssociations/guestsReferences/hotelLoyaltyId     |The hotelLoyaltyId is not recognized by the Hotel provider.\n2997    |  RESTRICTED OPTION-NOT ALLOWED -- /FT-                    |Amadeus                    |data/guests/frequentTraveler                    |The Airline frequent flyer number is not supported by the Hotel provider.\n3215    |  INVALID LENGTH ON OPTION FOR CHAIN GIVEN -- /SI-                    |Amadeus                    |data/roomAssociations/specialRequest                    |Too long specialRequest.\n1421    |  /SI-INVALID FORMAT           |Amadeus             |data/roomAssociations/specialRequest           |Invalid format for specialRequest.\n1146    |  DEPOSIT REQUIRED                  |  Amadeus                  |   data/payment  \n1427    |  GUARANTEE REQUIRED                  |  Amadeus                  |   data/payment  \n38592   |  INVALID METHOD OF PAYMENT                  |  Hotel provider                  |   data/payment  \n38529   |  INVALID PREPAY                  |  Hotel provider                  |   data/payment  \n37576   |  INVALID PAYMENT METHOD                  |  Hotel provider                  |   data/payment  \n1207    |  Invalid Form of Guarantee                  |  Hotel provider                  |   data/payment\n1317    |  Invalid Form of Deposit                  |  Hotel provider                  |   data/payment  \n12018   |  INVALID BOOKING SOURCE NUMBER+\" /BS-\"                    |Amadeus          | data/payment                    |Travel Agend ID provided in input is incorrect.\n3659    |  CREDIT CARD DEPOSIT REQUIRED                    |Hotel provider                    | data/payment/paymentCard  \n1205    |  INVALID CREDIT CARD TYPE                    |Amadeus                    |data/payment/paymentCard/paymentCardInfo/vendorCode  \n8517    |  INVALID CREDIT CARD NUMBER                    |Hotel provider                    |data/payment/paymentCard/paymentCardInfo/cardNumber  \n1240    |  NO CREDIT CARD NUMBER GIVEN                    |Amadeus                    |data/payment/paymentCard/paymentCardInfo/cardNumber  \n28926   |  MISSING CARD VERIFICATION VALUE CVV                    |Hotel provider                    |data/payment/paymentCard/paymentCardInfo/securityCode  \n6842    |  ERR INVALID SECURITY CODE(S)                    |Hotel provider                    |data/payment/paymentCard/paymentCardInfo/securityCode  \n22425   |  CREDIT_CARD_SECURITY_CODE_REQUIRED_/G-                    |Hotel provider                    |data/payment/paymentCard/paymentCardInfo/securityCode  \n22426   |  CREDIT_CARD_SECURITY_CODE_REQUIRED_/DP                    |Hotel provider                    |data/payment/paymentCard/paymentCardInfo/securityCode  \n3682    |  CREDIT CARD NOT ACCEPTED AT HOTEL PROPERTY                    |Hotel provider                    |data/payment/paymentCard/paymentCardInfo/vendorCode                    |Credit card are not accepted by this hotel property. Please use another method of payment.\n24550   |  ERROR IN CREDIT CARD DATE /DP-                    |Hotel provider                    |data/payment/paymentCard/paymentCardInfo/expiryDate                    |Issue with credit card expiration date. Please correct.\n39871   |  VIRTUAL CREDIT CARD NOT ACCEPTED AT PROPERTY                    |Hotel provider                     |data/payment/billBack or data/payment/paymentCard/VCC                    |Please do not use a virtual credit card to book at this Hotel property.\n32315   |  PAYMENT TRANSACTION FAILED. PLEASE CHECK YOUR CREDIT CARD DATA    |Hotel provider |  data/payment/paymentCard/paymentCardInfo  \n41347   |  3DS AUTHENTIFICATION NOT PERMITTED                    |Hotel provider                    |data/payment/paymentCard/paymentCardInfo/threeDomainSecure  \n4926   |  INVALID DATA RECEIVED                    |Amadeus                    |data/payment/paymentCard/paymentCardInfo/threeDomainSecure                    |The 3DS information of the credit card does not match the ones expected for the version. Please correct it.\n5020   |  INVALID OWNER                    |Amadeus                    |data/payment/paymentCard/paymentCardInfo/threeDomainSecure                    |For Amadeus Value Hotel booking, it is mandatory to provide the owner of the credit card. Please check which credit card owner are activated for your Office.\n39283   |  CREDIT CARD AUTHORIZATION TIME-OUT        |Amadeus    \n15595   |  INVALID PRICING REQUEST                    |Amadeus                      |                  |Cannot book. Please use another Offer ID.\n12030   |  PRICING INFORMATION MISSING.                     |Amadeus                  |                      |Cannot book. Please use another Offer ID.\n37200   |  PRICE DISCREPANCY                    |Hotel provider                      |                  |Hotel provider response has a discrepancy in rate amount. Please restart from the shopping.\n41344   |  CANCELLATION DISCREPANCY                   |  Hotel provider                    |                  |  Hotel provider response has a discrepancy in cancellation policy. Please restart from the shopping.\n25860   |  CHECK VOUCHER RECEPTION AND CALL HELPDESK - BOOKING FAILURE                    |Amadeus                        |                |Link down between Amadeus and the Hotel provider. Please check before retrying that the booking is not created in the Hotel provider system.\n3664   |  NO ROOMS AVAILABLE AT REQUESTED PROPERTY                  |Hotel provider            |      |    No availability on hotel hotel provider side.\n1297   |  ROOM TYPE NOT AT LOCATION                    |Hotel provider                         |           |    Room type not available. Other room types could be available.\n3289   |  RATE NOT AVAILABLE FOR REQUESTED DATES                    |Hotel provider      |    |  No availability on hotel provider side. Same rate could be available at other dates.\n1999   |  ROOM TYPE / RATE CODE NOT AVAILABLE                    |Hotel provider                    |                  |  No availability on hotel provider side. Other room types could be available.\n3494   |  ROOM OR RATE NOT AVAILABLE OR RESTRICTED                    |Hotel provider                  |               |No availability on hotel provider side.\n6698   |  RATE NOT LOADED                    |Hotel provider                      |          |Rate does not exists on hotel provider side.\n12247   |  NO RATE FOR REQUESTED OCCUPANCY - RE-ENTER WITH LOWER OCCUPANCY                    |Hotel provider\n33440   |  THIS PROPERTY IS BLACKLISTED FOR YOUR OFFICE                    |Amadeus        |      |It is forbidden to book this hotel property from your country.\n"
+          schema:
+            $ref: '#/definitions/Errors'
+        '500':
+          description: "Internal Server Error\n\ncode    | title                                                 | owner    \n------- | ----------------------------------------------------- | ---------------\n00011   | UNABLE TO PROCESS                                     | Hotel provider\n04070   | UNABLE TO PROCESS - CONTACT HELP DESK                 | Amadeus\n16440   | BILLBACK ERROR - External Security System             | Amadeus\n31686   | BILLBACK NOT AVAILABLE - PLEASE RETRY LATER            | Amadeus\n21934   | UNABLE TO PROCESS - TIMEOUT                           | Amadeus\n38660   | UNABLE TO CREATE THE ORDER - FAILED ON PROVIDER SIDE  | Hotel provider\n42150   | PSD2 AUTHENTICATION CANNOT BE PERFORMED                | Amadeus\n"
+          schema:
+            $ref: '#/definitions/Errors'
+      parameters:
+      - in: body
+        name: body
+        schema:
+          type: object
+          properties:
+            data:
+              allOf:
+              - type: object
+                properties:
+                  type:
+                    type: string
+                    description: '"hotel-order" to create an hotel order'
+                  guests:
+                    type: array
+                    description: This is the list of all the guests with detailed information.
+                    items:
+                      allOf:
+                      - type: object
+                        properties:
+                          tid:
+                            type: integer
+                            description: "The tid is a temporary id of a guest. \n- It correlates a given guest with a room in the roomAssociation section.\n- It is arbitrarily chosen by the user and is unique."
+                        required:
+                        - tid
+                      - $ref: '#/definitions/Guest'
+                required:
+                - type
+                - guests
+              - $ref: '#/definitions/CreateHotelBooking'
+          example:
+            data:
+              type: hotel-order
+              guests:
+              - tid: 1
+                title: MR
+                firstName: BOB
+                lastName: SMITH
+                phone: '+33679278416'
+                email: bob.smith@email.com
+              travelAgent:
+                contact:
+                  email: bob.smith@email.com
+              roomAssociations:
+              - guestReferences:
+                - guestReference: '1'
+                hotelOfferId: 4L8PRJPEN7
+              payment:
+                method: CREDIT_CARD
+                paymentCard:
+                  paymentCardInfo:
+                    vendorCode: VI
+                    cardNumber: '4151289722471370'
+                    expiryDate: 2026-08
+                    holderName: BOB SMITH
+        description: ''
+  /ordering/transfer-orders:
+    post:
+      tags:
+      - Booking
+      operationId: createTransferOrder
+      summary: Amadeus Performs a Transfer Reservation.
+      parameters:
+      - in: query
+        name: offerId
+        type: string
+        required: true
+        description: transfer offer id from shopping/transfer-offers response
+      - name: body
+        in: body
+        required: true
+        schema:
+          title: Body_Reservation
+          required:
+          - data
+          properties:
+            data:
+              type: object
+              title: Body_Reservation_Data
+              required:
+              - passengers
+              - payment
+              properties:
+                note:
+                  description: note to driver
+                  type: string
+                flightNumber:
+                  description: flight number. Mandatory if service provider has setting "FLIGHT_NUMBER_REQUIRED"
+                  type: string
+                passengers:
+                  type: array
+                  items:
+                    $ref: '#/definitions/Passenger'
+                agency:
+                  $ref: '#/definitions/Agency'
+                payment:
+                  $ref: '#/definitions/Payment'
+                equipment:
+                  type: array
+                  items:
+                    $ref: '#/definitions/Equipment'
+                extraServices:
+                  type: array
+                  items:
+                    $ref: '#/definitions/ExtraService'
+                loyaltyNumber:
+                  $ref: '#/definitions/LoyaltyNumber'
+                corporation:
+                  $ref: '#/definitions/Corporation'
+                startConnectedSegment:
+                  $ref: '#/definitions/TravelSegment'
+                endConnectedSegment:
+                  $ref: '#/definitions/TravelSegment'
+              example:
+                data:
+                  note: Note to driver
+                  passengers:
+                  - firstName: John
+                    lastName: Doe
+                    title: MR
+                    contacts:
+                      phoneNumber: '+33123456789'
+                      email: user@email.com
+                    billingAddress:
+                      line: Avenue de la Bourdonnais, 19
+                      zip: '75007'
+                      countryCode: FR
+                      cityName: Paris
+                  agency:
+                    contacts:
+                    - email:
+                        address: abc@test.com
+                  payment:
+                    methodOfPayment: CREDIT_CARD
+                    creditCard:
+                      number: '4111111111111111'
+                      holderName: JOHN DOE
+                      vendorCode: VI
+                      expiryDate: '1018'
+                      cvv: '111'
+                  extraServices:
+                  - code: EWT
+                    itemId: EWT0291
+                  equipment:
+                  - code: BBS
+                  corporation:
+                    address:
+                      line: 5 Avenue Anatole France
+                      zip: '75007'
+                      countryCode: FR
+                      cityName: Paris
+                    info:
+                      AU: FHOWMD024
+                      CE: 280421GH
+                  startConnectedSegment:
+                    transportationType: FLIGHT
+                    transportationNumber: AF380
+                    departure:
+                      uicCode: '7400001'
+                      iataCode: CDG
+                      localDateTime: '2021-03-27T20:03:00'
+                    arrival:
+                      uicCode: '7400001'
+                      iataCode: CDG
+                      localDateTime: '2021-03-27T20:03:00'
+                  endConnectedSegment:
+                    transportationType: FLIGHT
+                    transportationNumber: AF380
+                    departure:
+                      uicCode: '7400001'
+                      iataCode: CDG
+                      localDateTime: '2021-03-27T20:03:00'
+                    arrival:
+                      uicCode: '7400001'
+                      iataCode: CDG
+                      localDateTime: '2021-03-27T20:03:00'
+          example:
+            data:
+              note: Note to driver
+              passengers:
+              - firstName: John
+                lastName: Doe
+                title: MR
+                contacts:
+                  phoneNumber: '+33123456789'
+                  email: user@email.com
+                billingAddress:
+                  line: Avenue de la Bourdonnais, 19
+                  zip: '75007'
+                  countryCode: FR
+                  cityName: Paris
+              agency:
+                contacts:
+                - email:
+                    address: abc@test.com
+              payment:
+                methodOfPayment: CREDIT_CARD
+                creditCard:
+                  number: '4111111111111111'
+                  holderName: JOHN DOE
+                  vendorCode: VI
+                  expiryDate: '1018'
+                  cvv: '111'
+              extraServices:
+              - code: EWT
+                itemId: EWT0291
+              equipment:
+              - code: BBS
+              corporation:
+                address:
+                  line: 5 Avenue Anatole France
+                  zip: '75007'
+                  countryCode: FR
+                  cityName: Paris
+                info:
+                  AU: FHOWMD024
+                  CE: 280421GH
+              startConnectedSegment:
+                transportationType: FLIGHT
+                transportationNumber: AF380
+                departure:
+                  uicCode: '7400001'
+                  iataCode: CDG
+                  localDateTime: '2021-03-27T20:03:00'
+                arrival:
+                  uicCode: '7400001'
+                  iataCode: CDG
+                  localDateTime: '2021-03-27T20:03:00'
+              endConnectedSegment:
+                transportationType: FLIGHT
+                transportationNumber: AF380
+                departure:
+                  uicCode: '7400001'
+                  iataCode: CDG
+                  localDateTime: '2021-03-27T20:03:00'
+                arrival:
+                  uicCode: '7400001'
+                  iataCode: CDG
+                  localDateTime: '2021-03-27T20:03:00'
+      responses:
+        '201':
+          $ref: '#/responses/transfer_order'
+        '400':
+          $ref: '#/responses/400_createTransferOrder'
+        '401':
+          $ref: '#/responses/401'
+        default:
+          $ref: '#/responses/500_2'
+      description: ''
+  /ordering/transfer-orders/{orderId}/transfers/cancellation:
+    post:
+      tags:
+      - Booking
+      operationId: cancelTransfer
+      summary: Amadeus Cancel a Transfer in an Existing OrderId.
+      parameters:
+      - name: orderId
+        in: path
+        type: string
+        required: true
+        description: transfer order identifier
+      - name: confirmNbr
+        in: query
+        type: string
+        required: true
+        description: transfer identifier - confirmation number from transfer supplier that identifies the ride
+      responses:
+        '200':
+          $ref: '#/responses/transfer_cancel'
+        '400':
+          $ref: '#/responses/400'
+        '401':
+          $ref: '#/responses/401'
+        '404':
+          $ref: '#/responses/404'
+        default:
+          $ref: '#/responses/500_3'
+      description: ''
+definitions:
+  TransferCancellation:
+    type: object
+    description: information returned in cancelation response
+    properties:
+      confirmNbr:
+        type: string
+        description: transfer identifier - confirmation number from service provider that identifies the ride
+      reservationStatus:
+        type: string
+        enum:
+        - CANCELLED
+        - CONFIRMED
+        description: status of reservation
+  Contact_2:
+    type: object
+    properties:
+      phoneNumber:
+        type: string
+        pattern: ([+]?)[0-9]{1,20}
+        description: Contact phone number
+      email:
+        type: string
+        format: email
+        description: Contact email
+  Co2Emission:
+    type: object
+    properties:
+      weight:
+        description: Weight of Co2 emitted for the concerned segment
+        type: integer
+        example: 90
+      weightUnit:
+        description: Code to qualify unit as pounds or kilos
+        type: string
+        example: KG
+      cabin:
+        $ref: '#/definitions/TravelClass'
+  OriginalFlightStop:
+    description: details of stops for direct or change of gauge flights
+    type: object
+    properties:
+      iataCode:
+        description: '[IATA airline codes](http://www.iata.org/publications/Pages/code-search.aspx)'
+        type: string
+        example: JFK
+      duration:
+        type: string
+        description: stop duration in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) PnYnMnDTnHnMnS format, e.g. PT2H10M
+        example: PT2H10M
+  Name:
+    title: name
+    description: name
+    allOf:
+    - $ref: '#/definitions/BaseName'
+    - type: object
+      properties:
+        secondLastName:
+          description: second last name
+          type: string
+  SliceDiceIndicator:
+    description: slice and Dice indicator, such as Local Availability, Sub OnD(Origin and Destination) 1 Availability and Sub OnD 2 Availability
+    type: string
+    enum:
+    - LOCAL_AVAILABILITY
+    - SUB_OD_AVAILABILITY_1
+    - SUB_OD_AVAILABILITY_2
+  Error_500_2:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/Issue_2'
+    required:
+    - errors
+    example:
+      errors:
+      - status: 500
+        code: 141
+        title: SYSTEM ERROR HAS OCCURRED
+  CarrierEntry:
+    additionalProperties:
+      description: the carrier name
+      type: string
+  ElementaryPrice:
+    description: elementaryPrice
+    type: object
+    properties:
+      amount:
+        type: string
+        description: Amount of the fare. could be alpha numeric. Ex- 500.20 or 514.13A, 'A'signifies additional collection.
+      currencyCode:
+        type: string
+        description: Currency type of the fare.
+  TravelSegmentLocation:
+    description: The flight or train departure/arrival date&time, location information
+    type: object
+    properties:
+      uicCode:
+        type: string
+        description: The railway UIC code defined by the worldwide railway organization, e.g. 7400001
+        example: 7400001
+      iataCode:
+        type: string
+        description: The airport code from IATA table codes, e.g. CDG
+        example: CDG
+      localDateTime:
+        type: string
+        description: The date and time inspired from ISO 8601 (YYYY-MM-DDTHH:MM:SS) format
+        format: date-time
+        example: '2021-03-27T20:03:00'
+  CurrencyEntry:
+    additionalProperties:
+      type: string
+      example: EUR
+  HotelOrder:
+    title: HotelOrder
+    type: object
+    description: An Hotel Order is one or several hotel bookings done for a set of guest.
+    properties:
+      hotelBookings:
+        type: array
+        uniqueItems: true
+        minItems: 1
+        description: Array of hotel-bookings
+        items:
+          $ref: '#/definitions/HotelBooking'
+      associatedRecords:
+        type: array
+        uniqueItems: false
+        minItems: 1
+        description: Reference and origin of the hotel order record
+        items:
+          type: object
+          properties:
+            reference:
+              type: string
+              description: Record locator of the PNR in which the hotel order is stored in Amadeus GDS.
+              example: ABCDEF
+              minLength: 6
+              maxLength: 6
+              pattern: ^[A-Z0-9]{6}$
+            originSystemCode:
+              type: string
+              minLength: 1
+              description: As the reference is a PNR record locator, the originSystemCode is set to GDS.
+              example: GDS
+          required:
+          - reference
+          - originSystemCode
+      self:
+        type: string
+        minLength: 1
+        description: Self URL for retrieving the Hotel Order
+      type:
+        type: string
+        minLength: 1
+        description: Resource name - Is set to "hotel-order"
+      guests:
+        $ref: '#/definitions/Guests'
+      id:
+        type: string
+        description: "Id of the hotelorder. \nIt is a crucial information and must be stored in the client system as it is mandatory to provide it in any further step such as cancel or retrieve."
+        minLength: 1
+        pattern: '[A-Za-z0-9+/=]'
+        example: '12312'
+    required:
+    - hotelBookings
+    - associatedRecords
+    - self
+    - type
+    - guests
+    - id
+  Error_401:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/Issue_2'
+    required:
+    - errors
+    example:
+      errors:
+      - status: 401
+        code: 20
+        title: RESTRICTED
+        detail: Query unauthorized
+  AutomatedProcess:
+    title: Automated Process
+    description: automatic process applied to the Order
+    allOf:
+    - $ref: '#/definitions/AutomatedProcessCommon'
+    - type: object
+      properties:
+        delay:
+          description: Delay before applying process in days
+          type: string
+        officeId:
+          description: Office into which the process must be triggered.
+          type: string
+          example: NCE1A0955
+        dateTime:
+          type: string
+          format: date-time
+          description: Datetime limit at which the process takes action in case issuance is not done.
+  CreditCard:
+    title: creditCard
+    type: object
+    description: credit card
+    allOf:
+    - $ref: '#/definitions/CreditCardCommon'
+    - type: object
+      properties:
+        securityCode:
+          description: card security code
+          type: string
+          example: '123'
+        flightOfferIds:
+          description: Id of the concern flightOffers
+          type: array
+          minItems: 1
+          maxItems: 6
+          items:
+            type: string
+          example: '1'
+  ContactWithAddress:
+    allOf:
+    - $ref: '#/definitions/Contact_2'
+    - type: object
+      properties:
+        address:
+          $ref: '#/definitions/AddressCommon'
+    description: Contact and Adress details
+  ExtraService:
+    type: object
+    required:
+    - code
+    properties:
+      code:
+        type: string
+        description: "extra service code, which can take following values\n\ncode   | name                                 \n------ | ---------------------------- \nDSL    | Driver language specified\nEWT    | Extra waiting time\nMAG    | Meet & Greet\nFLM    | Flight monitoring\nNWS    | Newspaper\nCAI    | Cancellation insurance\nWNR    | Wait and Return. Driver waits at destination and brings back the customer to pick-up point\n"
+        enum:
+        - DSL
+        - EWT
+        - MAG
+        - FLM
+        - NWS
+        - CAI
+        - WNR
+      itemId:
+        type: string
+        description: extra service identifier
+      description:
+        type: string
+        description: extra service description
+      metricType:
+        type: string
+        description: extra service time metric type
+        enum:
+        - YEARS
+        - DAYS
+        - HOURS
+        - MINUTES
+      metricValue:
+        type: string
+        description: extra service metric value
+      quotation:
+        $ref: '#/definitions/Quotation'
+      converted:
+        $ref: '#/definitions/Quotation'
+      isBookable:
+        type: boolean
+        description: true if extra service is available for booking
+      taxIncluded:
+        type: boolean
+        description: true if tax included in extra service price
+      includedInTotal:
+        type: boolean
+        description: true if extra service price is included in total transfer amount
+  Stakeholder:
+    type: object
+    description: stakeholder definition
+    properties:
+      id:
+        description: item identifier
+        type: string
+      dateOfBirth:
+        type: string
+        format: date
+        description: The date of birth in ISO 8601 format (yyyy-mm-dd)
+      gender:
+        $ref: '#/definitions/StakeholderGender'
+      name:
+        $ref: '#/definitions/Name'
+      documents:
+        type: array
+        description: Advanced Passenger Information - regulatory identity documents - SSR DOCS & DOCO elements
+        items:
+          $ref: '#/definitions/IdentityDocument'
+  Distance:
+    properties:
+      value:
+        description: great-circle distance between two locations. This distance thus do not take into account traffic conditions; international boundaries; mountains; water; or other elements that might make the a nearby location hard to reach.
+        type: integer
+        example: 152
+      unit:
+        description: unit of the distance
+        type: string
+        example: KM
+        enum:
+        - KM
+        - MI
+  Issue:
+    type: object
+    properties:
+      status:
+        description: the HTTP status code applicable to this error
+        type: integer
+      code:
+        description: an application-specific error code
+        type: integer
+        format: int64
+      title:
+        description: a short summary of the error
+        type: string
+      detail:
+        description: explanation of the error
+        type: string
+      source:
+        type: object
+        title: Issue_Source
+        description: an object containing references to the source of the error
+        maxProperties: 1
+        properties:
+          pointer:
+            description: a JSON Pointer [RFC6901] to the associated entity in the request document
+            type: string
+          parameter:
+            description: a string indicating which URI query parameter caused the issue
+            type: string
+          example:
+            description: a string indicating an example of the right value
+            type: string
+  HotelProduct_DepositPolicy:
+    title: HotelProduct_DepositPolicy
+    type: object
+    description: the deposit/prepay policy information applicable to the offer. It includes accepted payments, deadline and the amount due
+    properties:
+      amount:
+        type: string
+        description: Deposit-Prepay amount
+        pattern: ^\\d+(\\.\\d+)?$
+      deadline:
+        type: string
+        format: date-time
+        description: "The date and time of the deadline in ISO 8601[https://www.w3.org/TR/NOTE-datetime]. \n Example: 2010-08-14T13:00:00\n Please note that this value is expressed in the hotels local time zone\n"
+      description:
+        $ref: '#/definitions/QualifiedFreeText'
+      acceptedPayments:
+        $ref: '#/definitions/HotelProduct_PaymentPolicy'
+  VirtualCreditCardDetails:
+    description: detail information of the virtual card
+    allOf:
+    - $ref: '#/definitions/CreditCardCommon'
+    - $ref: '#/definitions/ElementaryPrice'
+  Price_2:
+    type: object
+    description: Price valuation information
+    title: Price
+    properties:
+      currency:
+        type: string
+        description: currency Code apply to all elements of the price
+      sellingTotal:
+        type: string
+        description: sellingTotal = Total + margins + markup + totalFees - discounts
+      total:
+        type: string
+        description: total = base + totalTaxes
+      base:
+        type: string
+      markups:
+        type: array
+        items:
+          title: Markup
+          type: object
+          description: Markup applied to provide a service or a product to the client. Typical use case is to convey markup information set by the travel agent.
+          properties:
+            amount:
+              type: string
+              description: Defines the monetary value with decimal position as a String.
+              example: '10'
+  ChargeableCheckdBags:
+    description: Details of chargeable checked bags
+    allOf:
+    - $ref: '#/definitions/BaggageAllowance'
+    - type: object
+      properties:
+        id:
+          description: Id of the chargeable bag
+          type: string
+          example: '1'
+  Name_2:
+    type: object
+    description: description of the name of a physical person
+    properties:
+      type:
+        description: The type of the Name
+        type: string
+      firstName:
+        description: First name.
+        type: string
+      lastName:
+        description: Last name.
+        type: string
+      title:
+        description: Contains all the suffixes and prefixes that can be appended to a name - Mr, Miss, Pr. - E.g. " Mr".
+        type: string
+  Error_400_2:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/Issue_2'
+    required:
+    - errors
+    example:
+      errors:
+      - status: 400
+        code: 4926
+        title: INVALID DATA RECEIVED
+        detail: Transfer type is not valid
+        source:
+          parameter: transferType
+  StakeholderGender:
+    type: string
+    description: Gender for individual
+    enum:
+    - MALE
+    - FEMALE
+    - UNSPECIFIED
+    - UNDISCLOSED
+    title: Gender
+    example: FEMALE
+  Quotation:
+    description: quotation representing a price valuation and its components. The monetaryAmount at the root are the sum of base and all the taxes/fees/discounts
+    allOf:
+    - $ref: '#/definitions/PointsAndCash'
+    - type: object
+      properties:
+        currencyCode:
+          type: string
+          example: USD
+        isEstimated:
+          type: boolean
+          description: indicates if the price is pre-estimated prior to ride. Becomes mandatory for transferType = TAXI
+        base:
+          description: base price
+          allOf:
+          - $ref: '#/definitions/PointsAndCash'
+        discount:
+          description: discount amount of base price
+          allOf:
+          - $ref: '#/definitions/PointsAndCash'
+        taxes:
+          description: Taxes breakdown
+          type: array
+          items:
+            $ref: '#/definitions/Tax_2'
+        fees:
+          description: Fees breakdown
+          type: array
+          items:
+            $ref: '#/definitions/Fee_2'
+        totalTaxes:
+          $ref: '#/definitions/PointsAndCash'
+        totalFees:
+          $ref: '#/definitions/PointsAndCash'
+  ServiceName:
+    description: type of service
+    type: string
+    enum:
+    - PRIORITY_BOARDING
+    - AIRPORT_CHECKIN
+    example: PRIORITY_BOARDING
+  Baggage:
+    type: object
+    properties:
+      count:
+        type: integer
+        description: baggage capacity
+        example: 3
+      size:
+        type: string
+        description: "baggage size\n\ncode   | name                                 \n------ | ---------------------------- \nS \t   | Small\nM \t   | Medium\nL \t   | Large\n"
+        enum:
+        - S
+        - M
+        - L
+  Tax:
+    description: a tax
+    type: object
+    properties:
+      amount:
+        type: string
+        example: '332.70'
+      code:
+        type: string
+        example: MX
+  Collection_Meta_Link:
+    type: object
+    title: Collection_Meta
+    properties:
+      count:
+        type: integer
+        example: 1
+      links:
+        type: object
+        title: CollectionLinks
+        properties:
+          self:
+            type: string
+            format: uri
+            example: https://test.api.amadeus.com/v1/area/resources?...
+          next:
+            type: string
+            format: uri
+            example: https://test.api.amadeus.com/v1/area/resources?...
+          previous:
+            type: string
+            format: uri
+            example: https://test.api.amadeus.com/v1/area/resources?...
+          last:
+            type: string
+            format: uri
+            example: https://test.api.amadeus.com/v1/area/resources?...
+          first:
+            type: string
+            format: uri
+            example: https://test.api.amadeus.com/v1/area/resources?...
+          up:
+            type: string
+            format: uri
+            example: https://test.api.amadeus.com/v1/area/resources?...
+        example:
+          self: https://test.api.amadeus.com/v1/area/resources?param=value
+  PartnerInfo:
+    type: object
+    description: Information about partner/subprovider. Below settings configuration is not applicable for sub-provider. Fields 'code', 'name' and 'logoUrl' are not mandatory for sub-provider.
+    properties:
+      serviceProvider:
+        $ref: '#/definitions/ServiceProvider'
+  Discount:
+    title: Discount
+    description: traveler discount
+    type: object
+    properties:
+      subType:
+        $ref: '#/definitions/DiscountType'
+      cityName:
+        type: string
+        description: city of residence
+        example: MADRID
+      travelerType:
+        $ref: '#/definitions/DiscountTravelerType'
+      cardNumber:
+        type: string
+        description: resident card number
+        example: 12568215Z
+        pattern: '[0-9A-Z][0-9]{0,12}[A-Z]'
+      certificateNumber:
+        type: string
+        description: resident certificate number
+        example: 12568215Z
+        pattern: '[0-9A-Z][0-9]{0,12}[A-Z]'
+  OriginalFlightEndPoint:
+    type: object
+    description: departure or arrival information
+    properties:
+      iataCode:
+        description: '[IATA airline codes](http://www.iata.org/publications/Pages/code-search.aspx)'
+        type: string
+        example: JFK
+      terminal:
+        description: terminal name / number
+        type: string
+        example: T2
+  FormOfIdentification:
+    type: object
+    description: alternative means of identifying stakeholders for eTicket.
+    properties:
+      identificationType:
+        type: string
+        description: Type of identification
+        enum:
+        - DRIVERS_LICENSE
+        - PASSPORT
+        - NATIONAL_IDENTITY_CARD
+        - BOOKING_CONFIRMATION
+        - TICKET
+        - OTHER_ID
+        example: PASSPORT
+      carrierCode:
+        type: string
+        description: providing the airline / carrier code
+        minLength: 1
+        maxLength: 2
+        example: DL
+      number:
+        type: string
+        description: identification number relative to the type of identification either ticket number, booking number, passport number, identity card number, drivers licence number, other ID
+        example: XN0019390
+      travelerIds:
+        description: Ids of the concerned travelers
+        type: array
+        items:
+          type: string
+        example: '1'
+      flightOfferIds:
+        description: Id of the concerned flightOffers
+        type: array
+        minItems: 1
+        maxItems: 6
+        items:
+          type: string
+        example: '1'
+    title: FormOfIdentification
+  Issue_2:
+    properties:
+      status:
+        description: the HTTP status code applicable to this error
+        type: integer
+      code:
+        description: an application-specific error code
+        type: integer
+        format: int64
+      title:
+        description: a short summary of the error
+        type: string
+      detail:
+        description: explanation of the error
+        type: string
+      source:
+        type: object
+        title: Issue_Source
+        description: an object containing references to the source of the error
+        maxProperties: 1
+        properties:
+          pointer:
+            description: a JSON Pointer [RFC6901] to the associated entity in the request document
+            type: string
+          parameter:
+            description: a string indicating which URI query parameter caused the issue
+            type: string
+          example:
+            description: a string indicating an example of the right value
+            type: string
+  Address:
+    type: object
+    description: address information
+    properties:
+      lines:
+        type: array
+        description: "Line 1 = Street address, Line 2 = Apartment, suite, unit, building, floor, etc \nEach line is limited to 35 characters"
+        items:
+          type: string
+      postalCode:
+        type: string
+        description: 'Example: 74130'
+      countryCode:
+        type: string
+        description: country code [ISO 3166-1 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+        pattern: '[a-zA-Z]{2}'
+      cityName:
+        type: string
+        description: 'Full city name. Example: Dublin'
+        pattern: '[a-zA-Z -]{1,35}'
+      stateName:
+        type: string
+        description: Full state name
+      postalBox:
+        type: string
+        description: E.g. BP 220
+  AssociatedRecord:
+    title: associated record
+    description: record associated to the order
+    allOf:
+    - $ref: '#/definitions/AssociatedRecordCommon'
+    - type: object
+      properties:
+        flightOfferId:
+          type: string
+          description: id of the impacted flight offer
+          example: '1'
+  AddressCommon:
+    description: address of the departure location
+    properties:
+      line:
+        description: Address line with street, number, bulding, etc...
+        type: string
+        minLength: 1
+        maxLength: 70
+      zip:
+        description: Post office code number
+        type: string
+        minLength: 1
+        maxLength: 120
+      countryCode:
+        description: Country code (two character standard IATA country code)
+        type: string
+        pattern: '[a-zA-Z]{2}'
+      cityName:
+        description: City, town or postal station
+        type: string
+        minLength: 1
+        maxLength: 35
+      stateCode:
+        description: State code (two character standard IATA state code)
+        type: string
+        pattern: '[a-zA-Z0-9]{1-2}'
+  FormOfPayment:
+    title: Form Of Payment
+    description: form of payment used
+    type: object
+    properties:
+      b2bWallet:
+        description: payment with the solution B2B Wallet
+        $ref: '#/definitions/B2bWallet'
+      creditCard:
+        description: payment with a credit card
+        $ref: '#/definitions/CreditCard'
+      other:
+        description: payment with an other method
+        $ref: '#/definitions/OtherMethod'
+  OtherMethod:
+    title: creditCard
+    type: object
+    description: other payment method
+    properties:
+      method:
+        $ref: '#/definitions/OtherPaymentMethod'
+      flightOfferIds:
+        description: Id of the concern flightOffers
+        type: array
+        minItems: 1
+        maxItems: 6
+        items:
+          type: string
+        example: '1'
+  BaggageAllowance:
+    description: baggageAllowance
+    type: object
+    properties:
+      quantity:
+        type: integer
+        description: Total number of units
+        example: 1
+      weight:
+        type: integer
+        description: Weight of the baggage allowance
+        example: 20
+      weightUnit:
+        type: string
+        description: Code to qualify unit as pounds or kilos
+        example: KG
+  Guests:
+    type: array
+    items:
+      allOf:
+      - type: object
+        properties:
+          tid:
+            type: integer
+            description: "The tid is a temporary unique id of a guest. \nIt is arbitrarily chosen by the user until Amadeus application provides one."
+          id:
+            type: integer
+            description: unique id of the Guest provided by Amadeus application
+        required:
+        - id
+      - $ref: '#/definitions/Guest'
+    description: Array of guests sharing the hotelOrder.
+  IdentityDocument:
+    title: traveler documents
+    description: documents of the traveler
+    allOf:
+    - $ref: '#/definitions/Document'
+    - type: object
+      properties:
+        documentType:
+          $ref: '#/definitions/DocumentType'
+        validityCountry:
+          type: string
+          description: '[ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country where the document is valid'
+          example: IN
+          pattern: '[a-zA-Z]{2}'
+        birthCountry:
+          type: string
+          description: '[ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country of birth'
+          example: FR
+          pattern: '[a-zA-Z]{2}'
+        holder:
+          type: boolean
+          description: boolean to specify if the traveler is the holder of the document
+          example: true
+  TransferReservation:
+    description: transfer reservation
+    allOf:
+    - type: object
+      properties:
+        confirmNbr:
+          type: string
+          description: transfer identifier - confirmation number, received from transfer supplier
+        status:
+          type: string
+          description: status of transfer reservation
+          enum:
+          - CONFIRMED
+          - CANCELLED
+        note:
+          type: string
+          description: Note to transfer provider
+        methodOfPayment:
+          type: string
+          description: Method of payment required when PaymentType equal BT (applicable only for reservation action).
+          enum:
+          - CREDIT_CARD
+          - INVOICE
+          - TRAVEL_ACCOUNT
+          - PAYMENT_SERVICE_PROVIDER
+        paymentServiceProvider:
+          type: string
+          description: payment service provider details will be passed to provider in case "PAYMENT_SERVICE_PROVIDER" method of payment.
+          enum:
+          - STRIPE_CONNECT
+        offerId:
+          type: string
+          description: offer identifier
+    - $ref: '#/definitions/Transfer'
+  TicketingAgreement:
+    title: Ticketing Agreement
+    description: ticketing agreement
+    type: object
+    properties:
+      option:
+        $ref: '#/definitions/TicketingAgreementOption'
+      delay:
+        description: Delay before applying automatic process if no issuance in days
+        type: string
+      dateTime:
+        description: Exact date to apply automatic process if no issuance. YYYY-MM-DD format, e.g. 2019-06-07
+        type: string
+        readOnly: true
+        example: '2017-10-23'
+      segmentIds:
+        description: Ids of the impacted segments
+        type: array
+        readOnly: true
+        items:
+          type: string
+        example: '1'
+  AdditionalServiceType:
+    type: string
+    description: additional service type
+    enum:
+    - CHECKED_BAGS
+    - MEALS
+    - SEATS
+    - OTHER_SERVICES
+    example: CHECKED_BAGS
+  ServiceProvider:
+    type: object
+    description: information about provider
+    required:
+    - code
+    - name
+    - logoUrl
+    properties:
+      code:
+        type: string
+        pattern: '[a-zA-Z]{3}'
+        description: provider code
+      name:
+        type: string
+        pattern: '[a-zA-Z]{30}'
+        description: provider name
+      logoUrl:
+        type: string
+        description: URL to provider logo
+      termsUrl:
+        type: string
+        description: URL to provider's terms and conditions page
+      isPreferred:
+        type: boolean
+        description: indicates if sub-provider is preferred for the travel-seller
+      contacts:
+        $ref: '#/definitions/ContactWithAddress'
+      settings:
+        type: array
+        description: list of provider settings
+        items:
+          type: string
+          description: provider setting
+          enum:
+          - BILLING_ADDRESS_REQUIRED
+          - FLIGHT_NUMBER_REQUIRED
+          - CVV_NUMBER_REQUIRED
+      businessIdentification:
+        description: Information about the Customer stakeholder participating to the described sales summary.
+        properties:
+          vatRegistrationNumber:
+            type: string
+            description: VAT (Value Added Tax) Registration Number of the customer applicable ot the current sales.
+  LoyaltyProgram:
+    title: LoyaltyProgram
+    description: loyalty program information
+    type: object
+    properties:
+      programOwner:
+        type: string
+        description: loyalty program airline code
+        example: AF
+      id:
+        type: string
+        description: loyalty program number
+        example: '12357466574'
+  FlightOffer:
+    title: Flight-offer
+    type: object
+    required:
+    - type
+    - id
+    properties:
+      type:
+        type: string
+        description: the resource name
+        example: flight-offer
+      id:
+        description: Id of the flight offer
+        type: string
+        example: '1'
+      source:
+        $ref: '#/definitions/FlightOfferSource'
+      instantTicketingRequired:
+        description: If true, inform that a ticketing will be required at booking step.
+        type: boolean
+        example: false
+      disablePricing:
+        description: BOOK step ONLY - If true, allows to book a PNR without pricing. Only for the source "GDS"
+        type: boolean
+        example: false
+      nonHomogeneous:
+        description: If true, upon completion of the booking, this pricing solution is expected to yield multiple records (a record contains booking information confirmed and stored, typically a Passenger Name Record (PNR), in the provider GDS or system)
+        type: boolean
+        example: false
+      oneWay:
+        description: If true, the flight offer can be combined with other oneWays flight-offers to complete the whole journey (one-Way combinable feature).
+        type: boolean
+        example: false
+      paymentCardRequired:
+        description: If true, a payment card is mandatory to book this flight offer
+        type: boolean
+        example: false
+      lastTicketingDate:
+        description: If booked on the same day as the search (with respect to timezone), this flight offer is guaranteed to be thereafter valid for ticketing until this date (included). Unspecified when it does not make sense for this flight offer (e.g. no control over ticketing once booked). YYYY-MM-DD format, e.g. 2019-06-07
+        type: string
+        example: '2018-06-19'
+      lastTicketingDateTime:
+        description: If booked on the same day as the search (with respect to timezone), this flight offer is guaranteed to be thereafter valid for ticketing until this date/time (included). Unspecified when it does not make sense for this flight offer (e.g. no control over ticketing once booked). Information only this attribute is not used in input of pricing request. Local date and time in YYYY-MM-ddThh:mm:ss format, e.g. 2017-02-10T20:40:00
+        type: string
+        format: date-time
+        example: '2018-06-19T15:00:00'
+      numberOfBookableSeats:
+        description: Number of seats bookable in a single request. Can not be higher than 9.
+        type: number
+        example: 9
+        minimum: 1
+        maximum: 9
+      itineraries:
+        type: array
+        minItems: 1
+        maxItems: 250
+        items:
+          title: Itineraries
+          type: object
+          properties:
+            duration:
+              description: duration in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) PnYnMnDTnHnMnS format, e.g. PT2H10M for a duration of 2h10m
+              type: string
+              example: PT2H10M
+            segments:
+              title: Segments
+              type: array
+              minItems: 1
+              maxItems: 9
+              items:
+                $ref: '#/definitions/Segment'
+          required:
+          - segments
+      price:
+        $ref: '#/definitions/Extended_Price'
+      pricingOptions:
+        title: PricingOptions
+        type: object
+        properties:
+          fareType:
+            description: type of fare of the flight-offer
+            $ref: '#/definitions/PricingOptionsFareType'
+          includedCheckedBagsOnly:
+            type: boolean
+            description: If true, returns the flight-offers with included checked bags only
+            example: true
+          refundableFare:
+            type: boolean
+            description: If true, returns the flight-offers with refundable fares only
+            example: true
+          noRestrictionFare:
+            type: boolean
+            description: If true, returns the flight-offers with no restriction fares only
+            example: true
+          noPenaltyFare:
+            type: boolean
+            description: If true, returns the flight-offers with no penalty fares only
+            example: true
+      validatingAirlineCodes:
+        description: This option ensures that the system will only consider offers with these airlines as validating carrier.
+        type: array
+        minItems: 1
+        maxItems: 9
+        items:
+          type: string
+        example:
+        - AF
+      travelerPricings:
+        title: TravelerPricings
+        description: Fare information for each traveler/segment
+        type: array
+        minItems: 1
+        maxItems: 18
+        items:
+          title: TravelerPricing
+          required:
+          - travelerId
+          - fareOption
+          - travelerType
+          - fareDetailsBySegment
+          properties:
+            travelerId:
+              type: string
+              example: '1'
+              description: Id of the traveler
+            fareOption:
+              $ref: '#/definitions/TravelerPricingFareOption'
+            travelerType:
+              $ref: '#/definitions/TravelerType'
+            associatedAdultId:
+              type: string
+              description: if type="HELD_INFANT", corresponds to the adult traveler's id who will share the seat
+            price:
+              description: price detail of the traveler
+              $ref: '#/definitions/Price'
+            fareDetailsBySegment:
+              type: array
+              minItems: 1
+              maxItems: 18
+              items:
+                title: FareDetailsBySegment
+                description: Fare details of the segment
+                required:
+                - segmentId
+                properties:
+                  segmentId:
+                    type: string
+                    example: '1'
+                    description: Id of the segment
+                  cabin:
+                    $ref: '#/definitions/TravelClass'
+                  fareBasis:
+                    description: Fare basis specifying the rules of a fare. Usually, though not always, is composed of the booking class code followed by a set of letters and digits representing other characteristics of the ticket, such as refundability, minimum stay requirements, discounts or special promotional elements.
+                    type: string
+                    example: ANNNNF4K
+                    pattern: '[[A-Z0-9]{1,18}'
+                  brandedFare:
+                    description: The name of the Fare Family corresponding to the fares. Only for the GDS provider and if the airline has fare families filled
+                    type: string
+                    example: LIGHTONE
+                  class:
+                    description: The code of the booking class, a.k.a. class of service or Reservations/Booking Designator (RBD)
+                    type: string
+                    example: A
+                    pattern: '[A-Z]{1}'
+                  isAllotment:
+                    description: True if the corresponding booking class is in an allotment
+                    type: boolean
+                    example: true
+                  allotmentDetails:
+                    $ref: '#/definitions/AllotmentDetails'
+                  sliceDiceIndicator:
+                    $ref: '#/definitions/SliceDiceIndicator'
+                  includedCheckedBags:
+                    title: includedCheckedBags
+                    $ref: '#/definitions/BaggageAllowance'
+                    description: Details of the included checked bags
+                  additionalServices:
+                    type: object
+                    title: AdditionalServicesRequest
+                    properties:
+                      chargeableCheckedBags:
+                        title: chargeableCheckedBags
+                        description: Details of chargeable checked bags
+                        $ref: '#/definitions/ChargeableCheckdBags'
+                      chargeableSeat:
+                        title: chargeableSeat
+                        description: Details of chargeable seat
+                        $ref: '#/definitions/ChargeableSeat'
+                      chargeableSeatNumber:
+                        type: string
+                        description: DEPRECATED - use the chargeableSeat attribute -  seat number
+                        example: 33D
+                        pattern: '[1-9][0-9]{0,2}[A-Z]?'
+                      otherServices:
+                        type: array
+                        description: Other services to add
+                        items:
+                          $ref: '#/definitions/ServiceName'
+                        example:
+                        - PRIORITY_BOARDING
+  Transfer:
+    type: object
+    required:
+    - transferType
+    - start
+    - serviceProvider
+    - vehicle
+    - quotation
+    - methodsOfPaymentAccepted
+    properties:
+      transferType:
+        type: string
+        enum:
+        - PRIVATE
+        - SHARED
+        - TAXI
+        - HOURLY
+        - AIRPORT_EXPRESS
+        - AIRPORT_BUS
+        description: "amadeus transfer service type\n\nvalue           | description                                 \n--------------  | ------------------------\nPRIVATE         | Private transfer from point to point\nSHARED          | Shared transfer from point to point\nTAXI            | Taxi reservation from point to point, price is estimated\nHOURLY          | Chauffeured driven transfer per hour\nAIRPORT_EXPRESS | Express Train from/to Airport\nAIRPORT_BUS     | Express Bus from/to Airport\n"
+      start:
+        $ref: '#/definitions/Location'
+      end:
+        $ref: '#/definitions/Location'
+      stopOvers:
+        type: array
+        items:
+          $ref: '#/definitions/StopOver'
+      passenegerCharacteristics:
+        type: array
+        items:
+          $ref: '#/definitions/PassengerCharacteristics'
+      duration:
+        description: transfer duration in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) PnYnMnDTnHnMnS format, e.g. PT2H10M
+        type: string
+        example: PT2H30M
+      vehicle:
+        $ref: '#/definitions/Vehicle'
+      serviceProvider:
+        $ref: '#/definitions/ServiceProvider'
+      partnerInfo:
+        $ref: '#/definitions/PartnerInfo'
+      quotation:
+        $ref: '#/definitions/Quotation'
+      converted:
+        $ref: '#/definitions/Quotation'
+      extraServices:
+        type: array
+        items:
+          $ref: '#/definitions/ExtraService'
+      equipment:
+        type: array
+        items:
+          $ref: '#/definitions/Equipment'
+      cancellationRules:
+        type: array
+        items:
+          $ref: '#/definitions/CancellationRule'
+      methodsOfPaymentAccepted:
+        type: array
+        description: list of payment methods, allowed by provider
+        items:
+          type: string
+          description: Method of payment required when PaymentType equal BT (applicable only for reservation action).
+          enum:
+          - CREDIT_CARD
+          - INVOICE
+          - TRAVEL_ACCOUNT
+          - PAYMENT_SERVICE_PROVIDER
+      discountCodes:
+        type: array
+        description: list of discount codes
+        items:
+          $ref: '#/definitions/DiscountCode'
+      distance:
+        $ref: '#/definitions/Distance'
+  Agency:
+    type: object
+    description: Agency email information.
+    properties:
+      contacts:
+        type: array
+        description: List of contact information
+        items:
+          type: object
+          properties:
+            email:
+              type: object
+              description: Email information.
+              title: Email
+              properties:
+                address:
+                  type: string
+                  format: email
+                  description: Email address (e.g. john@smith.com)
+  DiscountType:
+    description: type of discount applied
+    type: string
+    enum:
+    - SPANISH_RESIDENT
+    - AIR_FRANCE_DOMESTIC
+    - AIR_FRANCE_COMBINED
+    - AIR_FRANCE_METROPOLITAN
+    example: SPANISH_RESIDENT
+  PhoneDeviceType:
+    type: string
+    description: Type of the device (Landline, Mobile or Fax)
+    enum:
+    - MOBILE
+    - LANDLINE
+    - FAX
+  AutomatedProcessCommon:
+    type: object
+    description: Provides information on ticketing arrangements and Amadeus Time Limits
+    properties:
+      code:
+        $ref: '#/definitions/AutomatedProcessCode'
+      queue:
+        title: Queue
+        type: object
+        description: Identifies the queue onto which PNR must be automatically placed upon process execution.
+        properties:
+          number:
+            type: string
+          category:
+            type: string
+      text:
+        type: string
+        description: Free text
+  Location:
+    type: object
+    description: location information
+    properties:
+      dateTime:
+        description: 'date and time specified in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) YYYY-MM-DDThh:mm:ss format e.g. 2017-11-10T10:00:00
+
+          not supported for stopOvers object
+
+          '
+        type: string
+        example: '2019-11-10T10:30:00'
+      locationCode:
+        type: string
+        description: airport code from [IATA table codes](http://www.iata.org/publications/Pages/code-search.aspx), e.g. CDG.
+        pattern: '[A-Za-z]{3}'
+        example: CDG
+      address:
+        $ref: '#/definitions/Address_4'
+      name:
+        type: string
+        description: Place name e.g. Airport Name, Hotel Name etc.
+      googlePlaceId:
+        description: Google place id only for google address e.g. ChIJL-DOWeBv5kcRfTbh97PimNc.
+        type: string
+        example: ChIJrTLr-GyuEmsRBfy61i59si0
+      uicCode:
+        type: string
+        description: UIC code defined by the worldwide railway organization e.g. 8600626
+  AllotmentDetails:
+    title: AllotmentDetails
+    type: object
+    properties:
+      tourName:
+        description: The tour name agreed for this specific allotment.
+        type: string
+      tourReference:
+        description: The tour reference agreed for this specific allotment.
+        type: string
+  Document:
+    type: object
+    description: the information that are found on an ID document
+    properties:
+      number:
+        type: string
+        description: The document number (shown on the document) . E.g. QFU514563221J
+      issuanceDate:
+        type: string
+        description: Date at which the document has been issued.
+        format: date
+      expiryDate:
+        type: string
+        description: Date after which the document is not valid anymore.
+        format: date
+      issuanceCountry:
+        type: string
+        description: '[ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country that issued the document'
+        pattern: '[a-zA-Z]{2}'
+      issuanceLocation:
+        type: string
+        description: A more precise information concerning the place where the document has been issued, when available. It may be a country, a state, a city or any other type of location. e.g. New-York
+      nationality:
+        type: string
+        description: '[ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the nationality appearing on the document'
+        pattern: '[a-zA-Z]{2}'
+      birthPlace:
+        type: string
+        description: Birth place as indicated on the document
+  CreditCardBrand:
+    description: credit card brand
+    type: string
+    enum:
+    - VISA
+    - AMERICAN_EXPRESS
+    - MASTERCARD
+    - VISA_ELECTRON
+    - VISA_DEBIT
+    - MASTERCARD_DEBIT
+    - MAESTRO
+    - DINERS
+    - EASYPAY
+    example: VISA
+  FlightOfferSource:
+    description: source of the flight offer
+    type: string
+    enum:
+    - GDS
+    example: GDS
+  roomAssociation:
+    type: object
+    description: 'Room Association represents a room booked in an hotel, the guests sleeping in this room, the hotel loyalty program if any, plus special request if any. '
+    minProperties: 1
+    maxProperties: 1
+    title: roomAssociation
+    properties:
+      guestReferences:
+        type: array
+        description: 'Array of guest references listing all the guests occupying the room.
+
+          For each guest, the reference provided is the id also provided in guest section, except at booking creation time (in this only case, it will be a temporary id provided by the client called tid).
+
+          The order of this list is important. The first one is the main guest, the one holding the reservation (and the form of payment).
+
+          The following references are the ones of the accompagnants, if any.'
+        items:
+          type: object
+          properties:
+            guestReference:
+              type: string
+            hotelLoyaltyId:
+              type: string
+              description: 'Hotel Chain Rewards Program Membership ID of the guest.
+
+                To receive your Rewards Points, access online check in, fast check out. An error is returned by the Chain if the number is invalid.
+
+                Example Rewards Programs:
+
+                * Marriott Bonvoy
+
+                * Hilton Honors
+
+                * Hyatt Rewards
+
+                * IHG Rewards
+
+                * Wyndham Rewards
+
+                * Accor Live Limitless ALL
+
+                * Best Western Rewards
+
+                * Choice Privileges
+
+                * Radisson Rewards
+
+                '
+              pattern: ^[A-Z0-9-]{1,21}$
+              minLength: 1
+              maxLength: 21
+              example: '3081031320523260'
+          required:
+          - guestReference
+      specialRequest:
+        type: string
+        minLength: 2
+        description: special request to send to the reception (optional)
+        example: TEST I will arrive at midnight
+        maxLength: 120
+      hotelOfferId:
+        type: string
+        description: Hotel offerID received in availability response, identifying the product to book.
+        example: 63A93695B58821ABB0EC2B33FE9FAB24D72BF34B1BD7D707293763D8D9378FC3
+        maxLength: 100
+        minLength: 2
+        pattern: ^[A-Z0-9]*$
+    required:
+    - guestReferences
+    - hotelOfferId
+  OtherPaymentMethod:
+    description: other payment method
+    type: string
+    enum:
+    - ACCOUNT
+    - CHECK
+    - CASH
+    - NONREFUNDABLE
+    example: CASH
+  PointsAndCash:
+    type: object
+    properties:
+      monetaryAmount:
+        type: string
+        example: '10.5'
+  EmergencyContact:
+    type: object
+    description: emergency contact number
+    properties:
+      addresseeName:
+        type: string
+        description: Adressee name (e.g. in case of emergency purpose it corresponds to name of the person to be contacted).
+        pattern: '[a-zA-Z -]'
+      countryCode:
+        type: string
+        description: Country code of the country (ISO3166-1). E.g. "US" for the United States
+        pattern: '[A-Z]{2}'
+      number:
+        type: string
+        description: Phone number. Composed of digits only. The number of digits depends on the country.
+        pattern: '[0-9]{1,15}'
+      text:
+        type: string
+        description: additional details
+  Error_500_3:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/Issue_3'
+    required:
+    - errors
+    example:
+      errors:
+      - status: 500
+        code: 141
+        title: SYSTEM ERROR HAS OCCURRED
+  Error_500:
+    type: object
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/Issue'
+    required:
+    - errors
+    example:
+      errors:
+      - status: 500
+        code: 141
+        title: SYSTEM ERROR HAS OCCURRED
+  Traveler:
+    title: traveler element
+    description: the traveler of the trip
+    allOf:
+    - $ref: '#/definitions/Stakeholder'
+    - type: object
+      properties:
+        emergencyContact:
+          description: emergency contact
+          $ref: '#/definitions/EmergencyContact'
+        loyaltyPrograms:
+          description: list of loyalty program followed by the traveler
+          type: array
+          minItems: 0
+          maxItems: 10
+          items:
+            $ref: '#/definitions/LoyaltyProgram'
+        discountEligibility:
+          description: list of element that allow a discount.
+          type: array
+          minItems: 0
+          maxItems: 10
+          items:
+            $ref: '#/definitions/Discount'
+        contact:
+          $ref: '#/definitions/Contact'
+  PassengerCharacteristics:
+    properties:
+      passengerTypeCode:
+        description: Passenger type codes e.g. CHD , ADT. CHD is for child and ADT for Adult.
+        type: string
+        example: child
+      age:
+        type: integer
+        description: Age of the Passenger (Mandatory if typeCode= “CHD”)
+        example: 12
+  AirTravelDocument:
+    title: AirTravelDocument
+    description: ticket information
+    allOf:
+    - $ref: '#/definitions/AirTravelDocumentCommon'
+    - type: object
+      properties:
+        travelerId:
+          type: string
+          description: id of the impacted traveler
+          example: '1'
+        segmentIds:
+          description: Ids of the impacted segments
+          type: array
+          items:
+            type: string
+          example: '1'
+  AircraftEquipment:
+    description: information related to the aircraft
+    properties:
+      code:
+        type: string
+        description: 'IATA aircraft code (http://www.flugzeuginfo.net/table_accodes_iata_en.php)
+
+          '
+        pattern: '[a-zA-Z0-9]{3}'
+        example: '318'
+  CreateHotelBooking:
+    description: This model allows the creation of an hotel order.
+    type: object
+    title: CreateHotelBooking
+    properties:
+      arrivalInformation:
+        type: object
+        description: Optional information on the way the guest is arriving to the hotel. Today the application only supports Flight details.
+        properties:
+          arrivalFlightDetails:
+            $ref: '#/definitions/ArrivalFlightDetails'
+      payment:
+        $ref: '#/definitions/PaymentInput'
+      roomAssociations:
+        type: array
+        description: Is to correlate a room to a guest and an offer.
+        maxItems: 9
+        minItems: 1
+        items:
+          $ref: '#/definitions/roomAssociation'
+      travelAgent:
+        type: object
+        description: Travel Agent details
+        required:
+        - contact
+        properties:
+          contact:
+            type: object
+            required:
+            - email
+            properties:
+              email:
+                type: string
+                example: travelAgent@agency.com
+                minLength: 3
+                maxLength: 90
+                pattern: ^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$
+                description: travel agency email
+              fax:
+                type: string
+                example: '+33985632145'
+                minLength: 2
+                maxLength: 90
+                pattern: ^[+][1-9][0-9]{4,18}$
+                description: Even if this field is not mandatory it is recommended to fill it. This information is passed to the hotel provider. (When it is not provided in input, it is taken from the Office Profile of the Travel Agency).
+              phone:
+                type: string
+                example: '+33679278416'
+                minLength: 2
+                maxLength: 199
+                description: Even if this field is not mandatory it is recommended to fill it. This information is always passed to the hotel provider. (When it is not provided in input, it is taken from the Office Profile of the Travel Agency).
+          travelAgentId:
+            type: string
+            description: 'Travel Agent ID also called Booking source or IATA number.
+
+              When received in request, it indicates that the travel agent wants to override the booking source receiving the commission.
+
+              If not provided, it is by default set to the IATA Number of the office profile the agent is connected to and who makes the booking. (the commission is given to that office) '
+    required:
+    - travelAgent
+  Price:
+    properties:
+      currency:
+        type: string
+        example: USD
+      total:
+        description: Total amount paid by the user
+        type: string
+        example: '932.70'
+      base:
+        description: Amount without taxes
+        type: string
+        example: '632.70'
+      fees:
+        description: List of applicable fees
+        type: array
+        items:
+          $ref: '#/definitions/Fee'
+      taxes:
+        type: array
+        items:
+          $ref: '#/definitions/Tax'
+      refundableTaxes:
+        description: The amount of taxes which are refundable
+        type: string
+        example: '200.00'
+  Fee:
+    description: a fee
+    properties:
+      amount:
+        type: string
+        example: '332.70'
+      type:
+        $ref: '#/definitions/FeeType'
+  OperatingFlight:
+    type: object
+    description: information about the operating flight
+    properties:
+      carrierCode:
+        type: string
+        description: providing the airline / carrier code
+        minLength: 1
+        maxLength: 2
+        example: DL
+  TravelSegment:
+    description: A segment of an itinerary used by a traveler between 2 locations at a given date and time using a particular transportation type FLIGHT or TRAIN
+    type: object
+    properties:
+      transportationType:
+        $ref: '#/definitions/TransportationType'
+      transportationNumber:
+        type: string
+        example: AF380
+        description: The flight number or train number, e.g. AF380
+      departure:
+        $ref: '#/definitions/TravelSegmentLocation'
+      arrival:
+        $ref: '#/definitions/TravelSegmentLocation'
+  Guest:
+    type: object
+    description: This modele represent a guest, his name, his loyalty programs, his age when it is a child...
+    title: Guest
+    properties:
+      frequentTraveler:
+        type: array
+        description: "Airline frequent flyer of the guest \n/!\\ In case of creation of a new hotel booking, only the first element of the array will be transmitted to the hotel provier. Please only provider one.\nIn case of retrieve of an hotel order, when a guest is having several frequent flyer numbers used in different hotel bookings, they will all be listed here."
+        items:
+          type: object
+          properties:
+            airlineCode:
+              type: string
+              description: Code of the Airline
+              example: AF
+              minLength: 2
+              maxLength: 3
+            frequentTravelerId:
+              type: string
+              example: '32546971326'
+          required:
+          - airlineCode
+          - frequentTravelerId
+      phone:
+        type: string
+        description: 'Phone number of the guest
+
+
+          It is recommanded to use the standard E.123 (https://en.wikipedia.org/wiki/E.123)'
+        maxLength: 199
+        minLength: 2
+        example: '+33679278416'
+      email:
+        type: string
+        description: Email Adress of the guest
+        pattern: ^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$
+        example: test.test@test.com
+        maxLength: 90
+        minLength: 3
+        format: email
+      title:
+        type: string
+        description: Title/gender of the guest
+        example: MR
+        minLength: 1
+        maxLength: 54
+        pattern: ^[A-Za-z -]*$
+      firstName:
+        type: string
+        description: "First Name (and middle name) of the guest. It is mandatory at create order but not mandatory at booking creation.\n- Complex pattern '^[A-Za-z \\p{Han}\\p{Katakana}\\p{Hiragana}\\p{Hangul}-]*$' \n"
+        example: TEST
+        maxLength: 56
+        minLength: 1
+      lastName:
+        type: string
+        description: "Last name of the guest - \nIt is mandatory at create order but not mandatory at booking creation.\nComplex pattern: '^[A-Za-z \\p{Han}\\p{Katakana}\\p{Hiragana}\\p{Hangul}-]*$' "
+        example: TEST
+        maxLength: 57
+        minLength: 1
+      childAge:
+        type: integer
+        description: if the guest is a child, it is mandatory to provide a child age. Else the system will consider him as an adult
+  guests:
+    title: HotelProduct_Guests
+    type: object
+    properties:
+      adults:
+        type: integer
+        minimum: 1
+        maximum: 9
+        example: 2
+        description: number of adult guests (1-9) per room
+      childAges:
+        type: array
+        items:
+          type: integer
+          minimum: 0
+          maximum: 20
+        description: Comma separated list of ages of each child at the time of check-out from the hotel. If several children have the same age, the ages will be repeated.
+  ContactPurpose:
+    description: "the purpose for which this contact is to be used.\n - STANDARD for standard use, comunication, advertissement etc...\n - INVOICE for your invoice contact, usually its your billing adress. it's mandatory in france when you buy online\n - STANDARD_WITHOUT_TRANSMISSION is standard contact that are not share with third party outside of Amadeus"
+    type: string
+    enum:
+    - STANDARD
+    - INVOICE
+    - STANDARD_WITHOUT_TRANSMISSION
+  Errors:
+    type: object
+    description: A set of errors
+    title: Errors
+    properties:
+      errors:
+        type: array
+        items:
+          type: object
+          description: The Error Definition
+          title: Error
+          properties:
+            status:
+              type: integer
+              description: The [HTTP status code](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) of this response. This is present only in terminal errors which cause an unsuccessful response. In the case of multiple errors, they must all have the same status.
+            code:
+              type: integer
+              description: A machine-readable error code, that will enable the API Consumers code to handle this type of error
+            title:
+              type: string
+              description: An error title from the Canned Messages table with a 1:1 correspondence to the error code. This may be localized
+            detail:
+              type: string
+              description: An easy-to-read explanation specific to this occurrence of the problem. It should give the API consumer an idea of what went wrong and how to recover from it. Like the title, this field’s value can be localized.
+            source:
+              type: object
+              title: Error_Source
+              properties:
+                parameter:
+                  type: string
+                  description: The key of the URI path or query parameter that caused the error
+                pointer:
+                  type: string
+                  description: A JSON Pointer [RFC6901] to the associated entity in the request body that caused this error
+                example:
+                  type: string
+                  description: A sample input to guide the user when resolving this issue
+            documentation:
+              type: string
+              format: url
+              description: A link to a web page or file with further documentation to help the API consumer resolve this error
+          example:
+            errors:
+            - status: 400
+              code: 477
+              title: INVALID FORMAT
+              detail: invalid query parameter format
+              source:
+                parameter: email
+  Extended_Price:
+    type: object
+    title: Price
+    description: price information
+    allOf:
+    - type: object
+      properties:
+        margin:
+          description: BOOK step ONLY - The price margin percentage (plus or minus) that the booking can tolerate. When set to 0, then no price magin is tolerated.
+          type: string
+          example: '1.00'
+        grandTotal:
+          description: Total amount paid by the user (including fees and selected additional services).
+          type: string
+          example: '987.00'
+        billingCurrency:
+          description: Currency of the payment. It may be different than the requested currency
+          type: string
+          example: EUR
+        additionalServices:
+          type: array
+          title: AdditionalServices
+          items:
+            title: AdditionalService
+            type: object
+            properties:
+              amount:
+                type: string
+                example: '332.70'
+              type:
+                $ref: '#/definitions/AdditionalServiceType'
+    - $ref: '#/definitions/Price'
+  QualifiedFreeText:
+    type: object
+    description: Specific type to convey a list of string for specific information type ( via qualifier) in specific character set, or language
+    title: QualifiedFreeText
+    properties:
+      text:
+        type: string
+        description: Free Text
+        example: Do you need and example ?
+      lang:
+        type: string
+        description: see RFC 5646
+        example: fr-FR
+  Fee_2:
+    description: single fee information
+    allOf:
+    - $ref: '#/definitions/PointsAndCash'
+    - type: object
+      properties:
+        currencyCode:
+          type: string
+          example: USD
+        indicator:
+          type: string
+          description: fee category e.g. "AIRPORT", "CREDITCARD" ,"CANCELLATION"
+  LocationValue:
+    properties:
+      cityCode:
+        type: string
+        description: City code associated to the airport
+        example: PAR
+      countryCode:
+        type: string
+        description: Country code of the airport
+        example: FR
+  TransportationType:
+    type: string
+    title: TransportationType
+    description: The type of connection "FLIGHT" or "TRAIN"
+    enum:
+    - FLIGHT
+    - TRAIN
+  TravelerPricingFareOption:
+    description: 'option specifying a group of fares, which may be valid under certain conditons
+
+      Can be used to specify special fare discount for a passenger
+
+      '
+    type: string
+    enum:
+    - STANDARD
+    - INCLUSIVE_TOUR
+    - SPANISH_MELILLA_RESIDENT
+    - SPANISH_CEUTA_RESIDENT
+    - SPANISH_CANARY_RESIDENT
+    - SPANISH_BALEARIC_RESIDENT
+    - AIR_FRANCE_METROPOLITAN_DISCOUNT_PASS
+    - AIR_FRANCE_DOM_DISCOUNT_PASS
+    - AIR_FRANCE_COMBINED_DISCOUNT_PASS
+    - AIR_FRANCE_FAMILY
+    - ADULT_WITH_COMPANION
+    - COMPANION
+    example: STANDARD
+  CancellationRule:
+    type: object
+    description: cancellation rule information
+    properties:
+      ruleDescription:
+        type: string
+        description: description of cancellation rule
+      feeType:
+        type: string
+        enum:
+        - PERCENTAGE
+        - VALUE
+        description: 'type of fee - percentage of total amount (PERCENTAGE) or fixed amount (VALUE)
+
+          '
+      feeValue:
+        type: string
+        description: value of the fee, e.g. "100" or "12.50"
+      currencyCode:
+        type: string
+        pattern: '[A-Z]{3}'
+        description: currency code of the fee in [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format, e.g. USD, EUR
+      metricType:
+        type: string
+        description: type of metric
+        enum:
+        - MINUTES
+        - HOURS
+        - DAYS
+        - YEARS
+      metricMin:
+        type: string
+        description: metric min value
+      metricMax:
+        type: string
+        description: metric max value
+  Seat:
+    type: object
+    properties:
+      count:
+        type: integer
+        description: seat capacity
+        example: 3
+      row:
+        type: string
+        description: seat row
+        example: front
+      size:
+        type: string
+        description: seat size
+        example: XL
+  LoyaltyNumber:
+    type: object
+    properties:
+      program:
+        type: string
+        description: loyalty program name
+      value:
+        type: string
+        description: loyalty number value
+  Warning:
+    type: object
+    description: The Warning Definition
+    title: Warning
+    properties:
+      code:
+        type: integer
+        description: A machine-readable error code from the Canned Messages table, that will enable the API Consumers code to handle this type of error
+      title:
+        type: string
+        description: An error title from the Canned Messages table with a 1:1 correspondence to the error code. This may be localized
+      detail:
+        type: string
+        description: An easy-to-read explanation specific to this occurrence of the problem. It should give the API consumer an idea of what went wrong and how to recover from it. Like the title, this field’s value can be localized.
+      source:
+        type: object
+        description: The Warning Source Definition
+        title: Warning_Source
+        properties:
+          parameter:
+            type: string
+            description: The key of the URI path or query parameter that caused the error
+          pointer:
+            type: string
+            description: A JSON Pointer [RFC6901] to the associated entity in the request body that caused this error
+          example:
+            type: string
+            description: A sample input to guide the user when resolving this issue
+      documentation:
+        type: string
+        format: url
+        description: A link to a web page or file with further documentation to help the API consumer resolve this error
+      sources:
+        type: array
+        items:
+          $ref: '#/definitions/Warning/properties/source'
+      relationships:
+        type: object
+        description: Indicate relationships from one entity to many other entities of any kind (e.g. from one passenger to their flight segments).
+        title: Relationships
+        properties:
+          collection:
+            type: array
+            description: The details of the related items
+            items:
+              description: Relationship allows to cross reference 2 entities via Link and/or id .
+              title: Relationship
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: id of the related resource
+                type:
+                  type: string
+                  description: Type of the related resource
+                  example: processed-dcs-passenger
+                ref:
+                  type: string
+                  format: uri-reference
+                  description: Local reference of the related resource
+                targetSchema:
+                  type: string
+                  description: The targetSchema would be an instance of definition to be used for building the associated API Request operation
+                targetMediaType:
+                  type: string
+                  description: Related to "targetSchema", to be specified in case the media type is different for the referenced API request
+                hrefSchema:
+                  type: string
+                  description: type ( format, type, patterns, enum) definition for each URI parameters.
+                href:
+                  type: string
+                  format: url
+                  description: URL value
+                methods:
+                  type: array
+                  description: HTTP methods supported by the sibling URI
+                  items:
+                    type: string
+                    enum:
+                    - GET
+                    - POST
+                    - PUT
+                    - PATCH
+                    - DELETE
+                    - OPTIONS
+                rel:
+                  type: string
+                  description: 'Expose the type of relation between the current entity and the describe entity : https://www.iana.org/assignments/link-relations/link-relations.xhtml'
+    required:
+    - code
+    - title
+  GeneralRemarkType:
+    description: general remark type
+    type: string
+    enum:
+    - GENERAL_MISCELLANEOUS
+    - CONFIDENTIAL
+    - INVOICE
+    - QUALITY_CONTROL
+    - BACKOFFICE
+    - FULFILLMENT
+    - ITINERARY
+    - TICKETING_MISCELLANEOUS
+    - TOUR_CODE
+    example: GENERAL_MISCELLANEOUS
+  CreditCardCommon:
+    title: creditCardCommon
+    type: object
+    description: credit card common attribute
+    properties:
+      brand:
+        $ref: '#/definitions/CreditCardBrand'
+      holder:
+        description: card holder as on the card
+        type: string
+        example: MR DUPON DAMIEN
+      number:
+        description: card number
+        type: string
+        example: '4012999999999999'
+        pattern: '[a-zA-Z0-9]{1,35}'
+      expiryDate:
+        description: credit card expiration date following [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) (YYYY-MM format, e.g. 2012-08)
+        type: string
+        example: 2021-08
+  LocationEntry:
+    additionalProperties:
+      $ref: '#/definitions/LocationValue'
+  TransferOrder:
+    type: object
+    required:
+    - type
+    - id
+    - transfers
+    properties:
+      type:
+        description: the resource name
+        type: string
+      id:
+        type: string
+        description: transfer order identifier
+      reference:
+        type: string
+        description: reference of the Trip e.g. YNK4JQ
+      transfers:
+        type: array
+        description: transfer reservations, included in the order
+        items:
+          $ref: '#/definitions/TransferReservation'
+      passengers:
+        type: array
+        description: passengers, related to the Transfer Order
+        items:
+          $ref: '#/definitions/Passenger'
+      agency:
+        $ref: '#/definitions/Agency'
+  HotelBooking:
+    title: HotelBooking
+    type: object
+    description: 'An hotel booking represent one or several rooms booked in the same physical hotel.
+
+      There is always a reference to this booking, provided by the hotel provider, stored in associated records section.'
+    properties:
+      type:
+        type: string
+        minLength: 1
+        description: Type of data - set to "hotel-booking".
+      id:
+        type: string
+        description: 'Unique ID of the hotel booking ID.
+
+          It is computed by Amadeus System based on technical data.'
+        minLength: 1
+        pattern: '[A-Za-z0-9+/=]'
+        example: '456123'
+      bookingStatus:
+        type: string
+        description: "Status of the booking - Possible values \n- \"CONFIRMED\"\n- \"PENDING\" for on-request \n- \"CANCELLED\" (It will be returned only in the retrieve byHistory as it repreents a DELETED resource.)\n- \"On HOLD\" for deferred payment (HO)\n- \"UNCONFIRMED\" (UC) when confirmation finaly refused by Hotel Provider\n- \"DENIED\" (NO) when an on-request booking is denied by the hotelier\n- \"GHOST\" (GK) for ghost booking\n- \"PAST\" for a confirmed booking with the check-out date in the past\n"
+        enum:
+        - CONFIRMED
+        - PENDING
+        - CANCELLED
+        - ON_HOLD
+        - PAST
+        - UNCONFIRMED
+        - DENIED
+        - GHOST
+        - DELETED
+      roomAssociations:
+        type: array
+        description: 'Array of room associations. Each room association correlates one single room to guest(s), a payment and an hotel offer.
+
+
+          If multiple identical rooms are requested, one roomAssociation is created per hotelBooking (one hotelBooking is created per room).'
+        items:
+          $ref: '#/definitions/roomAssociation'
+      hotelOffer:
+        $ref: '#/definitions/HotelOffer'
+      hotel:
+        type: object
+        description: Hotel Content
+        title: Hotel
+        properties:
+          hotelId:
+            type: string
+            pattern: ^[A-Z0-9]{8}$
+            example: ADPAR001
+            description: 'Amadeus Property Code (8 chars)
+
+              '
+          chainCode:
+            type: string
+            pattern: ^[A-Z]{2}$
+            example: AD
+            description: 'Brand (RT...) or Merchant (AD...) (Amadeus 2 chars Code)
+
+              '
+          name:
+            type: string
+            example: Hotel de Paris
+            description: Hotel Name
+          self:
+            type: string
+            description: link to retrieve the hotel details
+        required:
+        - hotelId
+        - chainCode
+        - name
+      hotelProviderInformation:
+        type: array
+        uniqueItems: true
+        minItems: 1
+        description: References and origin of the hotel bookings records
+        items:
+          type: object
+          properties:
+            hotelProviderCode:
+              type: string
+              description: 2 letters - Hotel provider code  e.g.RT  (for Accor)
+              example: RT
+              minLength: 2
+              maxLength: 2
+            confirmationNumber:
+              type: string
+              description: "Provider confirmation number. \nNever empty, in case of on-request it can be .......\nIf you call the Provider, this Reference may be asked"
+              example: '818319951754'
+              minLength: 2
+              maxLength: 16
+              pattern: ^[A-Z0-9]*$
+            cancellationNumber:
+              type: string
+              description: 'Provider cancellation number
+
+                For cancelled booking it will ablways be filled.
+
+                If it was not returned by the hotel provider, it will be filled with "NONE".'
+              example: C818319951754
+              minLength: 2
+              maxLength: 16
+              pattern: ^[A-Z0-9]*$
+            onRequestNumber:
+              type: string
+              description: Used to describe the on-request identifier
+              example: '818319951754'
+              minLength: 2
+              maxLength: 16
+              pattern: ^[A-Z0-9]*$
+          required:
+          - hotelProviderCode
+          - confirmationNumber
+      payment:
+        $ref: '#/definitions/PaymentOutput'
+      travelAgentId:
+        type: string
+        description: "Travel Agent ID also called Booking source or IATA number.\n- When received in booking request, it indicates that the travel agent wants to override the booking source receiving the commission. \n- If not provided in booking request, it is set to the IATA Number of the office profile of the agent making the booking. (the commission is given to that office) "
+      arrivalInformation:
+        type: object
+        description: 'Optional information on the way the guest is arriving to the hotel. Today the application only supports Flight details.
+
+          If this information is provided at booking creation time, it is displayed in the response and in the retrieve.'
+        properties:
+          arrivalFlightDetails:
+            $ref: '#/definitions/ArrivalFlightDetails'
+    required:
+    - type
+    - id
+    - roomAssociations
+    - hotelOffer
+    - hotel
+    - hotelProviderInformation
+    - travelAgentId
+  AirlineRemarkType:
+    description: airline remark type
+    type: string
+    enum:
+    - OTHER_SERVICE_INFORMATION
+    - KEYWORD
+    - OTHER_SERVICE
+    - CLIENT_ID
+    - ADVANCED_TICKET_TIME_LIMIT
+    example: KEYWORD
+  Contact:
+    description: contact information
+    allOf:
+    - $ref: '#/definitions/ContactDictionary'
+    - type: object
+      properties:
+        phones:
+          description: Phone numbers
+          type: array
+          maxItems: 3
+          items:
+            $ref: '#/definitions/Phone'
+        companyName:
+          description: Name of the company
+          type: string
+          example: AMADEUS
+        emailAddress:
+          type: string
+          description: Email address (e.g. john@smith.com)
+          example: support@mail.com
+  CreditCard_2:
+    type: object
+    description: information about payment card
+    required:
+    - number
+    - holderName
+    - vendorCode
+    - expiryDate
+    properties:
+      number:
+        type: string
+        pattern: '[0-9]{16}'
+        description: card number
+      holderName:
+        type: string
+        description: card holder name
+      vendorCode:
+        type: string
+        pattern: '[a-zA-Z]{2}'
+        description: card vendor code, e.g VI – VISA, CA – MasterCard, AX – American Express etc
+      expiryDate:
+        type: string
+        pattern: ^(0[1-9]|1[0-2])[0-9]{2}$
+        description: card expiry date in format MMYY, e.g. 0237 for February 2037
+      cvv:
+        type: string
+        pattern: '[a-zA-Z0-9]{3,4}'
+        description: cerification calue number, as indicated on the credit card. Only for query
+  TravelClass:
+    description: quality of service offered in the cabin where the seat is located in this flight. Economy, premium economy, business or first class
+    type: string
+    enum:
+    - ECONOMY
+    - PREMIUM_ECONOMY
+    - BUSINESS
+    - FIRST
+    example: PREMIUM_ECONOMY
+  HotelProduct:
+    description: 'Hotel Offer
+
+      '
+    type: object
+    title: HotelProduct
+    properties:
+      checkInDate:
+        type: string
+        format: date
+        example: '2020-12-30'
+        description: 'check-in date of the stay (hotel local date). Format YYYY-MM-DD
+
+          The lowest accepted value is today date (no dates in the past).  '
+      checkOutDate:
+        type: string
+        format: date
+        example: '2020-12-31'
+        description: 'check-out date of the stay (hotel local date). Format YYYY-MM-DD
+
+          The lowest accepted value is `checkInDate`+1. '
+      roomQuantity:
+        type: integer
+        minimum: 1
+        maximum: 9
+        example: 1
+        description: number of rooms (1-9)
+      rateCode:
+        type: string
+        description: "Special Rate - Provider Response Code (3 chars)\nExamples\n\n  * RAC - Rack\n\n  * BAR - Best Available Rate\n\n  * PRO - Promotional\n\n  * COR - Corporate\n\n  * GOV - Government (qualified)\n\n  * AAA - AAA (qualified)\n\n  * BNB - Bed and Breakfast\n\n  * PKG - Package\n\n  * TVL - Travel Industry\n\n  * SPC - Special Promo Rate\n\n  * WKD - Weekend\n\n  * CON - Convention\n\n  * SNR - Senior (Europe) (qualified)\n\n  * ARP - AARP - American Association of Retired People (50+) (qualified)\n\n  * SRS - Senior (qualified)\n\n  * ROR - Room Only Rate (no breakfast)\n\n  * FAM - Family\n\n  * DAY - Day rate\n"
+        pattern: ^[A-Z0-9*]{3}$
+        minLength: 3
+        maxLength: 3
+        example: RAC
+      category:
+        type: string
+        description: "Special Rate Category\nExamples:\n  ASSOCIATION\n  FAMILY_PLAN\n"
+        example: FAMILY_PLAN
+      commission:
+        title: HotelProduct_Commission
+        type: object
+        properties:
+          percentage:
+            type: string
+            description: Percentage of the commission paid to the travel seller. Value is between 0 and 100
+            pattern: ^\\d+(\\.\\d+)?$
+          amount:
+            type: string
+            description: Amount of the commission paid to the travel seller. The amount is always linked to the currency code of the offer
+            pattern: ^\\d+(\\.\\d+)?$
+          description:
+            $ref: '#/definitions/QualifiedFreeText'
+      room:
+        title: HotelProduct_RoomDetails
+        type: object
+        properties:
+          type:
+            description: "Room type code, 3 character identifier of the room.\nThe first character identifies the room type category. \nThe second numeric character identifies the number of beds. \nThe third character identifies the bed type. \nThere is a special case where ROH is returned, this value stands for Run Of House."
+            type: string
+            pattern: ^[A-Z0-9*]{3}$
+          description:
+            $ref: '#/definitions/QualifiedFreeText'
+      guests:
+        $ref: '#/definitions/guests'
+      price:
+        title: HotelProduct_HotelPrice
+        description: price information
+        allOf:
+        - $ref: '#/definitions/Price_2'
+        - type: object
+          properties:
+            taxes:
+              type: array
+              items:
+                title: HotelProduct_HotelTax
+                type: object
+                properties:
+                  currency:
+                    type: string
+                    description: Currency code of the tax
+                  amount:
+                    type: string
+                    description: Amount of the tax
+                  code:
+                    description: "The tax code which identifies the tax.\n  Examples:\n  1=BED_TAX\n  2=CITY_TAX"
+                    type: string
+                  percentage:
+                    type: string
+                    description: percentage of the tax. Use together with pricingFrequency and pricingMode
+                  included:
+                    type: boolean
+                    description: Is the tax included in the base amount
+                  description:
+                    type: string
+                    description: Textual description of the tax
+                  pricingFrequency:
+                    description: "Specifies if the tax applies per stay or per night\n  - PER_STAY\n  - PER_NIGHT"
+                    type: string
+                  pricingMode:
+                    description: "Specifies if the tax applies per occupant or per room\n  - PER_OCCUPANT\n  - PER_PRODUCT"
+                    type: string
+            variations:
+              title: HotelProduct_PriceVariations
+              type: object
+              description: Daily price variations and the average daily price (when available) is shown here
+              properties:
+                changes:
+                  description: 'The collection of price periods.
+
+                    Even if the daily price is not changeing during the stay, this section is filled'
+                  type: array
+                  items:
+                    title: HotelProduct_PriceVariation
+                    description: Some prices may vary during a stay, thus here you can see the daily price per period of the stay
+                    allOf:
+                    - type: object
+                      properties:
+                        startDate:
+                          description: 'Begin date of the period
+
+                            Format: YYYY-MM-DD'
+                          type: string
+                          format: date
+                        endDate:
+                          description: 'End date of the period
+
+                            Format: YYYY-MM-DD'
+                          type: string
+                          format: date
+                      required:
+                      - startDate
+                      - endDate
+                    - $ref: '#/definitions/Price_2'
+      policies:
+        title: HotelProduct_PolicyDetails
+        type: object
+        description: Booking Rules
+        properties:
+          paymentType:
+            type: string
+            description: payment type. Guarantee means Pay at Check Out. Check the `methods` in `guarantee` or `deposit` or `prepay`.
+            example: DEPOSIT
+            enum:
+            - GUARANTEE
+            - DEPOSIT
+            - PREPAY
+            - HOLDTIME
+          guarantee:
+            title: HotelProduct_GuaranteePolicy
+            type: object
+            description: the guarantee policy information applicable to the offer. It includes accepted payments
+            properties:
+              description:
+                $ref: '#/definitions/QualifiedFreeText'
+              acceptedPayments:
+                $ref: '#/definitions/HotelProduct_PaymentPolicy'
+          deposit:
+            $ref: '#/definitions/HotelProduct_DepositPolicy'
+          prepay:
+            $ref: '#/definitions/HotelProduct_DepositPolicy'
+          holdTime:
+            title: HotelProduct_HoldPolicy
+            type: object
+            description: the hold policy
+            properties:
+              deadline:
+                type: string
+                format: date-time
+                description: "The date and time of the deadline in ISO 8601[https://www.w3.org/TR/NOTE-datetime]. \n Example: 2010-08-14T13:00:00\n Please note that this value is expressed in the hotels local time zone\n"
+            required:
+            - deadline
+          checkInOut:
+            title: HotelProduct_CheckInOutPolicy
+            type: object
+            properties:
+              checkIn:
+                type: string
+                example: '13:00:00'
+                description: Check-in From time limit in ISO-8601 format [http://www.w3.org/TR/xmlschema-2/#time]
+              checkInDescription:
+                $ref: '#/definitions/QualifiedFreeText'
+              checkOut:
+                type: string
+                example: '11:00:00'
+                description: Check-out Until time limit in ISO-8601 format [http://www.w3.org/TR/xmlschema-2/#time]
+              checkOutDescription:
+                $ref: '#/definitions/QualifiedFreeText'
+          cancellations:
+            type: array
+            items:
+              title: HotelProduct_CancellationPolicy
+              type: object
+              description: 'Cancellation policies are optional in response (whether they apply or not according to the provider response returned at pricing or sell.   '
+              properties:
+                type:
+                  type: string
+                  enum:
+                  - FULL_STAY
+                  description: '* FULL_STAY: the Penalty amount equals the `total` price.'
+                amount:
+                  type: string
+                  description: Amount of the cancellation fee.
+                  pattern: ^\\d+(\\.\\d+)?$
+                numberOfNights:
+                  type: integer
+                  format: int32
+                  minimum: 0
+                  description: Number of nights due as fee in case of cancellation.
+                percentage:
+                  type: string
+                  description: Percentage of the total stay amount to be paid in case of cancellation. Value is between 0 and 100.
+                  pattern: ^\\d+(\\.\\d+)?$
+                deadline:
+                  type: string
+                  format: date-time
+                  description: 'Represents the deadline after which the penalty applies. DateTime is in ISO 8601 [https://www.w3.org/TR/NOTE-datetime].
+
+                    Example: 2010-08-14T12:00:00+01:00
+
+                    Example: 2010-08-14T12:00:00Z
+
+                    Example: 2010-08-14T12:00:00-01:00
+
+                    The value is expressed in the hotel local time zone, with the added time zone difference. So you can compute the deadline in UTC(GMT) if desired.'
+                description:
+                  $ref: '#/definitions/QualifiedFreeText'
+      rateFamilyEstimated:
+        title: HotelProduct_RateFamily
+        type: object
+        description: The estimated rate code family of the offer. Grouping various rate plan codes that belongs to the same family and indicates the type of the rate
+        properties:
+          code:
+            description: The estimated rate family (PRO,FAM,GOV)
+            type: string
+            pattern: '[A-Z0-9]{3}'
+          type:
+            description: The type of the rate (public=P, negotiated=N, conditional=C)
+            type: string
+            pattern: '[PNC]'
+    required:
+    - rateCode
+    - room
+    - price
+  Address_4:
+    type: object
+    description: address information
+    properties:
+      line:
+        description: Address line with street, number, bulding, etc...
+        type: string
+        minLength: 1
+        maxLength: 70
+      zip:
+        description: Post office code number
+        type: string
+        minLength: 1
+        maxLength: 120
+      countryCode:
+        description: Country code (two character standard IATA country code)
+        type: string
+        pattern: '[a-zA-Z]{2}'
+      cityName:
+        description: City, town or postal station
+        type: string
+        minLength: 1
+        maxLength: 35
+      stateCode:
+        description: State code (two character standard IATA state code)
+        type: string
+        pattern: '[a-zA-Z0-9]{1-2}'
+      latitude:
+        description: latitude of the location
+        type: number
+        format: double
+        example: 43.580418
+      longitude:
+        description: longitude of the location
+        type: number
+        format: double
+        example: 7.125102
+  ContactDictionary:
+    description: represents a contact
+    type: object
+    properties:
+      addresseeName:
+        description: the name of the person addressed by these contact details
+        $ref: '#/definitions/Name'
+      address:
+        $ref: '#/definitions/Address'
+      language:
+        description: the preferred language of communication with this Contact
+        type: string
+      purpose:
+        $ref: '#/definitions/ContactPurpose'
+  AutomatedProcessCode:
+    type: string
+    description: queuing action to be taken
+    enum:
+    - IMMEDIATE
+    - DELAYED
+    - ERROR
+    example: IMMEDIATE
+  Dictionaries:
+    type: object
+    properties:
+      locations:
+        $ref: '#/definitions/LocationEntry'
+      aircraft:
+        $ref: '#/definitions/AircraftEntry'
+      currencies:
+        $ref: '#/definitions/CurrencyEntry'
+      carriers:
+        $ref: '#/definitions/CarrierEntry'
+  Vehicle:
+    type: object
+    required:
+    - code
+    - category
+    - description
+    - seats
+    properties:
+      code:
+        type: string
+        enum:
+        - CAR
+        - SED
+        - WGN
+        - ELC
+        - VAN
+        - SUV
+        - LMS
+        - MBR
+        - TRN
+        - BUS
+        description: 'vehicle type, which can take following values
+
+
+          value           | description
+
+          --------------  | ------------------------
+
+          CAR             | Car
+
+          SED             | Sedan
+
+          WGN             | Wagon
+
+          ELC             | Electric car
+
+          VAN             | Van or minivan
+
+          SUV             | Sport utility vehicle
+
+          LMS             | Limousine
+
+          MBR             | Motorbike
+
+          TRN             | Train
+
+          BUS             | Bus
+
+          '
+      category:
+        type: string
+        enum:
+        - ST
+        - BU
+        - FC
+        description: 'category of the vehicle, which can take following values
+
+
+          value           | description
+
+          --------------  | ------------------------
+
+          ST              | Standard
+
+          BU              | Business
+
+          FC              | First class
+
+          '
+      description:
+        type: string
+        description: description of the vehicle. Can describe a list of potential vehicles, e.g. VW Polo or similar
+      seats:
+        type: array
+        items:
+          $ref: '#/definitions/Seat'
+      baggages:
+        type: array
+        items:
+          $ref: '#/definitions/Baggage'
+      imageURL:
+        type: string
+        description: URL to vehicle image
+  PaymentOutput:
+    title: Payment Information in output message
+    type: object
+    description: Model with the hotel payment information
+    properties:
+      iataTravelAgency:
+        type: object
+        description: Agency IATA/ARC Number used to Guarantee the booking
+        properties:
+          iataNumber:
+            type: string
+        required:
+        - iataNumber
+      billBack:
+        type: object
+        description: 'To be used when the booking is paid with to a virtual credit card generated through an external provider like Conferma.
+
+
+          The Billback account number is mandatory.
+
+          The rest of the information is not mandatory. CAI (Travel Agwency ID) and CBI (Booker ID) can either be provided in input or can be taken from the Amadeus Office Profile.
+
+
+          Offline activation of Hotel Billback: As soon as Conferma creates the client account and provides Amadeus with specific credentials (CAI/CBI) to identify the agency, Amadeus is able to activate Billback by updating those CAI/CBI credentials into the agency profile (PVA field).'
+        properties:
+          travelAgencyId:
+            type: string
+            description: Travel Agency Conferma account (CAI)
+          bookerId:
+            type: string
+            description: Travel Agent conferma ID (CBI)
+          paymentInstructions:
+            type: string
+            description: 'optional free text.
+
+              It gives the user the ability to specify the payment instructions to be sent to the hotelier'
+          billbackProviderDeploymentId:
+            type: string
+            description: The Deployment Id is returned by Amadeus Payment server and is used as the payment reference.
+          billbackProviderCode:
+            type: string
+            description: For conferma provider, it will be CN.
+          billbackProviderAccountNumber:
+            type: string
+            description: Billback Provider account number (Conferma account number)
+          hotelSupplierInformation:
+            $ref: '#/definitions/Hotel_Contact'
+        required:
+        - billbackProviderDeploymentId
+        - billbackProviderCode
+        - billbackProviderAccountNumber
+      method:
+        type: string
+        description: "Indicates the method of payment. \n- CREDIT_CARD : It allows payment through a credit card. It is expected to provide the credit card information in the creditCard section.\n- AGENCY_ACCOUNT (CREDIT LINE) : It allows payment through the credit line of the agency. Nothing more is expected\n- VCC_BILLBACK : It allows direct payment between the hotel and a corporation or travel agency, via the billback provider.\nIt is expected to provide the billback information in the billback section.\nTo benefit from the solution, a contract has to be signed with the travel agency and\nAmadeus or Conferma. A contract with a banking partner is also required to open a bank account and issue the Virtual Credit Card.\n- VCC_B2B_WALLET : This payment method is only available for Amadeus Value Hotels where it allows payment between travel agency and Amadeus Merchant using a virtual credit card.\nTo avail this functionality a Travel Agent has to sign a contract with Amadeus PaymentPlatform, which helps to generate a virtual credit card on behalf of the travel agent.\n- TRAVEL_AGENT_ID (IATA BS) : It allows payment to the provider with to the IATA booking source. Either this information is passed in the TravelAgentId section, either it is taken from the Amadeus Office Profile.\n- CREDIT_CARD_AGENCY : This form of payment is exclusively used for Amadeus Value Hotel when the booking is paid with the Travel Agency credit card.\nIt is also possible in this case to use the method CREDIT_CARD but it is then mandatory to specify that the cardOwnerType is TravelAgency\n- CREDIT_CARD_TRAVELLER : This form of payment is exclusively used for Amadeus Value Hotel when the booking is paid with the guest credit card.\nIt is also possible in this case to use the method CREDIT_CARD but it is then mandatory to specify that the cardOwnerType is Guest\n"
+        enum:
+        - CREDIT_CARD
+        - CREDIT_CARD_AGENCY
+        - CREDIT_CARD_TRAVELER
+        - AGENCY_ACCOUNT
+        - VCC_BILLBACK
+        - VCC_B2B_WALLET
+        - TRAVEL_AGENT_ID
+      b2bWallet:
+        type: object
+        description: "To perform a booking with B2B wallet, no extra information is needed in input. \nInformation on the virtal credit card generated, is provided in this section in reply."
+        properties:
+          virtualCreditCardId:
+            type: string
+            description: Amadeus Payment Reference for the generated VCC.
+          paymentProvider:
+            type: string
+            description: Payment provider, for example IXARIS.
+        required:
+        - virtualCreditCardId
+        - paymentProvider
+      paymentCard:
+        type: object
+        description: Credit card information.
+        properties:
+          paymentCardInfo:
+            type: object
+            description: Credit or Debits cards.
+            title: PaymentCard
+            properties:
+              vendorCode:
+                type: string
+                example: VI
+                description: Two-letter code card type or vendor code. E.g. VI for VISA, MA for MasterCard.
+                maxLength: 30
+                minLength: 0
+              holderName:
+                type: string
+                description: Name of credit card holder.
+                maxLength: 99
+                minLength: 1
+              cardNumber:
+                type: string
+                description: Card number
+              expiryDate:
+                type: string
+                description: Date of the expiration of the card in the format MMYY
+            required:
+            - vendorCode
+            - holderName
+            - cardNumber
+            - expiryDate
+          cardOwnerType:
+            type: string
+            description: 'Indicates who is the owner of the credit card, it can be either the travel agency "TravelAgency", the corporation "Corporation" or the traveller "Guest".
+
+              This field is mamdatory for Amadeus Value Hotel when the method of payment is CREDIT_CARD.
+
+              This field is optional in informational in all other cases.'
+            enum:
+            - TravelAgency
+            - Guest
+            - Corporation
+            example: TravelAgency
+          VCC:
+            type: boolean
+            description: 'If the provided card is a virtual credit card generated by an external provider, this boolean should be true.
+
+              (It is different from  Billback and B2B wallet VCC. These ones are generated during Amadeus booking process and have a dedicated payment section.)'
+          address:
+            $ref: '#/definitions/Address_3'
+        required:
+        - paymentCardInfo
+    required:
+    - method
+  Passenger:
+    description: passenger data
+    allOf:
+    - $ref: '#/definitions/Name_2'
+    - type: object
+      properties:
+        contacts:
+          $ref: '#/definitions/Contact_2'
+        billingAddress:
+          $ref: '#/definitions/AddressCommon'
+  Error_404:
+    type: object
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/Issue'
+    required:
+    - errors
+    example:
+      errors:
+      - status: 404
+        code: 1797
+        title: NOT FOUND
+        detail: no response found for this query parameter
+        source:
+          parameter: airport
+  Tax_2:
+    description: single tax information
+    allOf:
+    - type: object
+      properties:
+        monetaryAmount:
+          type: string
+          example: '10.5'
+    - type: object
+      properties:
+        indicator:
+          type: string
+          description: Tax category
+        natureCode:
+          type: string
+          description: Tax code
+        countryCode:
+          type: string
+          description: Tax iso country code
+        rate:
+          type: string
+          description: Tax rate
+  AircraftEntry:
+    additionalProperties:
+      description: the manufacturer/model of aircraft
+      type: string
+  FlightStop:
+    title: FlightStop
+    description: details of stops for direct or change of gauge flights
+    allOf:
+    - $ref: '#/definitions/OriginalFlightStop'
+    - type: object
+      properties:
+        arrivalAt:
+          description: arrival at the stop in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) YYYY-MM-ddThh:mm:ss format, e.g. 2017-02-10T20:40:00
+          type: string
+          format: date-time
+          example: '2017-10-23T20:00:00'
+        departureAt:
+          description: departure from the stop in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) YYYY-MM-ddThh:mm:ss format, e.g. 2017-02-10T20:40:00
+          type: string
+          format: date-time
+          example: '2017-10-23T20:00:00'
+  DiscountCode:
+    type: object
+    description: discount object that gives access to negotiated prices
+    properties:
+      type:
+        type: string
+        description: describes type of discount
+        enum:
+        - CD
+        - PC
+      value:
+        type: string
+        description: "discount code value. \n\"CD\" type stands for corporate discount code - a number generated by provider in case of\n  special agreement with a given subscriber is passed (airlines, TMC,\n  corporation…). It gives to subscriber access to negotiated prices for\n  transfer      \n\"PC\" - for promotional/campaign discount code - a voucher code generated by the\n  provider valid for a given period of time or a given number of usage.\n  The code is sent by customer to provider in order to get a discounted\n  price."
+  PricingOptionsFareType:
+    type: array
+    description: type of fare of the flight-offer
+    items:
+      type: string
+      enum:
+      - PUBLISHED
+    example:
+    - PUBLISHED
+  DiscountTravelerType:
+    description: type of discount applied
+    type: string
+    enum:
+    - SPANISH_CITIZEN
+    - EUROPEAN_CITIZEN
+    - GOVERNMENT_WORKER
+    - MILITARY
+    - MINOR_WITHOUT_ID
+    example: SPANISH_CITIZEN
+  Equipment:
+    type: object
+    description: extra equipment information
+    required:
+    - code
+    properties:
+      code:
+        type: string
+        description: "extra equipment codes, which can take following values\n\ncode   | name                                 \n------ | -------------------------------------  \nBBS    | Baby stroller/Push chair\nBYC    | Bicycle rack\nCBB    | Cargo barrier rack\nCBF    | Cargo barrier front\nCBS    | Booster seat for child under 135cm or up to 12 years\nCSB    | Child seat determined by weight/age of child 1-3 years / 9-18 Kg\nCSI    | Child seat determined by weight/age of child 0-12 month/0-13Kg\nCST    | Child seat determined by weight/age of child 4-7 years/15 – 30 Kg\nSBR    | Snow board racks\nSKB    | Ski box\nSKR    | Ski rack\nTAB    | Travel Tablet \nWAR    | Wheelchair access ramp\nWHC    | Wheelchair\nWIF    | Wi-Fi access\nCNT    | Charger cable\n"
+        enum:
+        - BBS
+        - BYC
+        - CBB
+        - CBF
+        - CBS
+        - CSB
+        - CSI
+        - CST
+        - SBR
+        - SKB
+        - SKR
+        - 'TAB '
+        - WAR
+        - WHC
+        - WIF
+        - CNT
+      itemId:
+        type: string
+        description: extra equipment identifier
+      description:
+        type: string
+        description: extra equipment description
+      quotation:
+        $ref: '#/definitions/Quotation'
+      converted:
+        $ref: '#/definitions/Quotation'
+      isBookable:
+        type: boolean
+        description: true if extra equipment is available for booking
+      taxIncluded:
+        type: boolean
+        description: true if tax included in extra equipment price
+      includedInTotal:
+        type: boolean
+        description: true if extra equipment price is included in total transfer amount
+  BaseName:
+    type: object
+    description: description of the name of a physical person
+    properties:
+      firstName:
+        description: First name.
+        type: string
+      lastName:
+        description: Last name.
+        type: string
+      middleName:
+        description: Middle name(s), for example "Lee" in "John Lee Smith".
+        type: string
+  FlightSegment:
+    type: object
+    description: defining a flight segment; including both operating and marketing details when applicable
+    properties:
+      departure:
+        $ref: '#/definitions/FlightEndPoint'
+      arrival:
+        $ref: '#/definitions/FlightEndPoint'
+      carrierCode:
+        type: string
+        description: providing the airline / carrier code
+        minLength: 1
+        maxLength: 2
+        example: DL
+      number:
+        type: string
+        description: the flight number as assigned by the carrier
+        minLength: 1
+        maxLength: 4
+        example: '212'
+      aircraft:
+        $ref: '#/definitions/AircraftEquipment'
+      operating:
+        $ref: '#/definitions/OperatingFlight'
+      duration:
+        type: string
+        description: stop duration in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) PnYnMnDTnHnMnS format, e.g. PT2H10M
+        example: PT2H10M
+      stops:
+        type: array
+        description: information regarding the different stops composing the flight segment. E.g. technical stop, change of gauge...
+        items:
+          $ref: '#/definitions/FlightStop'
+  ChargeableSeat:
+    description: Details of chargeable seat
+    type: object
+    properties:
+      id:
+        description: Id of the chargeable seat
+        type: string
+        example: '1'
+      number:
+        type: string
+        description: seat number
+        example: 33D
+        pattern: '[1-9][0-9]{0,2}[A-Z]?'
+  AssociatedRecordCommon:
+    type: object
+    description: describes the relation between the current reservation and another one
+    properties:
+      reference:
+        type: string
+        description: Record locator [Amadeus or OA] with which the current reservation is related. In case of a codeshare relation, it enables to identify the operating PNR.
+      creationDate:
+        type: string
+        description: Creation date of the referenced reservation. Date and time in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) YYYY-MM-ddThh:mm:ss.sss format, e.g. 2019-07-09T12:30:00.000
+        example: '2019-07-09T12:30:00.000'
+      originSystemCode:
+        type: string
+        description: Designates the system which has originated the referenced reservation.
+        minLength: 2
+        maxLength: 3
+  Hotel_Contact:
+    title: Hotel_Contact
+    type: object
+    description: Contact Details
+    properties:
+      phone:
+        type: string
+        description: Phone Number
+        example: '+33679278416'
+        minLength: 2
+        maxLength: 90
+        pattern: ^[+][1-9][0-9]{4,18}$
+      fax:
+        type: string
+        description: Fax Number
+        example: '+33679278417'
+        minLength: 2
+        maxLength: 90
+        pattern: ^[+][1-9][0-9]{4,18}$
+      email:
+        type: string
+        description: Email Address
+        format: email
+        example: hotel@brand.com
+        minLength: 3
+        maxLength: 90
+        pattern: ^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$
+    required:
+    - fax
+  Error_400_3:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/Issue_3'
+    required:
+    - errors
+    example:
+      errors:
+      - status: 400
+        code: 4926
+        title: INVALID DATA RECEIVED
+        detail: Transfer type is not valid
+        source:
+          parameter: transferType
+  Issue_3:
+    properties:
+      status:
+        description: the HTTP status code applicable to this error
+        type: integer
+      code:
+        description: an application-specific error code
+        type: integer
+        format: int64
+      title:
+        description: a short summary of the error
+        type: string
+      detail:
+        description: explanation of the error
+        type: string
+      source:
+        type: object
+        title: Issue_Source
+        description: an object containing references to the source of the error
+        maxProperties: 1
+        properties:
+          pointer:
+            description: a JSON Pointer [RFC6901] to the associated entity in the request document
+            type: string
+          parameter:
+            description: a string indicating which URI query parameter caused the issue
+            type: string
+          example:
+            description: a string indicating an example of the right value
+            type: string
+  Segment:
+    allOf:
+    - type: object
+      properties:
+        id:
+          description: Id of the segment
+          type: string
+          example: 1
+        numberOfStops:
+          description: Number of stops
+          type: integer
+          example: 0
+        blacklistedInEU:
+          description: "When the flight has a marketing or/and operating airline that is identified as blacklisted by the European Commission. \n\nTo improve travel safety, the European Commission regularly updates the list of the banned carriers from operating in Europe. It allows any Travel Agency located in the European Union to easily identify and hide any travel recommendation based on some unsafe airlines. \nThe [list of the banned airlines](https://ec.europa.eu/transport/sites/transport/files/air-safety-list_en.pdf) is published in the Official Journal of the European Union, where they are included as annexes A and B to the Commission Regulation. The blacklist of an airline can concern all its flights or some specific aircraft types pertaining to the airline   \n"
+          type: boolean
+          example: false
+        co2Emissions:
+          description: Co2 informations
+          type: array
+          minItems: 1
+          items:
+            title: Co2Emission
+            $ref: '#/definitions/Co2Emission'
+    - $ref: '#/definitions/FlightSegment'
+  HotelProduct_PaymentPolicy:
+    title: HotelProduct_PaymentPolicy
+    type: object
+    description: Accepted Payment Methods and Card Types. Several Payment Methods and Card Types may be available.
+    properties:
+      creditCards:
+        type: array
+        description: Accepted Payment Card Types for the `method` CREDIT_CARD
+        items:
+          type: string
+          pattern: ^[A-Z]{2}$
+          minLength: 2
+          maxLength: 2
+          example: VI
+          description: "card type (CA, VI, AX, DC...)\nExamples:\n  * CA - Mastercard (warning: use it instead of MC/IK/EC/MD/XS)\n  * VI - VISA\n  * AX - AMERICAN EXPRESS\n  * DC - Diners Club\n  * DS - DISCOVER\n  * JC - JCB\n  * TP - UATP / AirPlus\n  * UP - UnionPay  \n"
+        example:
+        - CA
+        - VI
+        - AX
+      methods:
+        type: array
+        description: Accepted Payment Methods
+        items:
+          type: string
+          example: CREDIT_CARD
+          enum:
+          - CREDIT_CARD
+          - CREDIT_CARD_AGENCY
+          - CREDIT_CARD_TRAVELER
+          - VCC_BILLBACK
+          - VCC_B2B_WALLET
+          - TRAVEL_AGENT_ID
+          - AGENCY_ACCOUNT
+          - CORPORATE_ID
+          - CHECK
+          - ADVANCE_DEPOSIT
+          - COMPANY_ADDRESS
+          - HOTEL_GUEST_ID
+          - MISC_CHARGE_ORDER
+          - DEFERED_PAYMENT
+          - TRAVEL_AGENT_IMMEDIATE
+          description: "The Payment Methods :\n * CREDIT_CARD (CC) - Payment Cards in `creditCards` are accepted\n * CREDIT_CARD_AGENCY (CA) - Payment Cards in `creditCards` are accepted\n * CREDIT_CARD_TRAVELER (CC) - Payment Cards in `creditCards` are accepted\n * AGENCY_ACCOUNT - Agency Account (Credit Line) is accepted. Agency is Charged at CheckOut\n * TRAVEL_AGENT_ID - Agency IATA/ARC Number is accepted to Guarantee the booking\n * CORPORATE_ID (COR-ID) - Corporate Account is accepted to Guarantee the booking\n * HOTEL_GUEST_ID - Hotel Chain Rewards Card Number is accepted to Guarantee the booking\n * CHECK - Checks are accepted\n * MISC_CHARGE_ORDER - Miscellaneous Charge Order is accepted\n * ADVANCE_DEPOSIT - Cash is accepted for Deposit/PrePay\n * COMPANY_ADDRESS - Company Billing Address is accepted to Guarantee the booking"
+  Remarks:
+    title: Remarks
+    description: remarks
+    type: object
+    properties:
+      general:
+        description: list of general remarks
+        type: array
+        minItems: 0
+        maxItems: 200
+        items:
+          $ref: '#/definitions/GeneralRemark'
+      airline:
+        description: list of airline remarks
+        type: array
+        minItems: 0
+        maxItems: 200
+        items:
+          $ref: '#/definitions/AirlineRemark'
+  GeneralRemark:
+    title: GeneralRemark
+    type: object
+    required:
+    - subType
+    - text
+    properties:
+      subType:
+        $ref: '#/definitions/GeneralRemarkType'
+      category:
+        description: remark category
+        type: string
+        example: Z
+        pattern: '[A-Z]{1}'
+      text:
+        description: remark free text
+        type: string
+        example: PASSENGER NEED ASSISTANCE
+      travelerIds:
+        description: Id of the concerned traveler
+        type: array
+        items:
+          type: string
+        example: '1'
+      flightOfferIds:
+        description: Id of the concern flightOffers
+        type: array
+        minItems: 1
+        maxItems: 6
+        items:
+          type: string
+        example: '1'
+  TravelerType:
+    type: string
+    description: 'traveler type
+
+      age restrictions : CHILD < 12y, HELD_INFANT < 2y, SEATED_INFANT < 2y, SENIOR >=60y
+
+      '
+    enum:
+    - ADULT
+    - CHILD
+    - SENIOR
+    - YOUNG
+    - HELD_INFANT
+    - SEATED_INFANT
+    - STUDENT
+    example: ADULT
+  ArrivalFlightDetails:
+    title: FlightTransfer_FlightSegment
+    type: object
+    properties:
+      carrierCode:
+        type: string
+        description: Carrier code
+        example: LH
+      number:
+        type: string
+        description: Flight segment number
+        example: '1050'
+      departure:
+        type: object
+        description: Departure or arrival information
+        title: FlightSegment_Departure
+        required:
+        - iataCode
+        properties:
+          iataCode:
+            description: IATA Airport code
+            type: string
+            example: JFK
+      arrival:
+        type: object
+        description: Departure or arrival information
+        title: FlightSegment_Arrival
+        properties:
+          iataCode:
+            description: IATA Airport code
+            type: string
+            example: JFK
+          terminal:
+            description: Terminal name / number
+            type: string
+            example: T2
+          at:
+            description: Local date and time at the arrival of the flight with the following format "YYYY-MM-DD'T'HH:mm:ss" (for example 2017-02-10T20:40:00 if the flight arrive 20h40 local time)
+            type: string
+            format: date-time
+            example: '2017-10-23T20:00:00+02:00'
+        required:
+        - iataCode
+        - terminal
+        - at
+    required:
+    - carrierCode
+    - number
+    - departure
+  Error_400:
+    type: object
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/Issue'
+    required:
+    - errors
+    example:
+      errors:
+      - status: 400
+        code: 477
+        title: INVALID FORMAT
+        detail: invalid query parameter format
+        source:
+          parameter: airport
+          example: CDG
+  AirTravelDocumentCommon:
+    type: object
+    properties:
+      documentType:
+        type: string
+        description: Type of the travel document
+        enum:
+        - ETICKET
+        - PTICKET
+        - EMD
+        - MCO
+      documentNumber:
+        type: string
+        description: Identifier of the travel document prefixed by its owner code [NALC - 3 digits]. Can either be a primary or a conjunctive document number. Necessary for TicketingReference definition.
+      documentStatus:
+        type: string
+        description: Status of the travel document contained in the fare element
+        enum:
+        - ISSUED
+        - REFUNDED
+        - VOID
+        - ORIGINAL
+        - EXCHANGED
+  Address_3:
+    type: object
+    description: Address information
+    title: Address
+    properties:
+      lines:
+        type: array
+        description: Line 1 = Street address, Line 2 = Apartment, suite, unit, building, floor, etc
+        items:
+          type: string
+      postalCode:
+        type: string
+        description: 'Example: 74130'
+      countryCode:
+        type: string
+        description: ISO 3166-1 country code
+        pattern: '[a-zA-Z]{2}'
+      cityName:
+        type: string
+        description: 'Full city name. Example: Dublin'
+        pattern: '[a-zA-Z -]{1,35}'
+      stateCode:
+        type: string
+        description: State code (two character standard IATA state code)
+        pattern: '[a-zA-Z0-9]{1,2}'
+    required:
+    - postalCode
+    - countryCode
+    - cityName
+  FeeType:
+    type: string
+    description: type of fee
+    enum:
+    - TICKETING
+    - FORM_OF_PAYMENT
+    - SUPPLIER
+    example: TICKETING
+  DocumentType:
+    type: string
+    description: the nature/type of the document
+    enum:
+    - VISA
+    - PASSPORT
+    - IDENTITY_CARD
+    - KNOWN_TRAVELER
+    - REDRESS
+    example: VISA
+  Corporation:
+    type: object
+    description: information about corporation
+    properties:
+      address:
+        $ref: '#/definitions/AddressCommon'
+      info:
+        type: object
+        description: "corporate information map. Possible keys\n\nkey    | name\n------ | ----------------------------\nAU\t   | Accounting Unit\nON\t   | Order Number\nDC\t   | Department Code\nCC\t   | Company Code\nCN\t   | Company Name\nIA\t   | Internal Account\nCE\t   | Cost Centre\nEN\t   | Employee Number\nPN\t   | Project Number\n"
+        additionalProperties:
+          type: string
+        example:
+          AU: Accounting Unit
+          'ON': Order Number
+          DC: Department Code
+          CC: Company Code
+          CN: Company Name
+          IA: Internal Account
+          CE: Cost Centre
+          EN: Employee Number
+          PN: Project Number
+  FlightOrder:
+    title: FlightOrderCreateQuery
+    type: object
+    description: input parameter to create a flight order
+    required:
+    - type
+    - flightOffers
+    properties:
+      type:
+        description: the resource name
+        type: string
+        example: flight-order
+      id:
+        description: unique identifier of the flight order
+        type: string
+        example: MlpZVkFMfFdBVFNPTnwyMDE1LTExLTAy
+        readOnly: true
+      queuingOfficeId:
+        description: office Id where to queue the order
+        type: string
+        example: NCE1A0955
+      ownerOfficeId:
+        description: office Id where will be transfered the ownership of the order
+        type: string
+        example: NCE1A0955
+      associatedRecords:
+        description: list of associated record
+        type: array
+        readOnly: true
+        items:
+          $ref: '#/definitions/AssociatedRecord'
+      flightOffers:
+        description: list of flight offer
+        type: array
+        minItems: 1
+        maxItems: 6
+        items:
+          $ref: '#/definitions/FlightOffer'
+      travelers:
+        description: list of travelers
+        type: array
+        minItems: 1
+        maxItems: 18
+        items:
+          $ref: '#/definitions/Traveler'
+      remarks:
+        description: list of global remarks
+        $ref: '#/definitions/Remarks'
+      formOfPayments:
+        description: list of form of payments
+        type: array
+        minItems: 1
+        maxItems: 6
+        readOnly: true
+        items:
+          $ref: '#/definitions/FormOfPayment'
+      ticketingAgreement:
+        $ref: '#/definitions/TicketingAgreement'
+      automatedProcess:
+        description: list of automatic queuing
+        type: array
+        minItems: 0
+        maxItems: 31
+        items:
+          $ref: '#/definitions/AutomatedProcess'
+      contacts:
+        description: list of general contact information
+        type: array
+        items:
+          $ref: '#/definitions/Contact'
+      tickets:
+        description: list of tickets
+        readOnly: true
+        type: array
+        items:
+          $ref: '#/definitions/AirTravelDocument'
+      formOfIdentifications:
+        description: list of forms of identifications applicable to travelers by airline
+        type: array
+        items:
+          $ref: '#/definitions/FormOfIdentification'
+  B2bWallet:
+    title: B2bWallet
+    type: object
+    description: b2b wallet
+    properties:
+      cardId:
+        readOnly: true
+        description: card identifier
+        type: string
+        example: '1245365895336'
+      cardUsageName:
+        description: card usage name
+        type: string
+      cardFriendlyName:
+        description: card name
+        type: string
+        example: CB1
+        pattern: '[a-zA-Z0-9]{1,35}'
+      reportingData:
+        type: array
+        title: reportingData
+        items:
+          title: reportingData
+          type: object
+          properties:
+            name:
+              type: string
+              example: reconcil1
+            value:
+              type: string
+              example: data1
+      virtualCreditCardDetails:
+        readOnly: true
+        $ref: '#/definitions/VirtualCreditCardDetails'
+      flightOfferIds:
+        description: Id of the concern flightOffers
+        type: array
+        minItems: 1
+        maxItems: 6
+        items:
+          type: string
+        example: '1'
+  Payment:
+    type: object
+    description: 'defines the payment in transfer reservation. For "CREDIT_CARD" - creditCard is mandatory, for "TRAVEL_ACCOUNT" - paymentReference is optional, for "PAYMENT_SERVICE_PROVIDER" - paymentServiceProvider and paymentReference are mandatory.
+
+      '
+    properties:
+      methodOfPayment:
+        type: string
+        description: Method of payment required when PaymentType equal BT (applicable only for reservation action).
+        enum:
+        - CREDIT_CARD
+        - TRAVEL_ACCOUNT
+        - PAYMENT_SERVICE_PROVIDER
+      paymentReference:
+        type: string
+        description: payment refence that will be passed to provider in case "TRAVEL_ACCOUNT" method of payment
+      paymentServiceProvider:
+        type: string
+        description: payment service provider details will be passed to provider in case "PAYMENT_SERVICE_PROVIDER" method of payment.
+        enum:
+        - STRIPE_CONNECT
+      creditCard:
+        $ref: '#/definitions/CreditCard_2'
+  PaymentInput:
+    title: Payment Information in input message
+    type: object
+    description: Model with the hotel payment information
+    properties:
+      iataTravelAgency:
+        type: object
+        description: 'Agency IATA/ARC Number used to Guarantee the booking.
+
+          If not provided it is taken form the Amadeus Office profile.'
+        properties:
+          iataNumber:
+            type: string
+      method:
+        type: string
+        description: "Indicates the method of payment. \n- CREDIT_CARD : It allows payment through a credit card. It is expected to provide the credit card information in the paymentCard section."
+        enum:
+        - CREDIT_CARD
+      paymentCard:
+        type: object
+        description: "Credit card information.\nThe full details of a credit card are expected :\n  . credit card holder name (mandatory, maximum 64 chars) \n  . credit card vendor code (mandatory)\n  . credit card number (mandatory)\n  . credit card expiry date (mandatory)\n  . credit card security code (optional, it is anyway strongly recommended to always provide it for Aggregators)"
+        properties:
+          paymentCardInfo:
+            type: object
+            description: Credit or Debits cards.
+            title: PaymentCard
+            properties:
+              vendorCode:
+                type: string
+                example: VI
+                description: Two-letter code card type or vendor code. E.g. VI for VISA, MA for MasterCard.
+                maxLength: 30
+                minLength: 0
+              holderName:
+                type: string
+                description: Name of credit card holder.
+                maxLength: 99
+                minLength: 1
+              cardNumber:
+                type: string
+                description: Card number
+              securityCode:
+                type: string
+                description: Card security code
+                example: '193'
+                minLength: 3
+                maxLength: 4
+              expiryDate:
+                type: string
+                description: Date of the expiration of the card in the format MMYY
+            required:
+            - vendorCode
+            - holderName
+            - cardNumber
+            - expiryDate
+          address:
+            $ref: '#/definitions/Address_3'
+        required:
+        - paymentCardInfo
+    required:
+    - method
+  AirlineRemark:
+    title: AirlineRemark
+    type: object
+    required:
+    - subType
+    - airlineCode
+    - text
+    properties:
+      subType:
+        $ref: '#/definitions/AirlineRemarkType'
+      keyword:
+        description: keyword code - only applicable for subType Keyword
+        type: string
+        example: PARK
+      airlineCode:
+        description: 'Code of the airline following IATA standard ([IATA table codes](http://www.iata.org/publications/Pages/code-search.aspx))
+
+
+          When it apply to any airline, value is YY.
+
+          '
+        type: string
+        example: AF
+      text:
+        description: remark free text
+        type: string
+        example: CAR PARK
+      travelerIds:
+        description: Id of the concerned traveler
+        type: array
+        items:
+          type: string
+        example: '1'
+      flightOfferIds:
+        description: Id of the concern flightOffers
+        type: array
+        minItems: 1
+        maxItems: 6
+        items:
+          type: string
+        example: '1'
+  FlightEndPoint:
+    title: FlightEndPoint
+    description: departure or arrival information
+    allOf:
+    - $ref: '#/definitions/OriginalFlightEndPoint'
+    - type: object
+      properties:
+        at:
+          description: local date and time in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) YYYY-MM-ddThh:mm:ss format, e.g. 2017-02-10T20:40:00
+          type: string
+          format: date-time
+          example: '2017-10-23T20:00:00'
+  StopOver:
+    description: Location of the stop over or the several stop over points. It can be defined either using IATA code or Address (address line, zip, country, city, state, latitude, longitude). Vehicle change via stop overs is not supported.
+    properties:
+      duration:
+        description: transfer stop duration in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) PnYnMnDTnHnMnS format, e.g. PT2H10M.
+        type: string
+        example: PT2H30M
+      sequenceNumber:
+        description: sequence number of the stop e.g. 3
+        type: number
+        example: 1
+      location:
+        $ref: '#/definitions/Location'
+  HotelOffer:
+    description: Hotel Offer
+    title: HotelOffer
+    allOf:
+    - type: object
+      properties:
+        type:
+          description: data type set to hotel-offer
+          type: string
+          example: hotel-offer
+          default: hotel-offer
+          enum:
+          - hotel-offer
+        id:
+          type: string
+          pattern: ^[A-Z0-9]*$
+          minLength: 2
+          maxLength: 100
+          example: 63A93695B58821ABB0EC2B33FE9FAB24D72BF34B1BD7D707293763D8D9378FC3
+          description: Unique identifier of this offer. Might be valid for a temporary period only.
+      required:
+      - id
+    - $ref: '#/definitions/HotelProduct'
+  Phone:
+    type: object
+    description: phone information
+    properties:
+      deviceType:
+        $ref: '#/definitions/PhoneDeviceType'
+      countryCallingCode:
+        type: string
+        description: Country calling code of the phone number, as defined by the International Communication Union. Examples - "1" for US, "371" for Latvia.
+        pattern: '[0-9+]{2,5}'
+      number:
+        type: string
+        description: Phone number. Composed of digits only. The number of digits depends on the country.
+        pattern: '[0-9]{1,15}'
+  TicketingAgreementOption:
+    description: 'Ticketing agreement option
+
+      * **CONFIRM**, when the payment is done
+
+      * **DELAY_TO_QUEUE**, queue the reservation at a wished date if the payment is not done
+
+      * **DELAY_TO_CANCEL**, cancel the reservation at a wished date if the payment is not done
+
+
+      Queueing and cancellation occurs at local date and time. When no time is specified, reservation is queued or cancelled at 00:00.
+
+      '
+    type: string
+    enum:
+    - CONFIRM
+    - DELAY_TO_QUEUE
+    - DELAY_TO_CANCEL
+    example: DELAY_TO_QUEUE
+parameters:
+  flight-orderId:
+    name: flight-orderId
+    description: identifier of the flight order
+    required: true
+    in: path
+    type: string
+    x-example: eJzTd9f3s4gKC%2FMEAAt8Ans%3D
+responses:
+  '404':
+    description: Not Found
+    schema:
+      $ref: '#/definitions/Error_404'
+  400_Book:
+    description: "code    | title                                 \n------- | ------------------------------------- \n477     | INVALID FORMAT\n1304    | CREDIT CARD NOT ACCEPTED\n2781    | INVALID LENGTH\n4926    | INVALID DATA RECEIVED\n9112    | TICKETING - TKT\n2668    | PARAMETER COMBINATION INVALID/RESTRICTED\n32171   | MANDATORY DATA MISSING\n34107   | NOT APPLICABLE FARE\n34651   | SEGMENT SELL FAILURE\n34733   | VIRTUAL CARD CREATION FAILED\n36870   | BOOKING FAILED\n37200   | PRICE DISCREPANCY\n38034   | ONE OR MORE SERVICES ARE NOT AVAILABLE\n"
+    schema:
+      $ref: '#/definitions/Error_400'
+  '500_3':
+    description: Unexpected Error
+    schema:
+      $ref: '#/definitions/Error_500_3'
+  '500':
+    description: Unexpected error
+    schema:
+      $ref: '#/definitions/Error_500'
+  400_createTransferOrder:
+    description: "code    | title                                 \n------- | ------------------------------------- \n11      | UNABLE TO PROCESS\n391     | NEED TELEPHONE NUMBER\n477     | INVALID FORMAT\n693     | INVALID CITY/AIRPORT CODE\n830     | MISSING/INVALID COUNTRY CODE\n1143    | INVALID CREDIT CARD NUMBER\n1149    | CREDIT CARD EXPIRED\n1426    | EXPIRATION DATE MISSING OR INVALID\n1535    | INVALID VENDOR CODE\n4926    | INVALID DATA RECEIVED \n11041   | NEED PASSENGER NAME\n11257   | NEED CITY NAME\n12237   | ZIP CODE IS MANDATORY IN ADDRESS\n23883   | EMAIL ADDRESS REQUIRED\n25862   | CREDIT CARD HOLDER NAME REQUIRED\n27599   | INVALID PASSENGER NAME\n28926   | MISSING CARD VERIFICATION VALUE CVV\n32171   | MANDATORY DATA MISSING \n32804   | INVALID PHONE NUMBER\n34120   | INVALID EMAIL ADDRESS\n34497   | THE LINE IS MANDATORY IN ADDRESS\n34502   | PAYMENT METHOD IS REQUIRED\n37576   | INVALID PAYMENT METHOD\n38597   | CREDIT CARD NUMBER IS REQUIRED\n45514   | INVALID BILLING ADDRESS\n34649   | INVALID FLIGHT INFORMATION\n15566   | INVALID RAIL INFORMATION\n"
+    schema:
+      $ref: '#/definitions/Error_400_2'
+  400_DELETE_Order:
+    description: "code    | title                                 \n------- | ------------------------------------- \n4926    | INVALID DATA RECEIVED\n32171   | MANDATORY DATA MISSING\n"
+    schema:
+      $ref: '#/definitions/Error_400'
+  returnFlightOrders:
+    description: Successful Operation
+    schema:
+      title: Success_Booking
+      type: object
+      required:
+      - data
+      properties:
+        meta:
+          $ref: '#/definitions/Collection_Meta_Link'
+        warnings:
+          type: array
+          items:
+            $ref: '#/definitions/Issue'
+        data:
+          $ref: '#/definitions/FlightOrder'
+        dictionaries:
+          $ref: '#/definitions/Dictionaries'
+      example:
+        data:
+          type: flight-order
+          id: MlpZVkFMfFdBVFNPTnwyMDE1LTExLTAy
+          queuingOfficeId: NCE1A0950
+          associatedRecords:
+          - reference: 2ZYVAL
+            creationDateTime: '2018-07-13T20:17:00'
+            originSystemCode: 1A
+            flightOfferId: '1'
+          travelers:
+          - id: '1'
+            dateOfBirth: '1982-01-16'
+            name:
+              firstName: STEPHANE
+              lastName: MARTIN
+            contact:
+              phones:
+              - countryCallingCode: '33'
+                number: '487692704'
+            documents:
+            - documentType: PASSPORT
+              number: 012345678
+              expiryDate: '2009-04-14'
+              issuanceCountry: GB
+              nationality: GB
+              holder: true
+          - id: '3'
+            dateOfBirth: '2018-03-24'
+            name:
+              firstName: JULES
+              lastName: MARTIN
+          - id: '2'
+            dateOfBirth: '2007-10-11'
+            name:
+              firstName: EMILIE
+              lastName: MARTIN
+          flightOffers:
+          - id: '1'
+            type: flight-offer
+            source: GDS
+            itineraries:
+            - duration: PT2H
+              segments:
+              - id: '1'
+                duration: PT2H
+                aircraft:
+                  code: '320'
+                numberOfStops: 0
+                blacklistedInEU: false
+                carrierCode: IB
+                operating:
+                  carrierCode: IB
+                number: '3403'
+                departure:
+                  at: '2018-09-22T10:15:00'
+                  terminal: W
+                  iataCode: ORY
+                arrival:
+                  at: '2018-09-22T12:15:00'
+                  terminal: '4'
+                  iataCode: MAD
+                co2Emissions:
+                - weight: '100'
+                  weightUnit: KG
+                  cabin: ECONOMY
+            - duration: PT1H20M
+              segments:
+              - id: '20'
+                duration: PT1H20M
+                aircraft:
+                  code: '320'
+                numberOfStops: 0
+                blacklistedInEU: false
+                carrierCode: IB
+                operating:
+                  carrierCode: IB
+                number: '3118'
+                departure:
+                  at: '2018-09-26T23:05:00'
+                  terminal: '4'
+                  iataCode: MAD
+                arrival:
+                  at: '2018-09-26T23:25:00'
+                  terminal: '1'
+                  iataCode: LIS
+                co2Emissions:
+                - weight: '100'
+                  weightUnit: KG
+                  cabin: ECONOMY
+            - duration: PT4H30M
+              segments:
+              - id: '30'
+                duration: PT2H
+                aircraft:
+                  code: '320'
+                numberOfStops: 0
+                blacklistedInEU: false
+                carrierCode: IB
+                operating:
+                  carrierCode: IB
+                number: '3109'
+                departure:
+                  at: '2018-10-04T12:35:00'
+                  terminal: '1'
+                  iataCode: LIS
+                arrival:
+                  at: '2018-10-04T14:55:00'
+                  terminal: '4'
+                  iataCode: MAD
+                co2Emissions:
+                - weight: '100'
+                  weightUnit: KG
+                  cabin: ECONOMY
+              - id: '31'
+                duration: PT2H30M
+                aircraft:
+                  code: '320'
+                numberOfStops: 0
+                blacklistedInEU: false
+                carrierCode: IB
+                operating:
+                  carrierCode: IB
+                number: '3444'
+                departure:
+                  at: '2018-10-04T16:05:00'
+                  terminal: '4'
+                  iataCode: MAD
+                arrival:
+                  at: '2018-10-04T18:05:00'
+                  terminal: W
+                  iataCode: ORY
+                co2Emissions:
+                - weight: '100'
+                  weightUnit: KG
+                  cabin: ECONOMY
+            price:
+              grandTotal: '689.21'
+              total: '423.21'
+              base: '242.00'
+              currency: EUR
+              billingCurrency: EUR
+              fees:
+              - type: SUPPLIER
+                amount: '0'
+              - type: FORM_OF_PAYMENT
+                amount: '6'
+              - type: TICKETING
+                amount: '0'
+              additionalServices:
+              - type: CHECKED_BAGS
+                amount: '100'
+              - type: SEATS
+                amount: '166'
+            pricingOptions:
+              fareType:
+              - PUBLISHED
+              includedCheckedBags: false
+            validatingAirlineCodes:
+            - IB
+            travelerPricings:
+            - travelerId: '1'
+              fareOption: STANDARD
+              travelerType: ADULT
+              price:
+                currency: EUR
+                total: '200.94'
+                base: '126'
+                taxes:
+                - code: YQ
+                  amount: '0.94'
+                - code: CJ
+                  amount: '41.67'
+                - code: FR
+                  amount: '31.33'
+              fareDetailsBySegment:
+              - segmentId: '1'
+                cabin: ECONOMY
+                fareBasis: ANNNNF4K
+                brandedFare: LIGHTONE
+                class: A
+                isAllotment: true
+                allotmentDetails:
+                  tourName: tour
+                  tourReference: ref
+                sliceDiceIndicator: ABCDEF
+                includedCheckedBags:
+                  quantity: 0
+              - segmentId: '20'
+                cabin: ECONOMY
+                fareBasis: ANNNNF4K
+                brandedFare: LIGHTONE
+                class: A
+                isAllotment: true
+                allotmentDetails:
+                  tourName: tour
+                  tourReference: ref
+                sliceDiceIndicator: ABCDEF
+                includedCheckedBags:
+                  quantity: 0
+              - segmentId: '30'
+                cabin: ECONOMY
+                fareBasis: ANNNNF4K
+                brandedFare: LIGHTONE
+                class: A
+                isAllotment: true
+                allotmentDetails:
+                  tourName: tour
+                  tourReference: ref
+                sliceDiceIndicator: ABCDEF
+                includedCheckedBags:
+                  quantity: 0
+              - segmentId: '31'
+                cabin: ECONOMY
+                fareBasis: ANNNNF4K
+                brandedFare: LIGHTONE
+                class: A
+                isAllotment: true
+                allotmentDetails:
+                  tourName: tour
+                  tourReference: ref
+                sliceDiceIndicator: ABCDEF
+                includedCheckedBags:
+                  quantity: 0
+            - travelerId: '2'
+              fareOption: STANDARD
+              travelerType: CHILD
+              price:
+                currency: EUR
+                total: '180.94'
+                base: '106'
+                taxes:
+                - code: YQ
+                  amount: '0.94'
+                - code: CJ
+                  amount: '41.67'
+                - code: FR
+                  amount: '31.33'
+              fareDetailsBySegment:
+              - segmentId: '1'
+                cabin: ECONOMY
+                fareBasis: ANNNNF4K
+                brandedFare: LIGHTONE
+                class: A
+                isAllotment: true
+                allotmentDetails:
+                  tourName: tour
+                  tourReference: ref
+                sliceDiceIndicator: ABCDEF
+                includedCheckedBags:
+                  quantity: 0
+                additionalServices:
+                  chargeableCheckedBags:
+                    quantity: 1
+                    weight: 20
+                  chargeableSeatNumber: 33D
+              - segmentId: '20'
+                cabin: ECONOMY
+                fareBasis: ANNNNF4K
+                brandedFare: LIGHTONE
+                class: A
+                isAllotment: true
+                allotmentDetails:
+                  tourName: tour
+                  tourReference: ref
+                sliceDiceIndicator: ABCDEF
+                includedCheckedBags:
+                  quantity: 0
+                additionalServices:
+                  chargeableCheckedBags:
+                    quantity: 1
+                    weight: 20
+                  chargeableSeatNumber: 28A
+              - segmentId: '30'
+                cabin: ECONOMY
+                fareBasis: ANNNNF4K
+                brandedFare: LIGHTONE
+                class: A
+                isAllotment: true
+                allotmentDetails:
+                  tourName: tour
+                  tourReference: ref
+                sliceDiceIndicator: ABCDEF
+                includedCheckedBags:
+                  quantity: 0
+                additionalServices:
+                  chargeableCheckedBags:
+                    quantity: 1
+                    weight: 20
+                  chargeableSeatNumber: 12C
+              - segmentId: '31'
+                cabin: ECONOMY
+                fareBasis: ANNNNF4K
+                brandedFare: LIGHTONE
+                class: A
+                isAllotment: true
+                allotmentDetails:
+                  tourName: tour
+                  tourReference: ref
+                sliceDiceIndicator: ABCDEF
+                includedCheckedBags:
+                  quantity: 0
+                additionalServices:
+                  chargeableCheckedBags:
+                    quantity: 1
+                    weight: 20
+                  chargeableSeatNumber: 33D
+            - travelerId: '3'
+              fareOption: STANDARD
+              travelerType: HELD_INFANT
+              associatedAdultId: '1'
+              price:
+                currency: EUR
+                total: '41.33'
+                base: '10'
+                taxes:
+                - code: FR
+                  amount: '31.33'
+              fareDetailsBySegment:
+              - segmentId: '1'
+                cabin: ECONOMY
+                fareBasis: ANNNNF4K
+                brandedFare: LIGHTONE
+                class: A
+                isAllotment: true
+                allotmentDetails:
+                  tourName: tour
+                  tourReference: ref
+                sliceDiceIndicator: ABCDEF
+                includedCheckedBags:
+                  quantity: 0
+              - segmentId: '20'
+                cabin: ECONOMY
+                fareBasis: ANNNNF4K
+                brandedFare: LIGHTONE
+                class: A
+                isAllotment: true
+                allotmentDetails:
+                  tourName: tour
+                  tourReference: ref
+                sliceDiceIndicator: ABCDEF
+                includedCheckedBags:
+                  quantity: 0
+              - segmentId: '30'
+                cabin: ECONOMY
+                fareBasis: ANNNNF4K
+                brandedFare: LIGHTONE
+                class: A
+                isAllotment: true
+                allotmentDetails:
+                  tourName: tour
+                  tourReference: ref
+                sliceDiceIndicator: ABCDEF
+                includedCheckedBags:
+                  quantity: 0
+              - segmentId: '31'
+                cabin: ECONOMY
+                fareBasis: ANNNNF4K
+                brandedFare: LIGHTONE
+                class: A
+                isAllotment: true
+                allotmentDetails:
+                  tourName: tour
+                  tourReference: ref
+                sliceDiceIndicator: ABCDEF
+                includedCheckedBags:
+                  quantity: 0
+          ticketingAggreement:
+            option: DELAY_TO_CANCEL
+            dateTime: '2018-08-21T10:15:00.000'
+          contacts:
+          - companyName: AMADEUS
+            purpose: STANDARD
+            phones:
+            - deviceType: FAX
+              countryCallingCode: '33'
+              number: '480080070'
+            - deviceType: LANDLINE
+              countryCallingCode: '33'
+              number: '480080070'
+            emailAddress: support@mail.com
+            address:
+              lines:
+              - 485 route du Pin Montard
+              postalCode: 06902
+              cityName: Sophia Antipolis Cedex
+              countryCode: FR
+        dictionaries:
+          locations:
+            CDG:
+              cityCode: PAR
+              countryCode: FR
+            ORY:
+              cityCode: PAR
+              countryCode: FR
+            MAD:
+              cityCode: MAD
+              countryCode: ES
+  '400':
+    description: "code    | title                                 \n------- | -------------------------------------                 \n32171   | MANDATORY DATA MISSING \t     \n"
+    schema:
+      $ref: '#/definitions/Error_400_3'
+  '500_2':
+    description: Unexpected Error
+    schema:
+      $ref: '#/definitions/Error_500_2'
+  '204':
+    description: Successfully Deleted
+  transfer_cancel:
+    description: Successful Operation
+    schema:
+      title: Success_Cancellation
+      required:
+      - data
+      properties:
+        data:
+          $ref: '#/definitions/TransferCancellation'
+      example:
+        data:
+          confirmNbr: '2904892'
+          reservationStatus: CANCELLED
+  400_GET_Order:
+    description: "code    | title                                 \n------- | ------------------------------------- \n477     | INVALID FORMAT\n4926    | INVALID DATA RECEIVED\n32171   | MANDATORY DATA MISSING\n"
+    schema:
+      $ref: '#/definitions/Error_400'
+  transfer_order:
+    description: Successful Operation
+    schema:
+      title: Success_Reservation
+      required:
+      - data
+      properties:
+        data:
+          $ref: '#/definitions/TransferOrder'
+        warnings:
+          type: array
+          items:
+            $ref: '#/definitions/Issue_2'
+      example:
+        data:
+          type: transfer-order
+          id: UVZTWlJJfERPRQ
+          reference: YNK4JQ
+          agency:
+            contacts:
+            - email:
+                address: abc@test.com
+          transfers:
+          - status: CONFIRMED
+            confirmNbr: '2904892'
+            note: Note to driver
+            methodOfPayment: CREDIT_CARD
+            offerId: 0cb11574-4a02-11e8-842f-0ed5f89f718b
+            transferType: PRIVATE
+            start:
+              dateTime: '2019-11-10T10:30:00'
+              locationCode: CDG
+            end:
+              address:
+                line: Avenue de la Bourdonnais, 19
+                zip: '75007'
+                countryCode: FR
+                cityName: Paris
+                latitude: 48.859466
+                longitude: 2.2976965
+                uicCode: '7400001'
+              googlePlaceId: ChIJL-DOWeBv5kcRfTbh97PimNc
+              name: Souvenirs De La Tour
+            stopOvers:
+            - duration: PT2H30M
+              sequenceNumber: 1
+              location:
+                locationCode: CDG
+                address:
+                  line: Avenue de la Bourdonnais, 19
+                  zip: '75007'
+                  countryCode: FR
+                  cityName: Paris
+                  latitude: 48.859477
+                  longitude: 2.2976975
+                googlePlaceId: DOWeBv5kcRfTbh97PimN
+                name: De La Tours
+            vehicle:
+              code: VAN
+              category: BU
+              description: Mercedes-Benz V-Class, Chevrolet Suburban, Cadillac Escalade or similar
+              seats:
+              - count: 3
+              baggages:
+              - count: 3
+                size: M
+              imageURL: https://provider.com/images/BU_VAN.png
+            serviceProvider:
+              code: ABC
+              name: Provider name
+              logoUrl: https://provider.com/images/logo.png
+              termsUrl: https://provider.com/terms_and_conditions.html
+              contacts:
+                phoneNumber: '+33123456789'
+                email: support@provider.com
+                address:
+                  line: Avenue de la Bourdonnais, 19
+                  zip: '75007'
+                  countryCode: FR
+                  cityName: Paris
+                  stateCode: CDG
+              settings:
+              - BILLING_ADDRESS_REQUIRED
+              - FLIGHT_NUMBER_REQUIRED
+              - CVV_NUMBER_REQUIRED
+              businessIdentification:
+                vatRegistrationNumber: GB999 9999 22
+            partnerInfo:
+              serviceProvider:
+                code: XYZ
+                name: SubProvider name
+                logoUrl: https://provider.com/images/logo.png
+                termsUrl: https://provider.com/terms_and_conditions.html
+                isPreferred: true
+                contacts:
+                  phoneNumber: '+33123456789'
+                  email: support@provider.com
+                  address:
+                    line: Avenue de la Bourdonnais, 19
+                    zip: '75007'
+                    countryCode: FR
+                    cityName: Paris
+                    stateCode: CDG
+                businessIdentification:
+                  vatRegistrationNumber: GB999 9999 22
+            quotation:
+              monetaryAmount: '63.70'
+              currencyCode: USD
+              isEstimated: false
+              base:
+                monetaryAmount: '103.70'
+              discount:
+                monetaryAmount: '50.00'
+              fees:
+              - indicator: AIRPORT
+                monetaryAmount: '10.00'
+              totalTaxes:
+                monetaryAmount: '12.74'
+              totalFees:
+                monetaryAmount: '10.00'
+            converted:
+              monetaryAmount: '63.70'
+              currencyCode: EUR
+              isEstimated: false
+              base:
+                monetaryAmount: '103.70'
+              discount:
+                monetaryAmount: '50.00'
+              fees:
+              - indicator: AIRPORT
+                monetaryAmount: '10.00'
+              totalTaxes:
+                monetaryAmount: '12.74'
+              totalFees:
+                monetaryAmount: '10.00'
+            extraServices:
+            - code: EWT
+              itemId: EWT0291
+              description: Extra 15 min. wait
+              quotation:
+                monetaryAmount: '39.20'
+                currencyCode: USD
+                base:
+                  monetaryAmount: '36.00'
+                totalTaxes:
+                  monetaryAmount: '3.20'
+              converted:
+                monetaryAmount: '32.70'
+                currencyCode: EUR
+                base:
+                  monetaryAmount: '30.00'
+                totalTaxes:
+                  monetaryAmount: '2.7'
+              isBookable: true
+              taxIncluded: true
+              includedInTotal: true
+            cancellationRules:
+            - feeType: PERCENTAGE
+              feeValue: '100'
+              metricType: DAYS
+              metricMin: '0'
+              metricMax: '1'
+            - feeType: PERCENTAGE
+              feeValue: '0'
+              metricType: DAYS
+              metricMin: '1'
+              metricMax: '100'
+            distance:
+              value: 152
+              unit: KM
+          passengerCharacteristics:
+          - passengerTypeCode: ADT
+            age: 20
+          passengers:
+          - firstName: John
+            lastName: Doe
+            title: MR
+            contacts:
+              phoneNumber: '+33123456789'
+              email: user@email.com
+            billingAddress:
+              line: Avenue de la Bourdonnais, 19
+              zip: '75007'
+              countryCode: FR
+              cityName: Paris
+  '401':
+    description: Unauthorized
+    schema:
+      $ref: '#/definitions/Error_401'
+x-generatedAt: '2023-02-01T12:47:28.953Z'
