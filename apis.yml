@@ -9,7 +9,18 @@ tags:
   - Reservations
   - Travel
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amadeus-reservations.png
 description: >-
   Amadeus Reservations provides APIs for creating and managing travel
   bookings including flight orders, hotel reservations, and ground transfer
@@ -21,121 +32,36 @@ created: '2024-01-01'
 modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
-  - aid: amadeus-reservations:hotel-booking-api
-    name: Hotel Booking API
-    description: >-
-      The Amadeus Hotel Booking API lets you complete hotel reservations at
-      over 150,000 hotels and accommodations worldwide. Create bookings using
-      hotel offer IDs returned by the Hotel Search API, manage guest details,
-      and receive booking confirmations with property reference numbers.
-    humanURL: https://developers.amadeus.com/self-service/category/hotels/api-doc/hotel-booking
-    baseURL: https://test.api.amadeus.com/v2
-    tags:
-      - Booking
-      - Hotels
-      - Reservations
-      - Travel
-    properties:
-      - type: Documentation
-        url: https://developers.amadeus.com/self-service/category/hotels/api-doc/hotel-booking
-      - type: APIReference
-        url: https://developers.amadeus.com/self-service/category/hotels/api-doc/hotel-booking/api-reference
-      - type: OpenAPI
-        url: openapi/amadeus-reservations-hotel-booking-openapi.yaml
-      - type: Overlay
-        url: overlays/amadeus-reservations-hotel-booking-overlay.yaml
-  - aid: amadeus-reservations:flight-create-orders-api
-    name: Flight Create Orders API
-    description: >-
-      The Amadeus Flight Create Orders API enables creation of flight bookings
-      from flight offers returned by the Flight Offers Search API. Create
-      confirmed airline reservations for one or more travelers, receive booking
-      confirmations with PNR codes, and manage the complete flight order
-      lifecycle from creation to ticketing.
-    humanURL: https://developers.amadeus.com/self-service/category/flights/api-doc/flight-create-orders
-    baseURL: https://test.api.amadeus.com/v1
-    tags:
-      - Booking
-      - Flights
-      - Orders
-      - Reservations
-      - Travel
-    properties:
-      - type: Documentation
-        url: https://developers.amadeus.com/self-service/category/flights/api-doc/flight-create-orders
-      - type: APIReference
-        url: https://developers.amadeus.com/self-service/category/flights/api-doc/flight-create-orders/api-reference
-      - type: OpenAPI
-        url: openapi/amadeus-reservations-flight-create-orders-openapi.yaml
-      - type: Overlay
-        url: overlays/amadeus-reservations-flight-create-orders-overlay.yaml
-  - aid: amadeus-reservations:flight-order-management-api
-    name: Flight Order Management API
-    description: >-
-      The Amadeus Flight Order Management API allows you to retrieve and
-      cancel existing flight orders. Look up booking details using the order
-      ID, retrieve full itinerary and traveler information, and cancel
-      confirmed reservations subject to airline fare rules.
-    humanURL: https://developers.amadeus.com/self-service/category/flights/api-doc/flight-order-management
-    baseURL: https://test.api.amadeus.com/v1
-    tags:
-      - Flights
-      - Management
-      - Orders
-      - Reservations
-      - Travel
-    properties:
-      - type: Documentation
-        url: https://developers.amadeus.com/self-service/category/flights/api-doc/flight-order-management
-      - type: OpenAPI
-        url: openapi/amadeus-reservations-flight-order-management-openapi.yaml
-      - type: Overlay
-        url: overlays/amadeus-reservations-flight-order-management-overlay.yaml
-  - aid: amadeus-reservations:transfer-booking-api
-    name: Transfer Booking API
-    description: >-
-      The Amadeus Transfer Booking API allows you to book ground transfer
-      services including airport taxis, private cars, and shuttle services.
-      Create transfer reservations from search results returned by the Transfer
-      Search API, providing pickup and drop-off details with traveler
-      information.
-    humanURL: https://developers.amadeus.com/self-service/category/cars-and-transfers/api-doc/transfer-booking
-    baseURL: https://test.api.amadeus.com/v1
-    tags:
-      - Booking
-      - Ground Transport
-      - Reservations
-      - Transfers
-      - Travel
-    properties:
-      - type: Documentation
-        url: https://developers.amadeus.com/self-service/category/cars-and-transfers/api-doc/transfer-booking
-      - type: OpenAPI
-        url: openapi/amadeus-reservations-transfer-booking-openapi.yaml
-      - type: Overlay
-        url: overlays/amadeus-reservations-transfer-booking-overlay.yaml
-  - aid: amadeus-reservations:transfer-management-api
-    name: Transfer Management API
-    description: >-
-      The Amadeus Transfer Management API enables management of confirmed
-      ground transfer bookings. Cancel existing transfer reservations and
-      retrieve booking details using transfer order IDs obtained during the
-      booking process.
-    humanURL: https://developers.amadeus.com/self-service/category/cars-and-transfers/api-doc/transfer-management
-    baseURL: https://test.api.amadeus.com/v1
-    tags:
-      - Ground Transport
-      - Management
-      - Reservations
-      - Transfers
-      - Travel
-    properties:
-      - type: Documentation
-        url: https://developers.amadeus.com/self-service/category/cars-and-transfers/api-doc/transfer-management
-      - type: OpenAPI
-        url: openapi/amadeus-reservations-transfer-management-openapi.yaml
-      - type: Overlay
-        url: overlays/amadeus-reservations-transfer-management-overlay.yaml
+- aid: amadeus-reservations:amadeus-reservations-booking-api
+  name: Amadeus Reservations Booking API
+  description: The Booking API from Amadeus Reservations — 5 operation(s) for booking.
+  humanURL: https://developers.amadeus.com/self-service/category/hotels/api-doc/hotel-booking
+  baseURL: https://test.api.amadeus.com/v2
+  tags:
+  - Booking
+  properties:
+  - type: OpenAPI
+    url: openapi/amadeus-reservations-booking-api-openapi.yml
+  - type: Documentation
+    url: https://developers.amadeus.com/self-service/category/hotels/api-doc/hotel-booking
+  - type: APIReference
+    url: >-
+      https://developers.amadeus.com/self-service/category/hotels/api-doc/hotel-booking/api-reference
+  - type: Documentation
+    url: >-
+      https://developers.amadeus.com/self-service/category/flights/api-doc/flight-create-orders
+  - type: APIReference
+    url: >-
+      https://developers.amadeus.com/self-service/category/flights/api-doc/flight-create-orders/api-reference
+  - type: Documentation
+    url: >-
+      https://developers.amadeus.com/self-service/category/flights/api-doc/flight-order-management
+  - type: Documentation
+    url: >-
+      https://developers.amadeus.com/self-service/category/cars-and-transfers/api-doc/transfer-booking
+  - type: Documentation
+    url: >-
+      https://developers.amadeus.com/self-service/category/cars-and-transfers/api-doc/transfer-management
 common:
   - type: AgenticAccess
     url: agentic-access/amadeus-reservations-agentic-access.yml
