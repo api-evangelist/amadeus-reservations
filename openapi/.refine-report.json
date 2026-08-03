@@ -1,0 +1,14 @@
+{
+  "provider": "amadeus-reservations",
+  "sources": [
+    "amadeus-reservations-booking-api-openapi.yml"
+  ],
+  "outputs": [
+    "amadeus-reservations-booking-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
