@@ -27,7 +27,7 @@ description: >-
   network of airlines, hotels, and transfer operators.
 created: '2024-01-01'
 modified: '2026-06-20'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
   - aid: amadeus-reservations:amadeus-reservations-booking-api
     name: Amadeus Reservations Booking API
