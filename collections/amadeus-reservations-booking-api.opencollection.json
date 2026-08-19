@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flight Create Orders Booking API",
+    "version": "1.10.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Booking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amadeus Create Order Associated to the Flight Offers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/booking/flight-orders"
+          },
+          "docs": "Amadeus Create Order Associated to the Flight Offers."
+        },
+        {
+          "info": {
+            "name": "Amadeus Retrieve a Given Flight Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/booking/flight-orders/:flight-orderId",
+            "params": [
+              {
+                "name": "flight-orderId",
+                "value": "",
+                "type": "path",
+                "description": "identifier of the flight order"
+              }
+            ]
+          },
+          "docs": "Amadeus Retrieve a Given Flight Order"
+        },
+        {
+          "info": {
+            "name": "Amadeus Cancel a Given Flight Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/booking/flight-orders/:flight-orderId",
+            "params": [
+              {
+                "name": "flight-orderId",
+                "value": "",
+                "type": "path",
+                "description": "identifier of the flight order"
+              }
+            ]
+          },
+          "docs": "Amadeus Cancel a Given Flight Order"
+        },
+        {
+          "info": {
+            "name": "Amadeus Create Hotel Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/booking/hotel-orders"
+          },
+          "docs": "Amadeus Create Hotel Order"
+        },
+        {
+          "info": {
+            "name": "Amadeus Performs a Transfer Reservation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ordering/transfer-orders",
+            "params": [
+              {
+                "name": "offerId",
+                "value": "",
+                "type": "query",
+                "description": "transfer offer id from shopping/transfer-offers response"
+              }
+            ]
+          },
+          "docs": "Amadeus Performs a Transfer Reservation."
+        },
+        {
+          "info": {
+            "name": "Amadeus Cancel a Transfer in an Existing OrderId.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ordering/transfer-orders/:orderId/transfers/cancellation",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "transfer order identifier"
+              },
+              {
+                "name": "confirmNbr",
+                "value": "",
+                "type": "query",
+                "description": "transfer identifier - confirmation number from transfer supplier that identifies the ride"
+              }
+            ]
+          },
+          "docs": "Amadeus Cancel a Transfer in an Existing OrderId."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,41 +1,44 @@
 generated: '2026-06-20'
 method: derived
 status: candidate
-source: >-
-  Derived from openapi/ operationIds. No official first-party Amadeus MCP
-  server found; only community/third-party servers exist on npm
-  (travel-amadeus-mcp, amadeus-mcp-server, @markesphere/amadeus-mcp-server,
-  @privilegemendes/amadeus-mcp-server) and none are published by Amadeus.
-description: >-
-  Candidate MCP server for the Amadeus reservation APIs, one tool per OpenAPI
-  operation across the flight, hotel, and transfer booking/management APIs.
-  Not published by Amadeus; provided as a design target.
+source: Derived from openapi/ operationIds. No official first-party Amadeus MCP server found; only community/third-party
+  servers exist on npm (travel-amadeus-mcp, amadeus-mcp-server, @markesphere/amadeus-mcp-server, @privilegemendes/amadeus-mcp-server)
+  and none are published by Amadeus.
+description: Candidate MCP server for the Amadeus reservation APIs, one tool per OpenAPI operation across
+  the flight, hotel, and transfer booking/management APIs. Not published by Amadeus; provided as a design
+  target.
 server:
   name: amadeus-reservations
   transport: http
 tools:
-  - name: create_flight_order
-    description: Create a confirmed flight order (airline reservation) from a priced flight offer.
-    source_operation: openapi/amadeus-reservations-flight-create-orders-openapi.yaml#createFligtOrders
-  - name: get_flight_order
-    description: Retrieve a flight order by its order ID with full itinerary and traveler details.
-    source_operation: openapi/amadeus-reservations-flight-order-management-openapi.yaml#getFlightOrder
-  - name: cancel_flight_order
-    description: Cancel a confirmed flight order subject to airline fare rules.
-    source_operation: openapi/amadeus-reservations-flight-order-management-openapi.yaml#cancelFlightOrder
-  - name: create_hotel_order
-    description: Create a confirmed hotel reservation from a hotel offer ID.
-    source_operation: openapi/amadeus-reservations-hotel-booking-openapi.yaml#createHotelOrder
-  - name: create_transfer_order
-    description: Book a ground transfer service from a transfer offer.
-    source_operation: openapi/amadeus-reservations-transfer-booking-openapi.yaml#createTransferOrder
-  - name: cancel_transfer
-    description: Cancel a confirmed ground transfer reservation.
-    source_operation: openapi/amadeus-reservations-transfer-management-openapi.yaml#cancelTransfer
+- name: create_flight_order
+  description: Create a confirmed flight order (airline reservation) from a priced flight offer.
+  source_operation: openapi/amadeus-reservations-flight-create-orders-openapi.yaml#createFligtOrders
+- name: get_flight_order
+  description: Retrieve a flight order by its order ID with full itinerary and traveler details.
+  source_operation: openapi/amadeus-reservations-flight-order-management-openapi.yaml#getFlightOrder
+- name: cancel_flight_order
+  description: Cancel a confirmed flight order subject to airline fare rules.
+  source_operation: openapi/amadeus-reservations-flight-order-management-openapi.yaml#cancelFlightOrder
+- name: create_hotel_order
+  description: Create a confirmed hotel reservation from a hotel offer ID.
+  source_operation: openapi/amadeus-reservations-hotel-booking-openapi.yaml#createHotelOrder
+- name: create_transfer_order
+  description: Book a ground transfer service from a transfer offer.
+  source_operation: openapi/amadeus-reservations-transfer-booking-openapi.yaml#createTransferOrder
+- name: cancel_transfer
+  description: Cancel a confirmed ground transfer reservation.
+  source_operation: openapi/amadeus-reservations-transfer-management-openapi.yaml#cancelTransfer
 third_party_servers:
-  - name: travel-amadeus-mcp
-    registry: npm
-    official: false
-  - name: amadeus-mcp-server
-    registry: npm
-    official: false
+- name: travel-amadeus-mcp
+  registry: npm
+  official: false
+- name: amadeus-mcp-server
+  registry: npm
+  official: false
+deployment:
+  mode: none
+  verified: derived
+  tools: 6
+  checked: '2026-08-12'
+  source: catalog MCP census
