@@ -1,7 +1,11 @@
 {
   "provider": "amadeus-reservations",
   "sources": [
-    "amadeus-reservations-booking-api-openapi.yml"
+    "_original/amadeus-reservations-flight-create-orders-openapi.yaml",
+    "_original/amadeus-reservations-flight-order-management-openapi.yaml",
+    "_original/amadeus-reservations-hotel-booking-openapi.yaml",
+    "_original/amadeus-reservations-transfer-booking-openapi.yaml",
+    "_original/amadeus-reservations-transfer-management-openapi.yaml"
   ],
   "outputs": [
     "amadeus-reservations-booking-api-openapi.yml"
@@ -9,6 +13,22 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (5 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "amadeus-reservations-flight-create-orders-openapi.yaml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "amadeus-reservations-flight-create-orders-openapi.yaml: declared missing tag: Booking",
+    "amadeus-reservations-flight-order-management-openapi.yaml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "amadeus-reservations-flight-order-management-openapi.yaml: declared missing tag: Booking",
+    "amadeus-reservations-hotel-booking-openapi.yaml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "amadeus-reservations-hotel-booking-openapi.yaml: declared missing tag: Booking",
+    "amadeus-reservations-transfer-booking-openapi.yaml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "amadeus-reservations-transfer-booking-openapi.yaml: declared missing tag: Booking",
+    "amadeus-reservations-transfer-management-openapi.yaml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "amadeus-reservations-transfer-management-openapi.yaml: declared missing tag: Booking",
+    "tag 'Booking' spans 5 source specs (amadeus-reservations-flight-create-orders-openapi.yaml, amadeus-reservations-flight-order-management-openapi.yaml, amadeus-reservations-hotel-booking-openapi.yaml, amadeus-reservations-transfer-booking-openapi.yaml, amadeus-reservations-transfer-management-openapi.yaml): per-path servers applied",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "amadeus-reservations-booking-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
